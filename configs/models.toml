@@ -1,0 +1,245 @@
+# Model registry: every model used in the experiments, pinned to an exact Hugging Face
+# revision (commit hash), checked against the Hub on 2026-11-13. Every model here fits
+# one GPU with about 95 GB of memory in bfloat16.
+#
+#   kind        encoder | decoder | speech | speech_text
+#   checkpoint  base | post_trained   (post_trained = instruction- or chat-tuned; only used
+#               where no base checkpoint exists, or as an explicit contrast)
+#   status      planned (used in the paper) | proposed | dropped (not used)
+#
+# The hosted models used for prompting (GPT-4o, DeepSeek-V4-Pro, Mistral Large 3, GPT-5.5)
+# are configured in configs/prompting.toml.
+#
+# params: parameter count at the pinned revision, from the Hugging Face API (safetensors
+# metadata, 2026-11-16); for WavLM-large and HuBERT-large, which have only a float32
+# pytorch_model.bin, the file size divided by 4. Whisper and Qwen2-Audio: whole model.
+
+# ----------------------------------------------------------------------------- encoders
+
+[models."bert-base-uncased"]
+id = "google-bert/bert-base-uncased"
+revision = "86b5e0934494bd15c9632b12f734a8a67f723594"
+params = 110106428
+kind = "encoder"
+checkpoint = "base"
+layers = 12
+hidden = 768
+status = "planned"
+notes = "2019 baseline"
+
+[models."bert-base-cased"]
+id = "google-bert/bert-base-cased"
+revision = "cd5ef92a9fb2f889e972770a36d4ed042daf221e"
+params = 108932934
+kind = "encoder"
+checkpoint = "base"
+layers = 12
+hidden = 768
+status = "planned"
+
+[models."bert-large-uncased"]
+id = "google-bert/bert-large-uncased"
+revision = "6da4b6a26a1877e173fca3225479512db81a5e5b"
+params = 336226108
+kind = "encoder"
+checkpoint = "base"
+layers = 24
+hidden = 1024
+status = "planned"
+
+[models."modernbert-base"]
+id = "answerdotai/ModernBERT-base"
+revision = "8949b909ec900327062f0ebf497f51aef5e6f0c8"
+params = 149655232
+kind = "encoder"
+checkpoint = "base"
+layers = 22
+hidden = 768
+status = "planned"
+
+[models."modernbert-large"]
+id = "answerdotai/ModernBERT-large"
+revision = "45bb4654a4d5aaff24dd11d4781fa46d39bf8c13"
+params = 395881664
+kind = "encoder"
+checkpoint = "base"
+layers = 28
+hidden = 1024
+status = "planned"
+
+[models."xlm-roberta-base"]
+id = "FacebookAI/xlm-roberta-base"
+revision = "e73636d4f797dec63c3081bb6ed5c7b0bb3f2089"
+params = 278885778
+kind = "encoder"
+checkpoint = "base"
+layers = 12
+hidden = 768
+status = "planned"
+
+[models."xlm-roberta-large"]
+id = "FacebookAI/xlm-roberta-large"
+revision = "c23d21b0620b635a76227c604d44e43a9f0ee389"
+params = 561192082
+kind = "encoder"
+checkpoint = "base"
+layers = 24
+hidden = 1024
+status = "planned"
+
+# ----------------------------------------------------------------------------- decoder LLMs
+
+[models."qwen3.5-0.8b-base"]
+id = "Qwen/Qwen3.5-0.8B-Base"
+revision = "dc7cdfe2ee4154fa7e30f5b51ca41bfa40174e68"
+params = 873438784
+kind = "decoder"
+checkpoint = "base"
+layers = 24
+hidden = 1024
+status = "planned"
+notes = "Qwen3.5 size series (0.8B-27B): Qwen3.8 has no dense model below 27B"
+
+[models."qwen3.5-2b-base"]
+id = "Qwen/Qwen3.5-2B-Base"
+revision = "b1485b2fa6dfa1287294f269f5fb618e03d52d7c"
+params = 2274069824
+kind = "decoder"
+checkpoint = "base"
+layers = 24
+hidden = 2048
+status = "planned"
+
+[models."qwen3.5-4b-base"]
+id = "Qwen/Qwen3.5-4B-Base"
+revision = "1001bb4d826a52d1f399e183466143f4da7b741b"
+params = 4659865088
+kind = "decoder"
+checkpoint = "base"
+layers = 32
+hidden = 2560
+status = "planned"
+
+[models."qwen3.5-9b-base"]
+id = "Qwen/Qwen3.5-9B-Base"
+revision = "68c46c4b3498877f3ef123c856ecfde50c39f404"
+params = 9653104368
+kind = "decoder"
+checkpoint = "base"
+layers = 32
+hidden = 4096
+status = "planned"
+
+[models."qwen3.5-27b"]
+id = "Qwen/Qwen3.5-27B"
+revision = "fc05daec18b0a78c049392ed2e771dde82bdf654"
+kind = "decoder"
+checkpoint = "post_trained"
+layers = 64
+hidden = 5120
+status = "dropped"
+notes = "not used: post-trained only, which would confound the base-model size series; Qwen3.8-27B is the large Qwen model"
+
+[models."qwen3.8-27b"]
+id = "Qwen/Qwen3.8-27B"
+revision = "37561816e66b5b9153b1b64c10968c18c1e6f4a0"
+params = 27781427952
+kind = "decoder"
+checkpoint = "post_trained"
+layers = 64
+hidden = 5120
+status = "planned"
+notes = "only dense Qwen3.8 size; no base checkpoint"
+
+[models."muse-glimmer-30b"]
+id = "meta-models/Muse-Glimmer-30B"
+revision = "cec94fcfd6512f2cfe708138c32533b346ea4f69"
+params = 29776626688
+kind = "decoder"
+checkpoint = "post_trained"
+layers = 52
+hidden = 6656
+status = "planned"
+notes = "no base checkpoint released; multimodal wrapper, language model used only"
+
+[models."olmo-3-7b"]
+id = "allenai/Olmo-3-1025-7B"
+revision = "a81bae42db3975be1671e27b9c9a56da1a9f980f"
+params = 7298011136
+kind = "decoder"
+checkpoint = "base"
+layers = 32
+hidden = 4096
+status = "planned"
+
+[models."olmo-3-32b"]
+id = "allenai/Olmo-3-1125-32B"
+revision = "c2b61dae89a1ad10e4ad5653d0e46b590902607b"
+params = 32233522176
+kind = "decoder"
+checkpoint = "base"
+layers = 64
+hidden = 5120
+status = "planned"
+
+[models."olmo-3.1-32b-instruct"]
+id = "allenai/Olmo-3.1-32B-Instruct"
+revision = "ac0587e4a7744a551c059d8cd17ba220bc940dae"
+params = 32233522176
+kind = "decoder"
+checkpoint = "post_trained"
+layers = 64
+hidden = 5120
+status = "dropped"
+notes = "not used in the paper (base vs instruct contrast for OLMo)"
+
+# ----------------------------------------------------------------------------- speech
+
+[models."wavlm-large"]
+id = "microsoft/wavlm-large"
+revision = "c1423ed94bb01d80a3f5ce5bc39f6026a0f4828c"
+params = 315497564
+kind = "speech"
+checkpoint = "base"
+layers = 24
+hidden = 1024
+status = "planned"
+
+[models."hubert-large"]
+id = "facebook/hubert-large-ll60k"
+revision = "ff022d095678a2995f3c49bab18a96a9e553f782"
+params = 315480017
+kind = "speech"
+checkpoint = "base"
+layers = 24
+hidden = 1024
+status = "planned"
+
+[models."whisper-large-v3"]
+id = "openai/whisper-large-v3"
+revision = "06f233fe06e710322aca913c1bc4249a0d71fce1"
+params = 1543490560
+kind = "speech"
+checkpoint = "base"
+layers = 32
+hidden = 1280
+status = "planned"
+notes = "encoder only"
+
+[models."qwen2-audio-7b"]
+id = "Qwen/Qwen2-Audio-7B"
+revision = "dd84470756e6277a71d4d7188773a43cde92696e"
+params = 8397094912
+kind = "speech_text"
+checkpoint = "base"
+status = "planned"
+notes = "layer counts are read from the nested config at load time"
+
+[models."qwen2-audio-7b-instruct"]
+id = "Qwen/Qwen2-Audio-7B-Instruct"
+revision = "0a095220c30b7b31434169c3086508ef3ea5bf0a"
+params = 8397094912
+kind = "speech_text"
+checkpoint = "post_trained"
+status = "planned"
+notes = "audio prompting"

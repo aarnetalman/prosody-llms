@@ -1,0 +1,453 @@
+{
+  "experiment": "probing_nonlinear",
+  "model": "modernbert-large",
+  "model_id": "answerdotai/ModernBERT-large",
+  "revision": "45bb4654a4d5aaff24dd11d4781fa46d39bf8c13",
+  "kind": "encoder",
+  "condition": "plain-first-natural",
+  "layers": {
+    "2": 25,
+    "3": 19
+  },
+  "model_class": "ModernBertModel",
+  "n_layers": 29,
+  "dim": 1024,
+  "oom_splits": 0,
+  "summary": [
+    {
+      "task": 2,
+      "probe": "logistic",
+      "layer": 25,
+      "dev": 82.58669354838709,
+      "test_2019": 81.77377301749551,
+      "test_2019_sd": 0.012877456298770094,
+      "test_macro_f1": 81.6835221292867,
+      "epochs": [
+        3,
+        1,
+        4
+      ]
+    },
+    {
+      "task": 2,
+      "probe": "mlp",
+      "layer": 25,
+      "dev": 83.37768817204301,
+      "test_2019": 82.65891886286535,
+      "test_2019_sd": 0.060594472365064406,
+      "test_macro_f1": 82.58367146747693,
+      "epochs": [
+        3,
+        5,
+        4
+      ]
+    },
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "layer": 25,
+      "dev": 83.68918010752688,
+      "test_2019": 83.03482808171489,
+      "test_2019_sd": 0.03243716766609719,
+      "test_macro_f1": 82.96233181184276,
+      "epochs": [
+        4,
+        5,
+        3
+      ]
+    },
+    {
+      "task": 3,
+      "probe": "logistic",
+      "layer": 19,
+      "dev": 66.05779569892472,
+      "test_2019": 65.29302401374754,
+      "test_2019_sd": 0.15675160887670794,
+      "test_macro_f1": 60.56264993816817,
+      "epochs": [
+        4,
+        5,
+        4
+      ]
+    },
+    {
+      "task": 3,
+      "probe": "mlp",
+      "layer": 19,
+      "dev": 68.09610215053763,
+      "test_2019": 67.26404752381376,
+      "test_2019_sd": 0.015607682255385294,
+      "test_macro_f1": 62.93543872749316,
+      "epochs": [
+        2,
+        4,
+        4
+      ]
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "layer": 19,
+      "dev": 68.5709005376344,
+      "test_2019": 67.99957038946417,
+      "test_2019_sd": 0.05910945867489245,
+      "test_macro_f1": 63.8017833371148,
+      "epochs": [
+        2,
+        7,
+        4
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "task": 2,
+      "probe": "logistic",
+      "seed": 0,
+      "layer": 25,
+      "best_epoch": 3,
+      "dev_accuracy": 82.61693572998047,
+      "dev_history": [
+        82.61,
+        82.587,
+        82.617,
+        82.554,
+        82.615
+      ],
+      "time_s": 2.7
+    },
+    {
+      "task": 2,
+      "probe": "logistic",
+      "seed": 1,
+      "layer": 25,
+      "best_epoch": 1,
+      "dev_accuracy": 82.56855010986328,
+      "dev_history": [
+        82.569,
+        82.566,
+        82.53
+      ],
+      "time_s": 1.6
+    },
+    {
+      "task": 2,
+      "probe": "logistic",
+      "seed": 2,
+      "layer": 25,
+      "best_epoch": 4,
+      "dev_accuracy": 82.57460021972656,
+      "dev_history": [
+        82.543,
+        82.565,
+        82.56,
+        82.575,
+        82.568,
+        82.43
+      ],
+      "time_s": 2.9
+    },
+    {
+      "task": 2,
+      "probe": "mlp",
+      "seed": 0,
+      "layer": 25,
+      "best_epoch": 3,
+      "dev_accuracy": 83.38710021972656,
+      "dev_history": [
+        83.182,
+        83.304,
+        83.387,
+        83.307,
+        83.307
+      ],
+      "time_s": 3.7
+    },
+    {
+      "task": 2,
+      "probe": "mlp",
+      "seed": 1,
+      "layer": 25,
+      "best_epoch": 5,
+      "dev_accuracy": 83.39315032958984,
+      "dev_history": [
+        83.293,
+        83.282,
+        83.299,
+        83.372,
+        83.393,
+        83.377,
+        83.36
+      ],
+      "time_s": 4.6
+    },
+    {
+      "task": 2,
+      "probe": "mlp",
+      "seed": 2,
+      "layer": 25,
+      "best_epoch": 4,
+      "dev_accuracy": 83.35282897949219,
+      "dev_history": [
+        83.219,
+        83.238,
+        83.279,
+        83.353,
+        83.252,
+        83.321
+      ],
+      "time_s": 4.2
+    },
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "seed": 0,
+      "layer": 25,
+      "best_epoch": 4,
+      "dev_accuracy": 83.69556427001953,
+      "dev_history": [
+        83.518,
+        83.589,
+        83.589,
+        83.696,
+        83.682,
+        83.59
+      ],
+      "time_s": 189.6
+    },
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "seed": 1,
+      "layer": 25,
+      "best_epoch": 5,
+      "dev_accuracy": 83.67338562011719,
+      "dev_history": [
+        83.503,
+        83.591,
+        83.604,
+        83.604,
+        83.673,
+        83.554,
+        83.466
+      ],
+      "time_s": 222.4
+    },
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "seed": 2,
+      "layer": 25,
+      "best_epoch": 3,
+      "dev_accuracy": 83.69859313964844,
+      "dev_history": [
+        83.478,
+        83.675,
+        83.699,
+        83.576,
+        83.611
+      ],
+      "time_s": 152.8
+    },
+    {
+      "task": 3,
+      "probe": "logistic",
+      "seed": 0,
+      "layer": 19,
+      "best_epoch": 4,
+      "dev_accuracy": 66.03326416015625,
+      "dev_history": [
+        65.926,
+        65.978,
+        65.972,
+        66.033,
+        65.934,
+        66.012
+      ],
+      "time_s": 3.3
+    },
+    {
+      "task": 3,
+      "probe": "logistic",
+      "seed": 1,
+      "layer": 19,
+      "best_epoch": 5,
+      "dev_accuracy": 66.085693359375,
+      "dev_history": [
+        65.925,
+        65.812,
+        66.006,
+        65.947,
+        66.086,
+        66.027,
+        66.074
+      ],
+      "time_s": 3.3
+    },
+    {
+      "task": 3,
+      "probe": "logistic",
+      "seed": 2,
+      "layer": 19,
+      "best_epoch": 4,
+      "dev_accuracy": 66.054443359375,
+      "dev_history": [
+        65.906,
+        65.962,
+        66.028,
+        66.054,
+        66.021,
+        65.964
+      ],
+      "time_s": 3.1
+    },
+    {
+      "task": 3,
+      "probe": "mlp",
+      "seed": 0,
+      "layer": 19,
+      "best_epoch": 2,
+      "dev_accuracy": 68.18246459960938,
+      "dev_history": [
+        67.711,
+        68.182,
+        68.139,
+        67.992
+      ],
+      "time_s": 3.0
+    },
+    {
+      "task": 3,
+      "probe": "mlp",
+      "seed": 1,
+      "layer": 19,
+      "best_epoch": 4,
+      "dev_accuracy": 67.99092864990234,
+      "dev_history": [
+        67.898,
+        67.867,
+        67.986,
+        67.991,
+        67.798,
+        67.693
+      ],
+      "time_s": 3.9
+    },
+    {
+      "task": 3,
+      "probe": "mlp",
+      "seed": 2,
+      "layer": 19,
+      "best_epoch": 4,
+      "dev_accuracy": 68.11492156982422,
+      "dev_history": [
+        67.895,
+        67.943,
+        68.005,
+        68.115,
+        67.84,
+        67.669
+      ],
+      "time_s": 3.8
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "seed": 0,
+      "layer": 19,
+      "best_epoch": 2,
+      "dev_accuracy": 68.6320571899414,
+      "dev_history": [
+        68.362,
+        68.632,
+        68.596,
+        68.571
+      ],
+      "time_s": 126.2
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "seed": 1,
+      "layer": 19,
+      "best_epoch": 7,
+      "dev_accuracy": 68.51612854003906,
+      "dev_history": [
+        68.391,
+        68.456,
+        68.47,
+        68.419,
+        68.502,
+        68.482,
+        68.516,
+        68.461,
+        68.41
+      ],
+      "time_s": 281.3
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "seed": 2,
+      "layer": 19,
+      "best_epoch": 4,
+      "dev_accuracy": 68.56451416015625,
+      "dev_history": [
+        68.386,
+        68.487,
+        68.472,
+        68.565,
+        68.442,
+        68.458
+      ],
+      "time_s": 186.8
+    }
+  ],
+  "train_utterances": 116263,
+  "time_s": {
+    "extract": 266.2,
+    "total": 1522.5
+  },
+  "config": {
+    "model": "modernbert-large",
+    "revision": null,
+    "context": "plain",
+    "pooling": "first",
+    "style": "natural",
+    "layers": null,
+    "probes": [
+      "logistic",
+      "mlp",
+      "bilstm"
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "epochs": 10,
+    "patience": 2,
+    "data_dir": "data",
+    "train_set": "train_360",
+    "audio_dir": null,
+    "kind": null,
+    "part": "llm",
+    "train_utterances": null,
+    "linear_root": "runs/probing",
+    "out_root": "runs/probing_nonlinear",
+    "dtype": "bfloat16",
+    "device": null,
+    "max_tokens": 4096
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "df977a3d1752f03eb1629e9603552613adf8c1c3",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2",
+    "max_gpu_memory_gb": 6.0
+  }
+}

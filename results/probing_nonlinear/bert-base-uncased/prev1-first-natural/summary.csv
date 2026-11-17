@@ -1,0 +1,13 @@
+experiment,model,layer,task,split,cond.context,cond.pooling,cond.probe,cond.seed,cond.style,accuracy,macro_f1,scored_words
+probing_nonlinear,bert-base-uncased,5,2,dev,prev1,first,bilstm,0,natural,83.55040322580645,83.48370385670916,99200
+probing_nonlinear,bert-base-uncased,5,2,test,prev1,first,bilstm,0,natural,82.99856766929815,82.91721945778463,90063
+probing_nonlinear,bert-base-uncased,5,2,dev,prev1,first,bilstm,1,natural,83.56552419354838,83.49542418334963,99200
+probing_nonlinear,bert-base-uncased,5,2,test,prev1,first,bilstm,1,natural,82.94416130930571,82.86294810005809,90063
+probing_nonlinear,bert-base-uncased,5,2,dev,prev1,first,bilstm,2,natural,83.56149193548387,83.49102574575019,99200
+probing_nonlinear,bert-base-uncased,5,2,test,prev1,first,bilstm,2,natural,82.92972696889954,82.84344279278505,90063
+probing_nonlinear,bert-base-uncased,8,3,dev,prev1,first,bilstm,0,natural,68.37399193548387,64.31991536431939,99200
+probing_nonlinear,bert-base-uncased,8,3,test,prev1,first,bilstm,0,natural,67.54383042981024,63.53717716214904,90063
+probing_nonlinear,bert-base-uncased,8,3,dev,prev1,first,bilstm,1,natural,68.36189516129032,64.38374640170538,99200
+probing_nonlinear,bert-base-uncased,8,3,test,prev1,first,bilstm,1,natural,67.83917924119783,64.01412912843732,90063
+probing_nonlinear,bert-base-uncased,8,3,dev,prev1,first,bilstm,2,natural,68.30846774193549,64.19737572331131,99200
+probing_nonlinear,bert-base-uncased,8,3,test,prev1,first,bilstm,2,natural,67.79254521834716,63.748695610785525,90063

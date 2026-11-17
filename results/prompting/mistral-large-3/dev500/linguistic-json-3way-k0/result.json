@@ -1,0 +1,61 @@
+{
+  "experiment": "prompting",
+  "model": "mistral-large-3",
+  "split": "dev500",
+  "prompt": {
+    "variant": "linguistic",
+    "fmt": "json",
+    "task": 3,
+    "shots": 0
+  },
+  "example_request": {
+    "model": "Mistral-Large-3",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Prosodic prominence is the emphasis a speaker gives to some words when reading aloud: prominent words stand out from their neighbours through higher or more varied pitch, greater loudness and longer duration. Prominence typically falls on content words that carry new, important or contrastive information, and towards the end of a phrase; function words and words repeating given information are usually not prominent. Mark which words in the sentence would be prominent when it is read aloud in a natural way.\nLabels: 0 = not prominent, 1 = somewhat prominent, 2 = strongly prominent.\nAnswer with a JSON object only: {\"2\": [numbers of strongly prominent words], \"1\": [numbers of somewhat prominent words]}. All other words are not prominent.\n\nSentence: There is a healthy bank holiday atmosphere about this book which is extremely pleasant.\nWords:\n1 There\n2 is\n3 a\n4 healthy\n5 bank\n6 holiday\n7 atmosphere\n8 about\n9 this\n10 book\n11 which\n12 is\n13 extremely\n14 pleasant"
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 124,
+    "seed": 0
+  },
+  "coverage": {
+    "utterances": 500,
+    "missing_responses": 0,
+    "content_filtered": 1,
+    "words": 9100,
+    "words_parsed": 9055,
+    "word_coverage": 0.9951,
+    "words_with_probabilities": 0,
+    "json_error": 1
+  },
+  "accuracy": {
+    "3": 59.8021978021978,
+    "2": 77.06593406593407
+  },
+  "auc_prominent": null,
+  "plan": {
+    "model": "mistral-large-3",
+    "deployment": "Mistral-Large-3",
+    "requests": 4500,
+    "cached": 4500,
+    "to_send": 0,
+    "est_input_tokens": 0,
+    "est_output_tokens": 0,
+    "max_output_tokens": 0,
+    "est_usd_expected": 0.0,
+    "est_usd_upper_bound": 0.0
+  },
+  "sent": null,
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "3292f8c4b1fabce5266bbb759de397c0b30ee6b2",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "cpu",
+    "transformers": "5.22.2"
+  }
+}

@@ -1,0 +1,20 @@
+Sample 7127_75947_000010_000000: corpus prominence vs toolkit on two alignments
+
+word            corpus  toolkit TG  public TG
+Yes              0.673       0.745      0.755
+the              0.087      -0.116     -0.095
+character        3.163       3.169      3.146
+which            0.110      -0.008     -0.012
+your             0.029       0.017      0.016
+royal            1.417       1.332      1.300
+highness         0.704       0.655      0.657
+assumed          2.624       2.819      2.860
+is               0.129      -0.057     -0.037
+in               0.000       0.006      0.000
+perfect          2.183       2.022      2.016
+harmony          1.028       0.900      0.900
+with             0.018      -0.100     -0.106
+your             0.000      -0.024     -0.048
+own              1.280       1.285      1.247
+toolkit_textgrid: max |diff| 0.203, same label for 15/15 words
+public_textgrid: max |diff| 0.236, same label for 15/15 words

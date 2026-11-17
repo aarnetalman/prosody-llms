@@ -1,0 +1,149 @@
+{
+  "experiment": "prompting",
+  "model": "deepseek-v4-pro",
+  "split": "dev500",
+  "prompt": {
+    "variant": "linguistic",
+    "fmt": "lines",
+    "task": 3,
+    "shots": 10
+  },
+  "example_request": {
+    "model": "DeepSeek-V4-Pro",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Prosodic prominence is the emphasis a speaker gives to some words when reading aloud: prominent words stand out from their neighbours through higher or more varied pitch, greater loudness and longer duration. Prominence typically falls on content words that carry new, important or contrastive information, and towards the end of a phrase; function words and words repeating given information are usually not prominent. Mark which words in the sentence would be prominent when it is read aloud in a natural way.\nLabels: 0 = not prominent, 1 = somewhat prominent, 2 = strongly prominent.\nAnswer with one line per numbered word, in order: the number, the word and its label (0, 1 or 2), separated by spaces. Write nothing else.\n\nSentence: What is it? enquired the girl.\nWords:\n1 What\n2 is\n3 it\n4 enquired\n5 the\n6 girl"
+      },
+      {
+        "role": "assistant",
+        "content": "1 What 0\n2 is 1\n3 it 2\n4 enquired 0\n5 the 0\n6 girl 1"
+      },
+      {
+        "role": "user",
+        "content": "Prosodic prominence is the emphasis a speaker gives to some words when reading aloud: prominent words stand out from their neighbours through higher or more varied pitch, greater loudness and longer duration. Prominence typically falls on content words that carry new, important or contrastive information, and towards the end of a phrase; function words and words repeating given information are usually not prominent. Mark which words in the sentence would be prominent when it is read aloud in a natural way.\nLabels: 0 = not prominent, 1 = somewhat prominent, 2 = strongly prominent.\nAnswer with one line per numbered word, in order: the number, the word and its label (0, 1 or 2), separated by spaces. Write nothing else.\n\nSentence: And then, from habit, he glanced at the clock in the tower, and made further oration.\nWords:\n1 And\n2 then\n3 from\n4 habit\n5 he\n6 glanced\n7 at\n8 the\n9 clock\n10 in\n11 the\n12 tower\n13 and\n14 made\n15 further\n16 oration"
+      },
+      {
+        "role": "assistant",
+        "content": "1 And 0\n2 then 2\n3 from 1\n4 habit 1\n5 he 0\n6 glanced 2\n7 at 0\n8 the 0\n9 clock 1\n10 in 0\n11 the 0\n12 tower 2\n13 and 0\n14 made 1\n15 further 2\n16 oration 0"
+      },
+      {
+        "role": "user",
+        "content": "Prosodic prominence is the emphasis a speaker gives to some words when reading aloud: prominent words stand out from their neighbours through higher or more varied pitch, greater loudness and longer duration. Prominence typically falls on content words that carry new, important or contrastive information, and towards the end of a phrase; function words and words repeating given information are usually not prominent. Mark which words in the sentence would be prominent when it is read aloud in a natural way.\nLabels: 0 = not prominent, 1 = somewhat prominent, 2 = strongly prominent.\nAnswer with one line per numbered word, in order: the number, the word and its label (0, 1 or 2), separated by spaces. Write nothing else.\n\nSentence: But can the thing be undone, Yorick? said my father for in my opinion, continued he, it cannot.\nWords:\n1 But\n2 can\n3 the\n4 thing\n5 be\n6 undone\n7 Yorick\n8 said\n9 my\n10 father\n11 for\n12 in\n13 my\n14 opinion\n15 continued\n16 he\n17 it\n18 cannot"
+      },
+      {
+        "role": "assistant",
+        "content": "1 But 0\n2 can 1\n3 the 0\n4 thing 1\n5 be 0\n6 undone 0\n7 Yorick 2\n8 said 0\n9 my 0\n10 father 2\n11 for 0\n12 in 0\n13 my 2\n14 opinion 0\n15 continued 0\n16 he 1\n17 it 0\n18 cannot 2"
+      },
+      {
+        "role": "user",
+        "content": "Prosodic prominence is the emphasis a speaker gives to some words when reading aloud: prominent words stand out from their neighbours through higher or more varied pitch, greater loudness and longer duration. Prominence typically falls on content words that carry new, important or contrastive information, and towards the end of a phrase; function words and words repeating given information are usually not prominent. Mark which words in the sentence would be prominent when it is read aloud in a natural way.\nLabels: 0 = not prominent, 1 = somewhat prominent, 2 = strongly prominent.\nAnswer with one line per numbered word, in order: the number, the word and its label (0, 1 or 2), separated by spaces. Write nothing else.\n\nSentence: If only Torp were back, now! '\nWords:\n1 If\n2 only\n3 Torp\n4 were\n5 back\n6 now"
+      },
+      {
+        "role": "assistant",
+        "content": "1 If 0\n2 only 2\n3 Torp 1\n4 were 0\n5 back 0\n6 now 2"
+      },
+      {
+        "role": "user",
+        "content": "Prosodic prominence is the emphasis a speaker gives to some words when reading aloud: prominent words stand out from their neighbours through higher or more varied pitch, greater loudness and longer duration. Prominence typically falls on content words that carry new, important or contrastive information, and towards the end of a phrase; function words and words repeating given information are usually not prominent. Mark which words in the sentence would be prominent when it is read aloud in a natural way.\nLabels: 0 = not prominent, 1 = somewhat prominent, 2 = strongly prominent.\nAnswer with one line per numbered word, in order: the number, the word and its label (0, 1 or 2), separated by spaces. Write nothing else.\n\nSentence: Not for long, I hope, sir.\nWords:\n1 Not\n2 for\n3 long\n4 I\n5 hope\n6 sir"
+      },
+      {
+        "role": "assistant",
+        "content": "1 Not 2\n2 for 0\n3 long 2\n4 I 0\n5 hope 0\n6 sir 2"
+      },
+      {
+        "role": "user",
+        "content": "Prosodic prominence is the emphasis a speaker gives to some words when reading aloud: prominent words stand out from their neighbours through higher or more varied pitch, greater loudness and longer duration. Prominence typically falls on content words that carry new, important or contrastive information, and towards the end of a phrase; function words and words repeating given information are usually not prominent. Mark which words in the sentence would be prominent when it is read aloud in a natural way.\nLabels: 0 = not prominent, 1 = somewhat prominent, 2 = strongly prominent.\nAnswer with one line per numbered word, in order: the number, the word and its label (0, 1 or 2), separated by spaces. Write nothing else.\n\nSentence: The beast listened with attention and when Ojo had finished the recital it said, with a sigh\nWords:\n1 The\n2 beast\n3 listened\n4 with\n5 attention\n6 and\n7 when\n8 Ojo\n9 had\n10 finished\n11 the\n12 recital\n13 it\n14 said\n15 with\n16 a\n17 sigh"
+      },
+      {
+        "role": "assistant",
+        "content": "1 The 0\n2 beast 2\n3 listened 1\n4 with 0\n5 attention 2\n6 and 0\n7 when 0\n8 Ojo 2\n9 had 0\n10 finished 2\n11 the 0\n12 recital 2\n13 it 0\n14 said 1\n15 with 0\n16 a 0\n17 sigh 1"
+      },
+      {
+        "role": "user",
+        "content": "Prosodic prominence is the emphasis a speaker gives to some words when reading aloud: prominent words stand out from their neighbours through higher or more varied pitch, greater loudness and longer duration. Prominence typically falls on content words that carry new, important or contrastive information, and towards the end of a phrase; function words and words repeating given information are usually not prominent. Mark which words in the sentence would be prominent when it is read aloud in a natural way.\nLabels: 0 = not prominent, 1 = somewhat prominent, 2 = strongly prominent.\nAnswer with one line per numbered word, in order: the number, the word and its label (0, 1 or 2), separated by spaces. Write nothing else.\n\nSentence: Let its walls be massive gold and silver bricks laid alternately.\nWords:\n1 Let\n2 its\n3 walls\n4 be\n5 massive\n6 gold\n7 and\n8 silver\n9 bricks\n10 laid\n11 alternately"
+      },
+      {
+        "role": "assistant",
+        "content": "1 Let 1\n2 its 0\n3 walls 2\n4 be 0\n5 massive 1\n6 gold 0\n7 and 1\n8 silver 2\n9 bricks 0\n10 laid 0\n11 alternately 0"
+      },
+      {
+        "role": "user",
+        "content": "Prosodic prominence is the emphasis a speaker gives to some words when reading aloud: prominent words stand out from their neighbours through higher or more varied pitch, greater loudness and longer duration. Prominence typically falls on content words that carry new, important or contrastive information, and towards the end of a phrase; function words and words repeating given information are usually not prominent. Mark which words in the sentence would be prominent when it is read aloud in a natural way.\nLabels: 0 = not prominent, 1 = somewhat prominent, 2 = strongly prominent.\nAnswer with one line per numbered word, in order: the number, the word and its label (0, 1 or 2), separated by spaces. Write nothing else.\n\nSentence: I count it no loss what I spent in the schooling and teaching of you.\nWords:\n1 I\n2 count\n3 it\n4 no\n5 loss\n6 what\n7 I\n8 spent\n9 in\n10 the\n11 schooling\n12 and\n13 teaching\n14 of\n15 you"
+      },
+      {
+        "role": "assistant",
+        "content": "1 I 1\n2 count 2\n3 it 0\n4 no 1\n5 loss 2\n6 what 1\n7 I 0\n8 spent 2\n9 in 0\n10 the 0\n11 schooling 2\n12 and 0\n13 teaching 2\n14 of 0\n15 you 2"
+      },
+      {
+        "role": "user",
+        "content": "Prosodic prominence is the emphasis a speaker gives to some words when reading aloud: prominent words stand out from their neighbours through higher or more varied pitch, greater loudness and longer duration. Prominence typically falls on content words that carry new, important or contrastive information, and towards the end of a phrase; function words and words repeating given information are usually not prominent. Mark which words in the sentence would be prominent when it is read aloud in a natural way.\nLabels: 0 = not prominent, 1 = somewhat prominent, 2 = strongly prominent.\nAnswer with one line per numbered word, in order: the number, the word and its label (0, 1 or 2), separated by spaces. Write nothing else.\n\nSentence: Thereupon having well feasted they turned themselves to rest, some near the ship's hawsers, others in groups throughout the mansion.\nWords:\n1 Thereupon\n2 having\n3 well\n4 feasted\n5 they\n6 turned\n7 themselves\n8 to\n9 rest\n10 some\n11 near\n12 the\n13 ship's\n14 hawsers\n15 others\n16 in\n17 groups\n18 throughout\n19 the\n20 mansion"
+      },
+      {
+        "role": "assistant",
+        "content": "1 Thereupon 2\n2 having 0\n3 well 2\n4 feasted 1\n5 they 0\n6 turned 2\n7 themselves 1\n8 to 1\n9 rest 0\n10 some 0\n11 near 1\n12 the 0\n13 ship's 1\n14 hawsers 2\n15 others 2\n16 in 0\n17 groups 1\n18 throughout 1\n19 the 0\n20 mansion 1"
+      },
+      {
+        "role": "user",
+        "content": "Prosodic prominence is the emphasis a speaker gives to some words when reading aloud: prominent words stand out from their neighbours through higher or more varied pitch, greater loudness and longer duration. Prominence typically falls on content words that carry new, important or contrastive information, and towards the end of a phrase; function words and words repeating given information are usually not prominent. Mark which words in the sentence would be prominent when it is read aloud in a natural way.\nLabels: 0 = not prominent, 1 = somewhat prominent, 2 = strongly prominent.\nAnswer with one line per numbered word, in order: the number, the word and its label (0, 1 or 2), separated by spaces. Write nothing else.\n\nSentence: The idea is to keep the music going during the driving of the stake.\nWords:\n1 The\n2 idea\n3 is\n4 to\n5 keep\n6 the\n7 music\n8 going\n9 during\n10 the\n11 driving\n12 of\n13 the\n14 stake"
+      },
+      {
+        "role": "assistant",
+        "content": "1 The 2\n2 idea 1\n3 is 2\n4 to 0\n5 keep 1\n6 the 0\n7 music 1\n8 going 2\n9 during 0\n10 the 0\n11 driving 1\n12 of 0\n13 the 0\n14 stake 0"
+      },
+      {
+        "role": "user",
+        "content": "Prosodic prominence is the emphasis a speaker gives to some words when reading aloud: prominent words stand out from their neighbours through higher or more varied pitch, greater loudness and longer duration. Prominence typically falls on content words that carry new, important or contrastive information, and towards the end of a phrase; function words and words repeating given information are usually not prominent. Mark which words in the sentence would be prominent when it is read aloud in a natural way.\nLabels: 0 = not prominent, 1 = somewhat prominent, 2 = strongly prominent.\nAnswer with one line per numbered word, in order: the number, the word and its label (0, 1 or 2), separated by spaces. Write nothing else.\n\nSentence: There is a healthy bank holiday atmosphere about this book which is extremely pleasant.\nWords:\n1 There\n2 is\n3 a\n4 healthy\n5 bank\n6 holiday\n7 atmosphere\n8 about\n9 this\n10 book\n11 which\n12 is\n13 extremely\n14 pleasant"
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 180,
+    "seed": 0,
+    "logprobs": true,
+    "top_logprobs": 10
+  },
+  "coverage": {
+    "utterances": 500,
+    "missing_responses": 0,
+    "content_filtered": 2,
+    "words": 9100,
+    "words_parsed": 9025,
+    "word_coverage": 0.9918,
+    "words_with_probabilities": 7232,
+    "bad_lines": 0
+  },
+  "accuracy": {
+    "3": 61.16483516483517,
+    "2": 80.20879120879121
+  },
+  "auc_prominent": 0.7923044346439412,
+  "plan": {
+    "model": "deepseek-v4-pro",
+    "deployment": "DeepSeek-V4-Pro",
+    "requests": 1500,
+    "cached": 0,
+    "to_send": 1500,
+    "est_input_tokens": 2630687,
+    "est_output_tokens": 169800,
+    "max_output_tokens": 333000,
+    "est_usd_expected": 5.17,
+    "est_usd_upper_bound": 5.74
+  },
+  "sent": {
+    "committed": 5.054310240000002,
+    "stopped": null,
+    "failed": 0,
+    "in_a_row": 0,
+    "sent": 1500
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "3292f8c4b1fabce5266bbb759de397c0b30ee6b2",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "cpu",
+    "transformers": "5.22.2"
+  }
+}

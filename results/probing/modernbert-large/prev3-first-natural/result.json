@@ -1,0 +1,144 @@
+{
+  "experiment": "probing",
+  "model": "modernbert-large",
+  "model_id": "answerdotai/ModernBERT-large",
+  "revision": "45bb4654a4d5aaff24dd11d4781fa46d39bf8c13",
+  "model_class": "ModernBertModel",
+  "key_mapping": null,
+  "kind": "encoder",
+  "n_layers": 29,
+  "dim": 1024,
+  "condition": {
+    "context": "prev3",
+    "pooling": "first",
+    "style": "natural",
+    "train_set": "train_360",
+    "train_utterances": null
+  },
+  "families": [
+    "ridge",
+    "lda"
+  ],
+  "grids": {
+    "ridge": [
+      1e-05,
+      0.0001,
+      0.001,
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "lda": [
+      0.0001,
+      0.001,
+      0.01,
+      0.05,
+      0.1,
+      0.3,
+      0.6,
+      0.9
+    ]
+  },
+  "train_words": 2076289,
+  "train_utterances": 116263,
+  "summary": [
+    {
+      "task": 2,
+      "probe": "ridge",
+      "best_layer": 25,
+      "layers": 29,
+      "hyper": 1e-05,
+      "dev": 82.63911290322581,
+      "test_2019": 81.86413937158349,
+      "test_full": 81.86713744823068,
+      "test_macro_f1": 81.77922151510964,
+      "test_aligned": null
+    },
+    {
+      "task": 2,
+      "probe": "lda",
+      "best_layer": 25,
+      "layers": 29,
+      "hyper": 0.0001,
+      "dev": 82.63911290322581,
+      "test_2019": 81.85080663081641,
+      "test_full": 81.85381344170192,
+      "test_macro_f1": 81.76571981865185,
+      "test_aligned": null
+    },
+    {
+      "task": 3,
+      "probe": "ridge",
+      "best_layer": 19,
+      "layers": 29,
+      "hyper": 1e-05,
+      "dev": 65.65322580645162,
+      "test_2019": 65.16377049908893,
+      "test_full": 65.15994359503902,
+      "test_macro_f1": 59.96124167735572,
+      "test_aligned": null
+    },
+    {
+      "task": 3,
+      "probe": "lda",
+      "best_layer": 19,
+      "layers": 29,
+      "hyper": 0.0001,
+      "dev": 65.87298387096774,
+      "test_2019": 65.33265188213858,
+      "test_full": 65.33204534603556,
+      "test_macro_f1": 61.33462162676546,
+      "test_aligned": null
+    }
+  ],
+  "alignment": {
+    "utterances": 126812,
+    "shared_tokens": 1207
+  },
+  "oom_splits": 0,
+  "time_s": {
+    "load_and_pass1": 4645.2,
+    "solve": 160.7,
+    "pass2": 282.1,
+    "total": 5141.8
+  },
+  "config": {
+    "model": "modernbert-large",
+    "revision": null,
+    "context": "prev3",
+    "pooling": "first",
+    "style": "natural",
+    "families": [
+      "ridge",
+      "lda"
+    ],
+    "data_dir": "data",
+    "train_set": "train_360",
+    "audio_dir": null,
+    "kind": null,
+    "part": "llm",
+    "train_utterances": null,
+    "out_root": "runs/probing",
+    "dtype": "bfloat16",
+    "device": "cpu",
+    "max_tokens": 4096,
+    "stats_device": "cpu",
+    "checkpoint_minutes": 30.0,
+    "resume": true,
+    "keep_stats": false,
+    "max_batches": null,
+    "stats_device_used": "cpu"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.58.1.1.el9_8.x86_64-x86_64-with-glibc2.34",
+    "git_commit": "994fe39b59b8fb931b7189905c8d8dcb268e17d8",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cpu",
+    "cuda": null,
+    "device": "cpu",
+    "transformers": "5.22.2"
+  }
+}

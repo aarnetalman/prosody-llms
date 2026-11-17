@@ -1,0 +1,190 @@
+{
+  "experiment": "probing_nonlinear",
+  "model": "random-words-1024",
+  "model_id": "random-words-1024",
+  "revision": null,
+  "kind": "custom",
+  "condition": "plain-first-natural",
+  "layers": {
+    "2": 0,
+    "3": 0
+  },
+  "model_class": "random word vectors",
+  "n_layers": 1,
+  "dim": 1024,
+  "oom_splits": 0,
+  "summary": [
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "layer": 0,
+      "dev": 83.09206989247312,
+      "test_2019": 82.48744500244433,
+      "test_2019_sd": 0.0451452149991362,
+      "test_macro_f1": 82.38990456905313,
+      "epochs": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "layer": 0,
+      "dev": 67.22547043010753,
+      "test_2019": 66.59111446898656,
+      "test_2019_sd": 0.12403317778074867,
+      "test_macro_f1": 62.32959212324846,
+      "epochs": [
+        3,
+        4,
+        4
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "seed": 0,
+      "layer": 0,
+      "best_epoch": 2,
+      "dev_accuracy": 83.06653594970703,
+      "dev_history": [
+        82.92,
+        83.067,
+        82.979,
+        83.028
+      ],
+      "time_s": 129.8
+    },
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "seed": 1,
+      "layer": 0,
+      "best_epoch": 2,
+      "dev_accuracy": 83.10282897949219,
+      "dev_history": [
+        82.964,
+        83.103,
+        83.074,
+        83.041
+      ],
+      "time_s": 122.8
+    },
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "seed": 2,
+      "layer": 0,
+      "best_epoch": 2,
+      "dev_accuracy": 83.10685729980469,
+      "dev_history": [
+        82.939,
+        83.107,
+        83.071,
+        83.036
+      ],
+      "time_s": 125.6
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "seed": 0,
+      "layer": 0,
+      "best_epoch": 3,
+      "dev_accuracy": 67.26109313964844,
+      "dev_history": [
+        66.881,
+        67.081,
+        67.261,
+        67.127,
+        67.087
+      ],
+      "time_s": 157.0
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "seed": 1,
+      "layer": 0,
+      "best_epoch": 4,
+      "dev_accuracy": 67.19657897949219,
+      "dev_history": [
+        66.653,
+        67.106,
+        67.092,
+        67.197,
+        67.08,
+        67.16
+      ],
+      "time_s": 209.3
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "seed": 2,
+      "layer": 0,
+      "best_epoch": 4,
+      "dev_accuracy": 67.21875,
+      "dev_history": [
+        66.674,
+        66.999,
+        67.126,
+        67.219,
+        67.073,
+        67.084
+      ],
+      "time_s": 201.1
+    }
+  ],
+  "train_utterances": 116263,
+  "time_s": {
+    "extract": 15.9,
+    "total": 1099.8
+  },
+  "config": {
+    "model": "random-words-1024",
+    "revision": null,
+    "context": "plain",
+    "pooling": "first",
+    "style": "natural",
+    "layers": "0,0",
+    "probes": [
+      "bilstm"
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "epochs": 10,
+    "patience": 2,
+    "data_dir": "data",
+    "train_set": "train_360",
+    "audio_dir": null,
+    "kind": null,
+    "part": "llm",
+    "train_exemplars": null,
+    "train_utterances": null,
+    "linear_root": "runs/probing",
+    "out_root": "runs/probing_control",
+    "dtype": "bfloat16",
+    "device": null,
+    "max_tokens": 4096,
+    "random_features": 1024
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "7467c8397b0c6d9440d21fea7497390fa2d8bc3e",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2",
+    "max_gpu_memory_gb": 5.7
+  }
+}

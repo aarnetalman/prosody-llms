@@ -1,0 +1,138 @@
+{
+  "experiment": "repro_2019",
+  "model": "bert-base-uncased",
+  "config": {
+    "data_dir": "data",
+    "out_dir": "runs/repro_2019/train_360-1.0/2way/seed4",
+    "n_classes": 2,
+    "train_set": "train_360",
+    "fraction_of_train_data": 1.0,
+    "protocol": "legacy",
+    "model": "google-bert/bert-base-uncased",
+    "revision": "86b5e0934494bd15c9632b12f734a8a67f723594",
+    "batch_size": 32,
+    "epochs": 2,
+    "learning_rate": 5e-05,
+    "weight_decay": 0.0,
+    "seed": 4,
+    "attn_implementation": "eager",
+    "attention_mask": false,
+    "eval_batch_size": 64,
+    "log_every": 50,
+    "device": null,
+    "resume": true,
+    "keep_checkpoint": false,
+    "max_train_steps": null
+  },
+  "labels": [
+    "<pad>",
+    "0",
+    "1",
+    "NA"
+  ],
+  "data": {
+    "train_utterances": 116262,
+    "sha256_ok": {
+      "train_360.txt": true,
+      "dev.txt": true,
+      "test.txt": true
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "dev_accuracy_full": 83.76209677419355,
+      "dev_accuracy_legacy_2019": 83.7617693905119,
+      "elapsed_s": 216.8
+    },
+    {
+      "epoch": 2,
+      "dev_accuracy_full": 83.7429435483871,
+      "dev_accuracy_legacy_2019": 83.74261577854392,
+      "elapsed_s": 435.3
+    }
+  ],
+  "dev": {
+    "full": {
+      "accuracy": 83.7429435483871,
+      "scored_words": 99200,
+      "utterances": 5727,
+      "confusion": {
+        "0": {
+          "0": 38650,
+          "1": 8879,
+          "NA": 6
+        },
+        "1": {
+          "0": 7218,
+          "1": 44423,
+          "NA": 24
+        }
+      }
+    },
+    "legacy_2019": {
+      "accuracy": 83.74261577854392,
+      "scored_words": 99198,
+      "utterances": 5726,
+      "confusion": {
+        "0": {
+          "0": 38650,
+          "1": 8879,
+          "NA": 6
+        },
+        "1": {
+          "0": 7218,
+          "1": 44421,
+          "NA": 24
+        }
+      }
+    }
+  },
+  "test": {
+    "full": {
+      "accuracy": 83.00522967256254,
+      "scored_words": 90063,
+      "utterances": 4822,
+      "confusion": {
+        "0": {
+          "0": 34646,
+          "1": 8585,
+          "NA": 3
+        },
+        "1": {
+          "0": 6691,
+          "1": 40111,
+          "NA": 27
+        }
+      }
+    },
+    "legacy_2019": {
+      "accuracy": 83.00408870716858,
+      "scored_words": 90004,
+      "utterances": 4821,
+      "confusion": {
+        "0": {
+          "0": 34634,
+          "1": 8579,
+          "NA": 3
+        },
+        "1": {
+          "0": 6688,
+          "1": 40073,
+          "NA": 27
+        }
+      }
+    }
+  },
+  "train_time_s": 438.8,
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "589e6a9b2e781df6014be57d06f1ee61c30916ab",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2"
+  }
+}

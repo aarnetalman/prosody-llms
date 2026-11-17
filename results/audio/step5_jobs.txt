@@ -1,0 +1,17 @@
+3109731 reference rows (reconstruction, duration)
+3109732 linear probes wavlm-large 
+3109733 stronger probes wavlm-large 
+3109734 linear probes hubert-large 
+3109735 stronger probes hubert-large 
+3109736 linear probes whisper-large-v3 
+3109737 stronger probes whisper-large-v3 
+3109738 linear probes qwen2-audio-7b --part llm
+3109739 stronger probes qwen2-audio-7b --part llm
+3109740 linear probes qwen2-audio-7b --part encoder
+3109741 stronger probes qwen2-audio-7b --part encoder
+3109742 linear probes bert-base-uncased --train-set train_100 --context plain
+3109743 stronger probes bert-base-uncased --train-set train_100 --context plain
+3109744 linear probes muse-glimmer-30b --train-set train_100 --context echo
+3109745 stronger probes muse-glimmer-30b --train-set train_100 --context echo
+3109746 audio prompting qwen2-audio-7b-instruct
+3109747 comparison (after all the others)

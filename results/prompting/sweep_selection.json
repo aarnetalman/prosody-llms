@@ -1,0 +1,17 @@
+{
+  "gpt-4o": {
+    "variant": "linguistic",
+    "fmt": "lines",
+    "shots": 5
+  },
+  "deepseek-v4-pro": {
+    "variant": "linguistic",
+    "fmt": "lines",
+    "shots": 5
+  },
+  "mistral-large-3": {
+    "variant": "linguistic",
+    "fmt": "lines",
+    "shots": 0
+  }
+}

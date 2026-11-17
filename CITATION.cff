@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it, and the 2019 paper whose corpus and task it builds on."
+title: "prosody-llms"
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/aarnetalman/prosody-llms"
+authors:
+  - family-names: Talman
+    given-names: Aarne
+    affiliation: University of Helsinki
+  - family-names: Chatzikyriakidis
+    given-names: Stergios
+    affiliation: Institute of Language and Speech Processing, Athena Research Centre
+references:
+  - type: conference-paper
+    title: "Predicting Prosodic Prominence from Text with Pre-trained Contextualized Word Representations"
+    authors:
+      - family-names: Talman
+        given-names: Aarne
+      - family-names: Suni
+        given-names: Antti
+      - family-names: Celikkanat
+        given-names: Hande
+      - family-names: Kakouros
+        given-names: Sofoklis
+      - family-names: Tiedemann
+        given-names: Jörg
+      - family-names: Vainio
+        given-names: Martti
+    collection-title: "Proceedings of the 22nd Nordic Conference on Computational Linguistics (NoDaLiDa)"
+    start: 281
+    end: 290
+    year: 2019
+    url: "https://aclanthology.org/W19-6129/"

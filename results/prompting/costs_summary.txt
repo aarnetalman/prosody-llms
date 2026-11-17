@@ -1,0 +1,18 @@
+model                    run                                                  calls     in tok   out tok      USD
+deepseek-v4-pro    deepseek-v4-pro/dev500/minimal-lines-3way-k0       1        137        70     0.00
+deepseek-v4-pro    deepseek-v4-pro/dev500/shots                    1500    2624516    140130     5.05
+deepseek-v4-pro    deepseek-v4-pro/dev500/stage1                   4499     839581    250611     2.33
+deepseek-v4-pro    deepseek-v4-pro/dev500/twoway                    500     812778     46524     1.58
+deepseek-v4-pro    deepseek-v4-pro/test/linguistic-lines-3way-k5    4802    8104570    458468    15.70
+gpt-4o             gpt-4o/dev500/minimal-lines-3way-k0                1        140        70     0.00
+gpt-4o             gpt-4o/dev500/shots                             1500    2671095    139100     8.07
+gpt-4o             gpt-4o/dev500/stage1                            4499     850929    248912     4.62
+gpt-4o             gpt-4o/dev500/twoway                             500     828568     46182     2.53
+gpt-4o             gpt-4o/test/linguistic-lines-3way-k5            4802    8256491    457603    25.22
+gpt-5.5            gpt-5.5/test200/linguistic-lines-3way-k5         200     345397     37774     2.86
+mistral-large-3    mistral-large-3/dev500/minimal-lines-3way-k0       1        142        75     0.00
+mistral-large-3    mistral-large-3/dev500/shots                    1500    2744686    155798     2.02
+mistral-large-3    mistral-large-3/dev500/stage1                   4499     893894    302684     1.13
+mistral-large-3    mistral-large-3/dev500/twoway                    500     118150     51761     0.17
+mistral-large-3    mistral-large-3/test/linguistic-lines-3way-k0    4802    1196698    511654     1.72
+total: $73.00 of $180.00 (34106 calls). Estimated from list prices; check against the Azure cost view.

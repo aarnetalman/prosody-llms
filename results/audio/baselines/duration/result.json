@@ -1,0 +1,34 @@
+{
+  "experiment": "audio_baseline",
+  "model": "duration",
+  "train_set": "train_100",
+  "train_words": 569966,
+  "accuracy": {
+    "dev/3way": {
+      "full": 65.04637096774194,
+      "aligned": 65.08032614838137
+    },
+    "test/3way": {
+      "full": 65.02115186036441,
+      "aligned": 65.05169538632573
+    },
+    "dev/2way": {
+      "full": 83.19153225806451,
+      "aligned": 83.2445305562283
+    },
+    "test/2way": {
+      "full": 83.19398643172002,
+      "aligned": 83.2473596442468
+    }
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "854d2826dd320a7d93c1483d6f8d7fcd4b672373",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2"
+  }
+}

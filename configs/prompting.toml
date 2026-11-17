@@ -1,0 +1,83 @@
+# Hosted models for the prompting experiments.
+#
+# The paper used Azure AI Foundry deployments of each model. Set the endpoints of your own
+# resource and one API key in the environment; never put keys or endpoints in this file:
+#
+#   export AZURE_OPENAI_ENDPOINT=https://<resource>.openai.azure.com
+#   export AZURE_AI_INFERENCE_ENDPOINT=https://<resource>.services.ai.azure.com/models
+#   export AZURE_AI_API_KEY=...
+#
+# Any OpenAI-compatible endpoint works: add a provider with base_url (or base_url_env),
+# auth = "bearer" and api_key_env, and point a model at it.
+#
+# Paid calls are never made by default: without --confirm-spend and --max-usd the runner
+# only prints a plan and a cost estimate.
+
+[budget]
+# Hard cap on the estimated spending over all runs (the cost log in the runs directory).
+# The paper's whole prompting sweep cost about USD 73 at the list prices below.
+total_usd = 180.0
+
+[providers.azure-openai]           # Azure OpenAI: deployment in the URL, api-key header
+base_url_env = "AZURE_OPENAI_ENDPOINT"
+api_version = "2025-04-01-preview"
+deployment_in_path = true
+auth = "api-key"
+api_key_env = "AZURE_AI_API_KEY"
+
+[providers.azure-inference]        # Azure AI model inference: OpenAI-compatible, bearer token
+base_url_env = "AZURE_AI_INFERENCE_ENDPOINT"
+api_version = "2024-05-01-preview"
+auth = "bearer"
+api_key_env = "AZURE_AI_API_KEY"
+
+[providers.mock]                   # tests only
+base_url = "http://127.0.0.1:1/v1"
+auth = "bearer"
+api_key_env = "MOCK_API_KEY"
+
+# name: the deployment name. Prices are USD per million tokens at list prices when the
+# experiments were run (November 2026); check them against your provider before a run.
+# logprobs: whether the deployment returns top log-probabilities (used for per-word label
+# probabilities in the "lines" format). reasoning = "always": cannot be switched off; such
+# models get max_completion_tokens instead of temperature/max_tokens, and their hidden
+# reasoning tokens are billed as output.
+
+[models.gpt-4o]
+provider = "azure-openai"
+name = "gpt-4o"
+usd_per_m_input = 2.5
+usd_per_m_output = 10.0
+logprobs = true
+
+[models.deepseek-v4-pro]
+provider = "azure-inference"
+name = "DeepSeek-V4-Pro"
+usd_per_m_input = 1.74
+usd_per_m_output = 3.48
+logprobs = true
+
+[models.mistral-large-3]
+provider = "azure-inference"
+name = "Mistral-Large-3"
+usd_per_m_input = 0.63
+usd_per_m_output = 1.88
+logprobs = false           # no log-probabilities from this deployment
+
+[models."gpt-5.5"]
+provider = "azure-openai"
+name = "gpt-5.5"
+usd_per_m_input = 5.0
+usd_per_m_output = 30.0
+logprobs = false
+reasoning = "always"
+reasoning_effort = "low"
+max_completion_tokens = 4096
+timeout = 600
+
+[models.mock-model]
+provider = "mock"
+name = "mock-model"
+usd_per_m_input = 1.0
+usd_per_m_output = 2.0
+logprobs = true

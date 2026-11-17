@@ -1,0 +1,138 @@
+{
+  "experiment": "probing",
+  "model": "olmo-3-32b",
+  "model_id": "allenai/Olmo-3-1125-32B",
+  "revision": "c2b61dae89a1ad10e4ad5653d0e46b590902607b",
+  "model_class": "Olmo3Model",
+  "key_mapping": null,
+  "kind": "decoder",
+  "n_layers": 65,
+  "dim": 5120,
+  "condition": {
+    "context": "echo",
+    "pooling": "last",
+    "style": "natural",
+    "train_set": "train_360",
+    "train_utterances": null
+  },
+  "families": [
+    "ridge",
+    "lda"
+  ],
+  "grids": {
+    "ridge": [
+      1e-05,
+      0.0001,
+      0.001,
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "lda": [
+      0.0001,
+      0.001,
+      0.01,
+      0.05,
+      0.1,
+      0.3,
+      0.6,
+      0.9
+    ]
+  },
+  "train_words": 2076289,
+  "train_utterances": 116263,
+  "summary": [
+    {
+      "task": 2,
+      "probe": "ridge",
+      "best_layer": 27,
+      "layers": 65,
+      "hyper": 0.01,
+      "dev": 82.92137096774194,
+      "test_2019": 82.20634638460513,
+      "test_full": 82.20912028246894,
+      "test_macro_f1": 82.14193891718512
+    },
+    {
+      "task": 2,
+      "probe": "lda",
+      "best_layer": 26,
+      "layers": 65,
+      "hyper": 0.001,
+      "dev": 82.91834677419355,
+      "test_2019": 82.16301497711213,
+      "test_full": 82.16581726125045,
+      "test_macro_f1": 82.09741580481153
+    },
+    {
+      "task": 3,
+      "probe": "ridge",
+      "best_layer": 27,
+      "layers": 65,
+      "hyper": 0.0001,
+      "dev": 67.18951612903226,
+      "test_2019": 66.67925869961336,
+      "test_full": 66.67443900380844,
+      "test_macro_f1": 61.96926440513071
+    },
+    {
+      "task": 3,
+      "probe": "lda",
+      "best_layer": 27,
+      "layers": 65,
+      "hyper": 0.01,
+      "dev": 67.3679435483871,
+      "test_2019": 66.70592418114751,
+      "test_full": 66.69997668298858,
+      "test_macro_f1": 63.0041440967669
+    }
+  ],
+  "alignment": {
+    "utterances": 126812,
+    "shared_tokens": 1208
+  },
+  "oom_splits": 0,
+  "time_s": {
+    "load_and_pass1": 4193.8,
+    "solve": 52.8,
+    "pass2": 123.3,
+    "total": 4504.8
+  },
+  "config": {
+    "model": "olmo-3-32b",
+    "revision": null,
+    "context": "echo",
+    "pooling": "last",
+    "style": "natural",
+    "families": [
+      "ridge",
+      "lda"
+    ],
+    "data_dir": "data",
+    "train_set": "train_360",
+    "train_utterances": null,
+    "out_root": "runs/probing",
+    "dtype": "bfloat16",
+    "device": null,
+    "max_tokens": 4096,
+    "stats_device": "auto",
+    "checkpoint_minutes": 30.0,
+    "resume": true,
+    "keep_stats": false,
+    "max_batches": null,
+    "stats_device_used": "cuda:0"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "b9ddf4d32452395b47d9313f76900f8f41c350e8",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2",
+    "max_gpu_memory_gb": 83.1
+  }
+}

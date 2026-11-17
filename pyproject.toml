@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prosody-llms"
+version = "1.0.0"
+description = "Predicting prosodic prominence with language models: probing, prompting, fine-tuning and speech models"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+  { name = "Aarne Talman" },
+  { name = "Stergios Chatzikyriakidis" },
+]
+dependencies = ["numpy>=1.26"]
+
+[project.optional-dependencies]
+models = ["torch>=2.2", "transformers>=4.45", "huggingface_hub>=0.30"]
+dev = ["pytest>=8"]
+
+[project.scripts]
+prosody-data = "prosody_llms.data.download:main"
+prosody-analysis = "prosody_llms.analysis.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

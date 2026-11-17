@@ -1,0 +1,138 @@
+{
+  "experiment": "probing",
+  "model": "modernbert-base",
+  "model_id": "answerdotai/ModernBERT-base",
+  "revision": "8949b909ec900327062f0ebf497f51aef5e6f0c8",
+  "model_class": "ModernBertModel",
+  "key_mapping": null,
+  "kind": "encoder",
+  "n_layers": 23,
+  "dim": 768,
+  "condition": {
+    "context": "plain",
+    "pooling": "first",
+    "style": "natural",
+    "train_set": "train_360",
+    "train_utterances": null
+  },
+  "families": [
+    "ridge",
+    "lda"
+  ],
+  "grids": {
+    "ridge": [
+      1e-05,
+      0.0001,
+      0.001,
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "lda": [
+      0.0001,
+      0.001,
+      0.01,
+      0.05,
+      0.1,
+      0.3,
+      0.6,
+      0.9
+    ]
+  },
+  "train_words": 2076289,
+  "train_utterances": 116263,
+  "summary": [
+    {
+      "task": 2,
+      "probe": "ridge",
+      "best_layer": 16,
+      "layers": 23,
+      "hyper": 0.0001,
+      "dev": 82.41935483870968,
+      "test_2019": 81.65414870450202,
+      "test_full": 81.65617401152527,
+      "test_macro_f1": 81.57146853108765
+    },
+    {
+      "task": 2,
+      "probe": "lda",
+      "best_layer": 16,
+      "layers": 23,
+      "hyper": 0.0001,
+      "dev": 82.42338709677419,
+      "test_2019": 81.65525976623262,
+      "test_full": 81.65728434540266,
+      "test_macro_f1": 81.5725561183524
+    },
+    {
+      "task": 3,
+      "probe": "ridge",
+      "best_layer": 17,
+      "layers": 23,
+      "hyper": 0.0001,
+      "dev": 65.44657258064515,
+      "test_2019": 64.9182258566286,
+      "test_full": 64.91011847262472,
+      "test_macro_f1": 59.76193064736672
+    },
+    {
+      "task": 3,
+      "probe": "lda",
+      "best_layer": 15,
+      "layers": 23,
+      "hyper": 0.001,
+      "dev": 65.62298387096774,
+      "test_2019": 64.92600328874272,
+      "test_full": 64.91789080976649,
+      "test_macro_f1": 60.853832122014325
+    }
+  ],
+  "alignment": {
+    "utterances": 126812,
+    "shared_tokens": 1207
+  },
+  "oom_splits": 0,
+  "time_s": {
+    "load_and_pass1": 701.1,
+    "solve": 1.0,
+    "pass2": 18.7,
+    "total": 764.9
+  },
+  "config": {
+    "model": "modernbert-base",
+    "revision": null,
+    "context": "plain",
+    "pooling": "first",
+    "style": "natural",
+    "families": [
+      "ridge",
+      "lda"
+    ],
+    "data_dir": "data",
+    "train_set": "train_360",
+    "train_utterances": null,
+    "out_root": "runs/probing",
+    "dtype": "bfloat16",
+    "device": null,
+    "max_tokens": 4096,
+    "stats_device": "auto",
+    "checkpoint_minutes": 30.0,
+    "resume": true,
+    "keep_stats": false,
+    "max_batches": null,
+    "stats_device_used": "cuda:0"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "b9ddf4d32452395b47d9313f76900f8f41c350e8",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2",
+    "max_gpu_memory_gb": 0.9
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "experiment": "repro_2019",
+  "model": "bert-base-uncased",
+  "config": {
+    "data_dir": "data",
+    "out_dir": "runs/repro_2019/train_360-1.0/3way/seed1",
+    "n_classes": 3,
+    "train_set": "train_360",
+    "fraction_of_train_data": 1.0,
+    "protocol": "legacy",
+    "model": "google-bert/bert-base-uncased",
+    "revision": "86b5e0934494bd15c9632b12f734a8a67f723594",
+    "batch_size": 32,
+    "epochs": 2,
+    "learning_rate": 5e-05,
+    "weight_decay": 0.0,
+    "seed": 1,
+    "attn_implementation": "eager",
+    "attention_mask": false,
+    "eval_batch_size": 64,
+    "log_every": 50,
+    "device": null,
+    "resume": true,
+    "keep_checkpoint": false,
+    "max_train_steps": null
+  },
+  "labels": [
+    "<pad>",
+    "0",
+    "1",
+    "2",
+    "NA"
+  ],
+  "data": {
+    "train_utterances": 116262,
+    "sha256_ok": {
+      "train_360.txt": true,
+      "dev.txt": true,
+      "test.txt": true
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "dev_accuracy_full": 68.96875,
+      "dev_accuracy_legacy_2019": 68.97014052702676,
+      "elapsed_s": 161.1
+    },
+    {
+      "epoch": 2,
+      "dev_accuracy_full": 69.1149193548387,
+      "dev_accuracy_legacy_2019": 69.11631282888769,
+      "elapsed_s": 329.4
+    }
+  ],
+  "dev": {
+    "full": {
+      "accuracy": 69.1149193548387,
+      "scored_words": 99200,
+      "utterances": 5727,
+      "confusion": {
+        "0": {
+          "0": 41189,
+          "1": 4547,
+          "2": 1795,
+          "NA": 4
+        },
+        "1": {
+          "0": 8142,
+          "1": 12464,
+          "2": 6843,
+          "NA": 5
+        },
+        "2": {
+          "0": 2320,
+          "1": 6962,
+          "2": 14909,
+          "NA": 20
+        }
+      }
+    },
+    "legacy_2019": {
+      "accuracy": 69.11631282888769,
+      "scored_words": 99198,
+      "utterances": 5726,
+      "confusion": {
+        "0": {
+          "0": 41189,
+          "1": 4547,
+          "2": 1795,
+          "NA": 4
+        },
+        "1": {
+          "0": 8142,
+          "1": 12464,
+          "2": 6842,
+          "NA": 5
+        },
+        "2": {
+          "0": 2320,
+          "1": 6961,
+          "2": 14909,
+          "NA": 20
+        }
+      }
+    }
+  },
+  "test": {
+    "full": {
+      "accuracy": 68.47651088682366,
+      "scored_words": 90063,
+      "utterances": 4822,
+      "confusion": {
+        "0": {
+          "0": 36980,
+          "1": 4437,
+          "2": 1814,
+          "NA": 3
+        },
+        "1": {
+          "0": 7248,
+          "1": 11052,
+          "2": 6236,
+          "NA": 7
+        },
+        "2": {
+          "0": 2193,
+          "1": 6431,
+          "2": 13640,
+          "NA": 22
+        }
+      }
+    },
+    "legacy_2019": {
+      "accuracy": 68.48695613528288,
+      "scored_words": 90004,
+      "utterances": 4821,
+      "confusion": {
+        "0": {
+          "0": 36966,
+          "1": 4434,
+          "2": 1813,
+          "NA": 3
+        },
+        "1": {
+          "0": 7243,
+          "1": 11042,
+          "2": 6232,
+          "NA": 7
+        },
+        "2": {
+          "0": 2187,
+          "1": 6422,
+          "2": 13633,
+          "NA": 22
+        }
+      }
+    }
+  },
+  "train_time_s": 332.3,
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "589e6a9b2e781df6014be57d06f1ee61c30916ab",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2"
+  }
+}

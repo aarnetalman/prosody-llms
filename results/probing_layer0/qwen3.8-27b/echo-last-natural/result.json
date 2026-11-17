@@ -1,0 +1,186 @@
+{
+  "experiment": "probing_nonlinear",
+  "model": "qwen3.8-27b",
+  "model_id": "Qwen/Qwen3.8-27B",
+  "revision": "37561816e66b5b9153b1b64c10968c18c1e6f4a0",
+  "kind": "decoder",
+  "condition": "echo-last-natural",
+  "layers": {
+    "2": 0,
+    "3": 0
+  },
+  "model_class": "Qwen3_5TextModel",
+  "n_layers": 65,
+  "dim": 5120,
+  "oom_splits": 63,
+  "summary": [
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "layer": 0,
+      "dev": 82.8763440860215,
+      "test_2019": 82.2759729197221,
+      "test_2019_sd": 0.009958320118918104,
+      "test_macro_f1": 82.19630782859741,
+      "epochs": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "layer": 0,
+      "dev": 66.98252688172043,
+      "test_2019": 66.544820230212,
+      "test_2019_sd": 0.14625978809549497,
+      "test_macro_f1": 62.12291876241729,
+      "epochs": [
+        3,
+        3,
+        2
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "seed": 0,
+      "layer": 0,
+      "best_epoch": 1,
+      "dev_accuracy": 82.96371459960938,
+      "dev_history": [
+        82.964,
+        82.74,
+        82.83
+      ],
+      "time_s": 84.9
+    },
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "seed": 1,
+      "layer": 0,
+      "best_epoch": 2,
+      "dev_accuracy": 82.79839324951172,
+      "dev_history": [
+        82.793,
+        82.798,
+        82.718,
+        82.79
+      ],
+      "time_s": 108.2
+    },
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "seed": 2,
+      "layer": 0,
+      "best_epoch": 2,
+      "dev_accuracy": 82.86693572998047,
+      "dev_history": [
+        82.753,
+        82.867,
+        82.854,
+        82.749
+      ],
+      "time_s": 106.9
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "seed": 0,
+      "layer": 0,
+      "best_epoch": 3,
+      "dev_accuracy": 67.00201416015625,
+      "dev_history": [
+        66.922,
+        66.958,
+        67.002,
+        66.993,
+        66.763
+      ],
+      "time_s": 133.8
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "seed": 1,
+      "layer": 0,
+      "best_epoch": 3,
+      "dev_accuracy": 66.92440032958984,
+      "dev_history": [
+        66.862,
+        66.894,
+        66.924,
+        66.808,
+        66.837
+      ],
+      "time_s": 134.6
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "seed": 2,
+      "layer": 0,
+      "best_epoch": 2,
+      "dev_accuracy": 67.02117156982422,
+      "dev_history": [
+        66.8,
+        67.021,
+        66.945,
+        66.906
+      ],
+      "time_s": 107.9
+    }
+  ],
+  "train_utterances": 116263,
+  "time_s": {
+    "extract": 2016.6,
+    "total": 2973.5
+  },
+  "config": {
+    "model": "qwen3.8-27b",
+    "revision": null,
+    "context": "echo",
+    "pooling": "last",
+    "style": "natural",
+    "layers": "0,0",
+    "probes": [
+      "bilstm"
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "epochs": 10,
+    "patience": 2,
+    "data_dir": "data",
+    "train_set": "train_360",
+    "audio_dir": null,
+    "kind": null,
+    "part": "llm",
+    "train_exemplars": null,
+    "train_utterances": null,
+    "linear_root": "runs/probing",
+    "out_root": "runs/probing_layer0",
+    "dtype": "bfloat16",
+    "device": null,
+    "max_tokens": 4096,
+    "random_features": null
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "f1c44afd89f41e429f677d906dc87e86702b0841",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2",
+    "max_gpu_memory_gb": 101.0
+  }
+}

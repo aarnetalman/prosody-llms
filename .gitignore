@@ -1,0 +1,24 @@
+__pycache__/
+*.egg-info/
+.venv/
+.pytest_cache/
+build/
+dist/
+
+# Corpus, audio, run outputs, the labelling toolkit and job logs (large, regenerated)
+/data/
+/audio/
+/runs/
+/tools/
+/logs/
+jobs*.txt
+*.pt
+*.safetensors
+
+.ipynb_checkpoints/
+.DS_Store
+.idea/
+.vscode/
+
+# Written by the analysis (LaTeX tables, numbers and figure data); regenerated, not tracked
+/results/paper/

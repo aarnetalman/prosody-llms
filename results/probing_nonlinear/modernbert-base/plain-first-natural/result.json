@@ -1,0 +1,474 @@
+{
+  "experiment": "probing_nonlinear",
+  "model": "modernbert-base",
+  "model_id": "answerdotai/ModernBERT-base",
+  "revision": "8949b909ec900327062f0ebf497f51aef5e6f0c8",
+  "kind": "encoder",
+  "condition": "plain-first-natural",
+  "layers": {
+    "2": 16,
+    "3": 15
+  },
+  "model_class": "ModernBertModel",
+  "n_layers": 23,
+  "dim": 768,
+  "oom_splits": 0,
+  "summary": [
+    {
+      "task": 2,
+      "probe": "logistic",
+      "layer": 16,
+      "dev": 82.41297043010753,
+      "test_2019": 81.73044161000253,
+      "test_2019_sd": 0.015568085534705197,
+      "test_macro_f1": 81.65677326861784,
+      "epochs": [
+        3,
+        9,
+        3
+      ]
+    },
+    {
+      "task": 2,
+      "probe": "mlp",
+      "layer": 16,
+      "dev": 83.31014784946237,
+      "test_2019": 82.73817459964742,
+      "test_2019_sd": 0.02961210539922701,
+      "test_macro_f1": 82.66554771439172,
+      "epochs": [
+        7,
+        9,
+        10
+      ]
+    },
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "layer": 16,
+      "dev": 83.60181451612904,
+      "test_2019": 82.9040931514155,
+      "test_2019_sd": 0.04372843130117622,
+      "test_macro_f1": 82.82888197709896,
+      "epochs": [
+        4,
+        6,
+        5
+      ]
+    },
+    {
+      "task": 3,
+      "probe": "logistic",
+      "layer": 15,
+      "dev": 65.72076612903226,
+      "test_2019": 65.15969660607676,
+      "test_2019_sd": 0.07614894291255646,
+      "test_macro_f1": 60.511960498856816,
+      "epochs": [
+        7,
+        2,
+        5
+      ]
+    },
+    {
+      "task": 3,
+      "probe": "mlp",
+      "layer": 15,
+      "dev": 67.76948924731182,
+      "test_2019": 67.21442009984742,
+      "test_2019_sd": 0.00944946952147671,
+      "test_macro_f1": 62.851929289107616,
+      "epochs": [
+        4,
+        4,
+        5
+      ]
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "layer": 15,
+      "dev": 68.30779569892474,
+      "test_2019": 67.67032576329942,
+      "test_2019_sd": 0.11170453515449741,
+      "test_macro_f1": 63.620337357712,
+      "epochs": [
+        4,
+        5,
+        4
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "task": 2,
+      "probe": "logistic",
+      "seed": 0,
+      "layer": 16,
+      "best_epoch": 3,
+      "dev_accuracy": 82.38810729980469,
+      "dev_history": [
+        82.285,
+        82.352,
+        82.388,
+        82.375,
+        82.368
+      ],
+      "time_s": 2.6
+    },
+    {
+      "task": 2,
+      "probe": "logistic",
+      "seed": 1,
+      "layer": 16,
+      "best_epoch": 9,
+      "dev_accuracy": 82.41532135009766,
+      "dev_history": [
+        82.27,
+        82.334,
+        82.386,
+        82.34,
+        82.387,
+        82.384,
+        82.393,
+        82.345,
+        82.415,
+        82.413
+      ],
+      "time_s": 4.3
+    },
+    {
+      "task": 2,
+      "probe": "logistic",
+      "seed": 2,
+      "layer": 16,
+      "best_epoch": 3,
+      "dev_accuracy": 82.43548583984375,
+      "dev_history": [
+        82.225,
+        82.421,
+        82.435,
+        82.404,
+        82.36
+      ],
+      "time_s": 2.7
+    },
+    {
+      "task": 2,
+      "probe": "mlp",
+      "seed": 0,
+      "layer": 16,
+      "best_epoch": 7,
+      "dev_accuracy": 83.32057189941406,
+      "dev_history": [
+        82.959,
+        83.107,
+        83.162,
+        83.206,
+        83.214,
+        83.276,
+        83.321,
+        83.294,
+        83.152
+      ],
+      "time_s": 5.9
+    },
+    {
+      "task": 2,
+      "probe": "mlp",
+      "seed": 1,
+      "layer": 16,
+      "best_epoch": 9,
+      "dev_accuracy": 83.30342864990234,
+      "dev_history": [
+        82.919,
+        82.993,
+        83.05,
+        83.227,
+        83.163,
+        83.239,
+        83.278,
+        83.277,
+        83.303,
+        83.282
+      ],
+      "time_s": 5.7
+    },
+    {
+      "task": 2,
+      "probe": "mlp",
+      "seed": 2,
+      "layer": 16,
+      "best_epoch": 10,
+      "dev_accuracy": 83.30645751953125,
+      "dev_history": [
+        82.864,
+        83.0,
+        83.148,
+        83.11,
+        83.182,
+        83.194,
+        83.251,
+        83.278,
+        83.26,
+        83.306
+      ],
+      "time_s": 5.7
+    },
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "seed": 0,
+      "layer": 16,
+      "best_epoch": 4,
+      "dev_accuracy": 83.60282897949219,
+      "dev_history": [
+        83.27,
+        83.465,
+        83.51,
+        83.603,
+        83.502,
+        83.463
+      ],
+      "time_s": 161.8
+    },
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "seed": 1,
+      "layer": 16,
+      "best_epoch": 6,
+      "dev_accuracy": 83.5473861694336,
+      "dev_history": [
+        83.277,
+        83.393,
+        83.431,
+        83.475,
+        83.546,
+        83.547,
+        83.422,
+        83.448
+      ],
+      "time_s": 207.1
+    },
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "seed": 2,
+      "layer": 16,
+      "best_epoch": 5,
+      "dev_accuracy": 83.65524291992188,
+      "dev_history": [
+        83.244,
+        83.435,
+        83.503,
+        83.491,
+        83.655,
+        83.503,
+        83.461
+      ],
+      "time_s": 181.2
+    },
+    {
+      "task": 3,
+      "probe": "logistic",
+      "seed": 0,
+      "layer": 15,
+      "best_epoch": 7,
+      "dev_accuracy": 65.83165740966797,
+      "dev_history": [
+        65.553,
+        65.627,
+        65.654,
+        65.707,
+        65.706,
+        65.763,
+        65.832,
+        65.723,
+        65.645
+      ],
+      "time_s": 4.2
+    },
+    {
+      "task": 3,
+      "probe": "logistic",
+      "seed": 1,
+      "layer": 15,
+      "best_epoch": 2,
+      "dev_accuracy": 65.5897216796875,
+      "dev_history": [
+        65.584,
+        65.59,
+        65.58,
+        65.547
+      ],
+      "time_s": 2.0
+    },
+    {
+      "task": 3,
+      "probe": "logistic",
+      "seed": 2,
+      "layer": 15,
+      "best_epoch": 5,
+      "dev_accuracy": 65.74092864990234,
+      "dev_history": [
+        65.647,
+        65.634,
+        65.725,
+        65.668,
+        65.741,
+        65.617,
+        65.7
+      ],
+      "time_s": 3.4
+    },
+    {
+      "task": 3,
+      "probe": "mlp",
+      "seed": 0,
+      "layer": 15,
+      "best_epoch": 4,
+      "dev_accuracy": 67.72278594970703,
+      "dev_history": [
+        67.349,
+        67.703,
+        67.716,
+        67.723,
+        67.717,
+        67.712
+      ],
+      "time_s": 4.4
+    },
+    {
+      "task": 3,
+      "probe": "mlp",
+      "seed": 1,
+      "layer": 15,
+      "best_epoch": 4,
+      "dev_accuracy": 67.77318572998047,
+      "dev_history": [
+        67.429,
+        67.56,
+        67.679,
+        67.773,
+        67.762,
+        67.597
+      ],
+      "time_s": 3.8
+    },
+    {
+      "task": 3,
+      "probe": "mlp",
+      "seed": 2,
+      "layer": 15,
+      "best_epoch": 5,
+      "dev_accuracy": 67.8125,
+      "dev_history": [
+        67.345,
+        67.691,
+        67.762,
+        67.77,
+        67.812,
+        67.731,
+        67.612
+      ],
+      "time_s": 4.3
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "seed": 0,
+      "layer": 15,
+      "best_epoch": 4,
+      "dev_accuracy": 68.29335021972656,
+      "dev_history": [
+        67.866,
+        68.145,
+        68.235,
+        68.293,
+        68.258,
+        68.148
+      ],
+      "time_s": 160.3
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "seed": 1,
+      "layer": 15,
+      "best_epoch": 5,
+      "dev_accuracy": 68.25806427001953,
+      "dev_history": [
+        68.021,
+        68.09,
+        68.228,
+        68.236,
+        68.258,
+        68.183,
+        68.119
+      ],
+      "time_s": 183.9
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "seed": 2,
+      "layer": 15,
+      "best_epoch": 4,
+      "dev_accuracy": 68.37197875976562,
+      "dev_history": [
+        67.875,
+        68.164,
+        68.245,
+        68.372,
+        68.201,
+        68.155
+      ],
+      "time_s": 160.9
+    }
+  ],
+  "train_utterances": 116263,
+  "time_s": {
+    "extract": 234.7,
+    "total": 1365.1
+  },
+  "config": {
+    "model": "modernbert-base",
+    "revision": null,
+    "context": "plain",
+    "pooling": "first",
+    "style": "natural",
+    "layers": null,
+    "probes": [
+      "logistic",
+      "mlp",
+      "bilstm"
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "epochs": 10,
+    "patience": 2,
+    "data_dir": "data",
+    "train_set": "train_360",
+    "train_utterances": null,
+    "linear_root": "runs/probing",
+    "out_root": "runs/probing_nonlinear",
+    "dtype": "bfloat16",
+    "device": null,
+    "max_tokens": 4096
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "8ee8ab5bbe2534b3b589f8e89cfa42f9a60afd7e",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2",
+    "max_gpu_memory_gb": 4.6
+  }
+}

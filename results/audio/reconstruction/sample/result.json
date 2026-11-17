@@ -1,0 +1,127 @@
+{
+  "utterance": "7127_75947_000010_000000",
+  "toolkit_commit": "a19fa7c87ff6cd2bb7072b673c8f20bf91aef6d7",
+  "words": [
+    {
+      "word": "Yes",
+      "corpus": 0.673,
+      "label": "1",
+      "toolkit_textgrid": 0.745,
+      "public_textgrid": 0.755
+    },
+    {
+      "word": "the",
+      "corpus": 0.087,
+      "label": "0",
+      "toolkit_textgrid": -0.116,
+      "public_textgrid": -0.095
+    },
+    {
+      "word": "character",
+      "corpus": 3.163,
+      "label": "2",
+      "toolkit_textgrid": 3.169,
+      "public_textgrid": 3.146
+    },
+    {
+      "word": "which",
+      "corpus": 0.11,
+      "label": "0",
+      "toolkit_textgrid": -0.008,
+      "public_textgrid": -0.012
+    },
+    {
+      "word": "your",
+      "corpus": 0.029,
+      "label": "0",
+      "toolkit_textgrid": 0.017,
+      "public_textgrid": 0.016
+    },
+    {
+      "word": "royal",
+      "corpus": 1.417,
+      "label": "2",
+      "toolkit_textgrid": 1.332,
+      "public_textgrid": 1.3
+    },
+    {
+      "word": "highness",
+      "corpus": 0.704,
+      "label": "1",
+      "toolkit_textgrid": 0.655,
+      "public_textgrid": 0.657
+    },
+    {
+      "word": "assumed",
+      "corpus": 2.624,
+      "label": "2",
+      "toolkit_textgrid": 2.819,
+      "public_textgrid": 2.86
+    },
+    {
+      "word": "is",
+      "corpus": 0.129,
+      "label": "0",
+      "toolkit_textgrid": -0.057,
+      "public_textgrid": -0.037
+    },
+    {
+      "word": "in",
+      "corpus": 0.0,
+      "label": "0",
+      "toolkit_textgrid": 0.006,
+      "public_textgrid": 0.0
+    },
+    {
+      "word": "perfect",
+      "corpus": 2.183,
+      "label": "2",
+      "toolkit_textgrid": 2.022,
+      "public_textgrid": 2.016
+    },
+    {
+      "word": "harmony",
+      "corpus": 1.028,
+      "label": "1",
+      "toolkit_textgrid": 0.9,
+      "public_textgrid": 0.9
+    },
+    {
+      "word": "with",
+      "corpus": 0.018,
+      "label": "0",
+      "toolkit_textgrid": -0.1,
+      "public_textgrid": -0.106
+    },
+    {
+      "word": "your",
+      "corpus": 0.0,
+      "label": "0",
+      "toolkit_textgrid": -0.024,
+      "public_textgrid": -0.048
+    },
+    {
+      "word": "own",
+      "corpus": 1.28,
+      "label": "2",
+      "toolkit_textgrid": 1.285,
+      "public_textgrid": 1.247
+    }
+  ],
+  "toolkit_textgrid": {
+    "max_abs_diff": 0.203,
+    "labels_equal": 15,
+    "words": 15,
+    "pearson": 0.996,
+    "spearman": 0.8722,
+    "n": 15
+  },
+  "public_textgrid": {
+    "max_abs_diff": 0.236,
+    "labels_equal": 15,
+    "words": 15,
+    "pearson": 0.9956,
+    "spearman": 0.899,
+    "n": 15
+  }
+}

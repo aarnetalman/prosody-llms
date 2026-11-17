@@ -1,0 +1,8 @@
+# The versions the paper's results were produced with (Python 3.12).
+# Install PyTorch for your platform first if you need a specific CUDA build:
+# https://pytorch.org/get-started/locally/
+torch==2.13.0
+transformers==5.22.2
+huggingface_hub>=0.30
+numpy==2.5.2
+pytest==9.2.0

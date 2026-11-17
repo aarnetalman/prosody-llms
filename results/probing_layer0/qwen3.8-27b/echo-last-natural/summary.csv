@@ -1,0 +1,13 @@
+experiment,model,layer,task,split,cond.context,cond.pooling,cond.probe,cond.seed,cond.style,accuracy,macro_f1,scored_words
+probing_nonlinear,qwen3.8-27b,0,2,dev,echo,last,bilstm,0,natural,82.96370967741936,82.89374837912634,99200
+probing_nonlinear,qwen3.8-27b,0,2,test,echo,last,bilstm,0,natural,82.28906432164152,82.2043486873273,90063
+probing_nonlinear,qwen3.8-27b,0,2,dev,echo,last,bilstm,1,natural,82.79838709677419,82.72621802545228,99200
+probing_nonlinear,qwen3.8-27b,0,2,test,echo,last,bilstm,1,natural,82.27018864572577,82.18845311821163,90063
+probing_nonlinear,qwen3.8-27b,0,2,dev,echo,last,bilstm,2,natural,82.86693548387096,82.80788055777987,99200
+probing_nonlinear,qwen3.8-27b,0,2,test,echo,last,bilstm,2,natural,82.27018864572577,82.19612168025333,90063
+probing_nonlinear,qwen3.8-27b,0,3,dev,echo,last,bilstm,0,natural,67.00201612903226,62.73050252956657,99200
+probing_nonlinear,qwen3.8-27b,0,3,test,echo,last,bilstm,0,natural,66.45348256220646,62.305273952808534,90063
+probing_nonlinear,qwen3.8-27b,0,3,dev,echo,last,bilstm,1,natural,66.92439516129032,62.11530010942366,99200
+probing_nonlinear,qwen3.8-27b,0,3,test,echo,last,bilstm,1,natural,66.45348256220646,61.80547173087987,90063
+probing_nonlinear,qwen3.8-27b,0,3,dev,echo,last,bilstm,2,natural,67.0211693548387,62.39786045568325,99200
+probing_nonlinear,qwen3.8-27b,0,3,test,echo,last,bilstm,2,natural,66.70552835237557,62.25801060356347,90063

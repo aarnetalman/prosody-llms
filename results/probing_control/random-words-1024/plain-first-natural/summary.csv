@@ -1,0 +1,13 @@
+experiment,model,layer,task,split,cond.context,cond.pooling,cond.probe,cond.seed,cond.style,accuracy,macro_f1,scored_words
+probing_nonlinear,random-words-1024,0,2,dev,plain,first,bilstm,0,natural,83.06653225806451,82.99522089875458,99200
+probing_nonlinear,random-words-1024,0,2,test,plain,first,bilstm,0,natural,82.52667577140446,82.4401517045615,90063
+probing_nonlinear,random-words-1024,0,2,dev,plain,first,bilstm,1,natural,83.10282258064517,83.0039016627237,99200
+probing_nonlinear,random-words-1024,0,2,test,plain,first,bilstm,1,natural,82.50224842610173,82.39139267881586,90063
+probing_nonlinear,random-words-1024,0,2,dev,plain,first,bilstm,2,natural,83.10685483870968,83.0236226656769,99200
+probing_nonlinear,random-words-1024,0,2,test,plain,first,bilstm,2,natural,82.4378490612127,82.33816932378203,90063
+probing_nonlinear,random-words-1024,0,3,dev,plain,first,bilstm,0,natural,67.26108870967742,62.96916970370838,99200
+probing_nonlinear,random-words-1024,0,3,test,plain,first,bilstm,0,natural,66.45237222832905,62.21936087547979,90063
+probing_nonlinear,random-words-1024,0,3,dev,plain,first,bilstm,1,natural,67.19657258064517,62.80192777215533,99200
+probing_nonlinear,random-words-1024,0,3,test,plain,first,bilstm,1,natural,66.69775601523378,62.44371712459432,90063
+probing_nonlinear,random-words-1024,0,3,dev,plain,first,bilstm,2,natural,67.21875,62.880818330355,99200
+probing_nonlinear,random-words-1024,0,3,test,plain,first,bilstm,2,natural,66.58783296137149,62.325698369671265,90063

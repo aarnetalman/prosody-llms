@@ -1,0 +1,261 @@
+{
+  "experiment": "finetune",
+  "model": "modernbert-large",
+  "tokenisation": {
+    "word_start_space": true,
+    "pad_id": 50283
+  },
+  "config": {
+    "data_dir": "data",
+    "out_dir": "runs/finetune/modernbert-large/3way/seed1",
+    "n_classes": 3,
+    "train_set": "train_360",
+    "fraction_of_train_data": 1.0,
+    "protocol": "legacy",
+    "model": "answerdotai/ModernBERT-large",
+    "name": "modernbert-large",
+    "revision": "45bb4654a4d5aaff24dd11d4781fa46d39bf8c13",
+    "batch_size": 32,
+    "epochs": 2,
+    "learning_rate": 2e-05,
+    "weight_decay": 0.0,
+    "seed": 1,
+    "attn_implementation": "eager",
+    "attention_mask": true,
+    "eval_batch_size": 64,
+    "log_every": 50,
+    "device": null,
+    "resume": false,
+    "no_checkpoint": true,
+    "keep_checkpoint": false,
+    "max_train_steps": null
+  },
+  "labels": [
+    "<pad>",
+    "0",
+    "1",
+    "2",
+    "NA"
+  ],
+  "data": {
+    "train_utterances": 116262,
+    "sha256_ok": {
+      "train_360.txt": true,
+      "dev.txt": true,
+      "test.txt": true
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "dev_accuracy_full": 69.42338709677419,
+      "dev_accuracy_legacy_2019": 69.42478679005625,
+      "elapsed_s": 524.4
+    },
+    {
+      "epoch": 2,
+      "dev_accuracy_full": 69.71471774193549,
+      "dev_accuracy_legacy_2019": 69.71612330893768,
+      "elapsed_s": 1047.0
+    }
+  ],
+  "dev": {
+    "full": {
+      "accuracy": 69.71471774193549,
+      "scored_words": 99200,
+      "macro_f1": 65.64334126472673,
+      "per_class": {
+        "0": {
+          "precision": 81.20920577257031,
+          "recall": 85.58956558325444,
+          "f1": 83.34186861134441,
+          "support": 47535
+        },
+        "1": {
+          "precision": 52.38709157568188,
+          "recall": 47.36286151380491,
+          "f1": 49.74844571975131,
+          "support": 27454
+        },
+        "2": {
+          "precision": 63.78706032740918,
+          "recall": 63.892445582586426,
+          "f1": 63.839709463084475,
+          "support": 24211
+        }
+      },
+      "confusion": {
+        "0": {
+          "0": 40685,
+          "1": 5081,
+          "2": 1765,
+          "NA": 4
+        },
+        "1": {
+          "0": 7429,
+          "1": 13003,
+          "2": 7017,
+          "NA": 5
+        },
+        "2": {
+          "0": 1985,
+          "1": 6737,
+          "2": 15469,
+          "NA": 20
+        }
+      },
+      "utterances": 5727
+    },
+    "legacy_2019": {
+      "accuracy": 69.71612330893768,
+      "scored_words": 99198,
+      "macro_f1": 65.64485398045362,
+      "per_class": {
+        "0": {
+          "precision": 81.20920577257031,
+          "recall": 85.58956558325444,
+          "f1": 83.34186861134441,
+          "support": 47535
+        },
+        "1": {
+          "precision": 52.389202256244964,
+          "recall": 47.36458674826066,
+          "f1": 49.750349128613244,
+          "support": 27453
+        },
+        "2": {
+          "precision": 63.789690721649485,
+          "recall": 63.89508467575382,
+          "f1": 63.842344201403215,
+          "support": 24210
+        }
+      },
+      "confusion": {
+        "0": {
+          "0": 40685,
+          "1": 5081,
+          "2": 1765,
+          "NA": 4
+        },
+        "1": {
+          "0": 7429,
+          "1": 13003,
+          "2": 7016,
+          "NA": 5
+        },
+        "2": {
+          "0": 1985,
+          "1": 6736,
+          "2": 15469,
+          "NA": 20
+        }
+      },
+      "utterances": 5726
+    }
+  },
+  "test": {
+    "full": {
+      "accuracy": 68.87401041493177,
+      "scored_words": 90063,
+      "macro_f1": 64.84596381222788,
+      "per_class": {
+        "0": {
+          "precision": 81.04369905118268,
+          "recall": 84.16292732571587,
+          "f1": 82.57386647301774,
+          "support": 43234
+        },
+        "1": {
+          "precision": 50.46048592228752,
+          "recall": 46.88098439473577,
+          "f1": 48.604921322209314,
+          "support": 24543
+        },
+        "2": {
+          "precision": 63.28394288016474,
+          "recall": 63.43444314816477,
+          "f1": 63.359103641456585,
+          "support": 22286
+        }
+      },
+      "confusion": {
+        "0": {
+          "0": 36387,
+          "1": 5064,
+          "2": 1780,
+          "NA": 3
+        },
+        "1": {
+          "0": 6610,
+          "1": 11506,
+          "2": 6422,
+          "NA": 5
+        },
+        "2": {
+          "0": 1901,
+          "1": 6232,
+          "2": 14137,
+          "NA": 16
+        }
+      },
+      "utterances": 4822
+    },
+    "legacy_2019": {
+      "accuracy": 68.88249411137282,
+      "scored_words": 90004,
+      "macro_f1": 64.8514840620454,
+      "per_class": {
+        "0": {
+          "precision": 81.04723707664884,
+          "recall": 84.16790077748982,
+          "f1": 82.57809662186705,
+          "support": 43216
+        },
+        "1": {
+          "precision": 50.467576941651664,
+          "recall": 46.87245147610504,
+          "f1": 48.603623602038006,
+          "support": 24524
+        },
+        "2": {
+          "precision": 63.28898445549434,
+          "recall": 63.456701401365436,
+          "f1": 63.37273196223115,
+          "support": 22264
+        }
+      },
+      "confusion": {
+        "0": {
+          "0": 36374,
+          "1": 5061,
+          "2": 1778,
+          "NA": 3
+        },
+        "1": {
+          "0": 6607,
+          "1": 11495,
+          "2": 6417,
+          "NA": 5
+        },
+        "2": {
+          "0": 1899,
+          "1": 6221,
+          "2": 14128,
+          "NA": 16
+        }
+      },
+      "utterances": 4821
+    }
+  },
+  "train_time_s": 1054.7,
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "df977a3d1752f03eb1629e9603552613adf8c1c3",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "experiment": "audio_prompting_freegen",
+  "model": "qwen2-audio-7b-instruct",
+  "split": "test20",
+  "audio": false,
+  "variant": "linguistic",
+  "utterances": 20,
+  "full_coverage": 0,
+  "mean_coverage": 0.06556795634920634,
+  "free_accuracy_3": 49.720670391061454,
+  "scored_accuracy_3": 37.70949720670391,
+  "free_vs_scored": 48.04469273743017,
+  "time_s": 374.5,
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.58.1.1.el9_8.x86_64-x86_64-with-glibc2.34",
+    "git_commit": "56bafda8d24dbc9ef718aba8a165506fae9f9d4f",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cpu",
+    "cuda": null,
+    "device": "cpu",
+    "transformers": "5.22.2"
+  }
+}

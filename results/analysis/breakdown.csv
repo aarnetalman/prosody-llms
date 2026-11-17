@@ -1,0 +1,37 @@
+task,dimension,value,words,text_acc,audio_acc,diff,audio_right_text_wrong,text_system,audio_system
+3,all,all,89935,68.07027297492634,84.5999888808584,16.52971590593206,22.045922054817368,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,class,content,42281,56.08192805278967,79.01894467964334,22.93701662685367,30.654431068328563,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,class,function,47654,78.7069291140303,89.55176900155286,10.844839887522559,14.408024510009653,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,frequency,1-10,4385,58.85974914481186,80.09122006841505,21.231470923603194,29.144811858608893,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,frequency,101-1k,18332,55.62950032729653,79.03120226925594,23.401701941959416,31.044075932795113,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,frequency,11-100,12236,56.4563582870219,78.5959463877084,22.1395881006865,29.658385093167702,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,frequency,>1k,53641,75.91767491284652,88.4248988646744,12.507223951827893,16.535858764750845,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,frequency,unseen,1341,60.32811334824758,77.2557792692021,16.92766592095451,26.771066368381806,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,givenness,-,47654,78.7069291140303,89.55176900155286,10.844839887522559,14.408024510009653,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,givenness,given,12652,55.29560543787544,78.77805880493203,23.482453367056593,31.43376541258299,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,givenness,new,29629,56.41769887610112,79.12180633838469,22.704107462283574,30.321644334942118,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,gold,0,43186,83.55717130551568,90.36724864539434,6.8100773398786645,10.348261010512665,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,gold,1,24503,45.28425090805207,72.52173203281231,27.237481124760233,36.53430192221361,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,gold,2,22246,63.10347927717343,86.70772273667176,23.60424345949834,28.79618807875573,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,position,final,4801,51.69756300770673,75.13018121224745,23.43261820454072,32.3265986252864,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,position,initial,4740,67.0253164556962,83.37552742616033,16.350210970464136,21.455696202531644,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,position,medial,80394,69.10963504739159,85.23770430629152,16.128069258899917,21.46677612757171,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,text consensus,all-right,35611,100.0,97.10482716014714,-2.8951728398528545,0.0,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,text consensus,all-wrong,9699,0.0,58.93391071244458,58.93391071244458,58.93391071244458,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+3,text consensus,split,44625,57.384873949579834,80.19943977591036,22.814565826330533,31.621288515406164,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) bilstm
+2,all,all,89935,83.08000222382832,91.0568744092956,7.976872185467282,11.46828264857953,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) mlp
+2,class,content,42281,83.00891653461366,89.95766419904922,6.948747664435562,10.607601523142783,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) mlp
+2,class,function,47654,83.14307298442942,92.03214840307214,8.889075418642717,12.231921769421245,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) mlp
+2,frequency,1-10,4385,89.05359179019385,92.61117445838084,3.5575826681870013,6.020524515393387,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) mlp
+2,frequency,101-1k,18332,81.51320096006982,89.5646956142265,8.051494654156667,11.897228889373773,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) mlp
+2,frequency,11-100,12236,85.73063092513894,90.63419418110493,4.903563255966002,7.714939522719843,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) mlp
+2,frequency,>1k,53641,82.3474581010794,91.5381890717921,9.190730970712702,12.779403814246566,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) mlp
+2,frequency,unseen,1341,90.0820283370619,90.97688292319165,0.8948545861297539,5.219985085756898,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) mlp
+2,givenness,-,47654,83.14307298442942,92.03214840307214,8.889075418642717,12.231921769421245,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) mlp
+2,givenness,given,12652,79.26019601644009,88.53936136579198,9.279165349351882,13.626304141637686,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) mlp
+2,givenness,new,29629,84.60967295555031,90.56329947011373,5.953626514563434,9.318573019676668,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) mlp
+2,gold,0,43186,79.31042467466308,89.76057055527254,10.450145880609456,13.451118418005835,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) mlp
+2,gold,1,46749,86.56227940704613,92.25437977282937,5.692100365783225,9.636569766198207,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) mlp
+2,position,final,4801,78.31701728806499,86.33617996250781,8.019162674442825,13.330556134138721,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) mlp
+2,position,initial,4740,78.22784810126582,89.24050632911393,11.012658227848101,16.62447257383966,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) mlp
+2,position,medial,80394,83.65052118317287,91.44587904569993,7.795357862527054,11.053063661467274,modernbert-large (plain-first-natural) bilstm,whisper-large-v3 (audio-mean) mlp

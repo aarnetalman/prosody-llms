@@ -1,0 +1,35 @@
+{
+  "experiment": "icl_local",
+  "model": "qwen3.8-27b",
+  "split": "dev500",
+  "prompt": {
+    "variant": "linguistic",
+    "format": "lines",
+    "shots": 10
+  },
+  "prefix_tokens": 3030,
+  "utterances": 500,
+  "accuracy": {
+    "3": 61.81318681318681,
+    "2": 79.26373626373626
+  },
+  "macro_f1_3way": 55.15066565936481,
+  "auc_prominent": 0.8595293799805922,
+  "time_s": {
+    "prefix": 1.1,
+    "items": 1407.7
+  },
+  "example_prompt_start": "<|im_start|>user\nProsodic prominence is the emphasis a speaker gives to some words when reading aloud: prominent words stand out from their neighbours through higher or more varied pitch, greater loudness and longer duration. Prominence typically falls on content words that carry new, important or contrastive information, and towards the end of a phrase; function words and words repeating given information are usually not prominent. Mark which words in the sentence would be prominent when it is read aloud in a natural way.\nLabels: 0 = not prominent, 1 = somewhat prominent, 2 = strongly prominent.\nAnswer with one line per numbered word, in order: the number, the word and its label (0, 1 or 2), separated by spaces. Write nothing else.\n\nSentence: What is it? enquired the girl.\nWords:\n1 What\n2 is\n3 it\n4 enquired\n5 the\n6 girl<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n1 What 0\n2 is 1\n3 it 2\n4 enquired 0\n5 the 0\n6 girl 1<|im_end|>\n<|im_start|>user\nProsodic prominence is the emphasis a speaker gives to some words when reading aloud: prominent words stand out from their neighbours through higher or more varied pitch, greater loudness and longer duration. Prominence typically falls on content words that carry new, important or contrastive information, and towards the end of a phrase; function words and words repeating given information are usually not prominent. Mark which words in the sentence would be prominent when it is read aloud in a natural way.\nLabels: 0 = not prominent, 1 = somewhat prominent, 2 = strongly prominent.\nAnswer with one line per numbered word, in order: the number, the word and its label (0, 1 or 2), separated by spaces. Write nothing else.\n\nSentence: And then, from habit, he glanced at the clock in the tower, and made further oration.\nWords:\n1 And\n2 then\n3 from\n4 habit\n5 he\n6 glanced\n7 at\n8 the\n9 clock\n10 in\n11 the\n12 tower\n13 and\n14 made\n15 further\n16 oration<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n1 And 0\n2 then 2\n3 from 1\n4 habit ",
+  "example_item": "Prosodic prominence is the emphasis a speaker gives to some words when reading aloud: prominent words stand out from their neighbours through higher or more varied pitch, greater loudness and longer duration. Prominence typically falls on content words that carry new, important or contrastive information, and towards the end of a phrase; function words and words repeating given information are usually not prominent. Mark which words in the sentence would be prominent when it is read aloud in a natural way.\nLabels: 0 = not prominent, 1 = somewhat prominent, 2 = strongly prominent.\nAnswer with one line per numbered word, in order: the number, the word and its label (0, 1 or 2), separated by spaces. Write nothing else.\n\nSentence: There is a healthy bank holiday atmosphere about this book which is extremely pleasant.\nWords:\n1 There\n2 is\n3 a\n4 healthy\n5 bank\n6 holiday\n7 atmosphere\n8 about\n9 this\n10 book\n11 which\n12 is\n13 extremely\n14 pleasant<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "3292f8c4b1fabce5266bbb759de397c0b30ee6b2",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2",
+    "max_gpu_memory_gb": 55.7
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "experiment": "finetune",
+  "model": "xlm-roberta-large",
+  "tokenisation": {
+    "word_start_space": false,
+    "pad_id": 1
+  },
+  "config": {
+    "data_dir": "data",
+    "out_dir": "runs/finetune/xlm-roberta-large/2way/seed1234",
+    "n_classes": 2,
+    "train_set": "train_360",
+    "fraction_of_train_data": 1.0,
+    "protocol": "legacy",
+    "model": "FacebookAI/xlm-roberta-large",
+    "name": "xlm-roberta-large",
+    "revision": "c23d21b0620b635a76227c604d44e43a9f0ee389",
+    "batch_size": 32,
+    "epochs": 2,
+    "learning_rate": 2e-05,
+    "weight_decay": 0.0,
+    "seed": 1234,
+    "attn_implementation": "eager",
+    "attention_mask": true,
+    "eval_batch_size": 64,
+    "log_every": 50,
+    "device": null,
+    "resume": false,
+    "no_checkpoint": true,
+    "keep_checkpoint": false,
+    "max_train_steps": null
+  },
+  "labels": [
+    "<pad>",
+    "0",
+    "1",
+    "NA"
+  ],
+  "data": {
+    "train_utterances": 116262,
+    "sha256_ok": {
+      "train_360.txt": true,
+      "dev.txt": true,
+      "test.txt": true
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "dev_accuracy_full": 83.85987903225806,
+      "dev_accuracy_legacy_2019": 83.85955362003266,
+      "elapsed_s": 551.9
+    },
+    {
+      "epoch": 2,
+      "dev_accuracy_full": 84.0241935483871,
+      "dev_accuracy_legacy_2019": 84.02387144902114,
+      "elapsed_s": 1105.1
+    }
+  ],
+  "dev": {
+    "full": {
+      "accuracy": 84.0241935483871,
+      "scored_words": 99200,
+      "macro_f1": 83.98551179102357,
+      "per_class": {
+        "0": {
+          "precision": 84.47290040654825,
+          "recall": 81.73977069527716,
+          "f1": 83.08386434589231,
+          "support": 47535
+        },
+        "1": {
+          "precision": 83.68344836665224,
+          "recall": 86.12600406464725,
+          "f1": 84.88715923615483,
+          "support": 51665
+        }
+      },
+      "confusion": {
+        "0": {
+          "0": 38855,
+          "1": 8676,
+          "NA": 4
+        },
+        "1": {
+          "0": 7142,
+          "1": 44497,
+          "NA": 26
+        }
+      },
+      "utterances": 5727
+    },
+    "legacy_2019": {
+      "accuracy": 84.02387144902114,
+      "scored_words": 99198,
+      "macro_f1": 83.98522347157065,
+      "per_class": {
+        "0": {
+          "precision": 84.47290040654825,
+          "recall": 81.73977069527716,
+          "f1": 83.08386434589231,
+          "support": 47535
+        },
+        "1": {
+          "precision": 83.68283462789867,
+          "recall": 86.12546696862358,
+          "f1": 84.88658259724899,
+          "support": 51663
+        }
+      },
+      "confusion": {
+        "0": {
+          "0": 38855,
+          "1": 8676,
+          "NA": 4
+        },
+        "1": {
+          "0": 7142,
+          "1": 44495,
+          "NA": 26
+        }
+      },
+      "utterances": 5726
+    }
+  },
+  "test": {
+    "full": {
+      "accuracy": 83.35831584557477,
+      "scored_words": 90063,
+      "macro_f1": 83.3039003443701,
+      "per_class": {
+        "0": {
+          "precision": 84.39005401197022,
+          "recall": 80.2285238469723,
+          "f1": 82.25668753557201,
+          "support": 43234
+        },
+        "1": {
+          "precision": 82.53601716562787,
+          "recall": 86.24783787823785,
+          "f1": 84.3511131531682,
+          "support": 46829
+        }
+      },
+      "confusion": {
+        "0": {
+          "0": 34686,
+          "1": 8546,
+          "NA": 2
+        },
+        "1": {
+          "0": 6416,
+          "1": 40389,
+          "NA": 24
+        }
+      },
+      "utterances": 4822
+    },
+    "legacy_2019": {
+      "accuracy": 83.35629527576552,
+      "scored_words": 90004,
+      "macro_f1": 83.30242528861484,
+      "per_class": {
+        "0": {
+          "precision": 84.38960280373831,
+          "recall": 80.23417252869308,
+          "f1": 82.2594420193585,
+          "support": 43216
+        },
+        "1": {
+          "precision": 82.53221517692779,
+          "recall": 86.24006155424468,
+          "f1": 84.34540855787118,
+          "support": 46788
+        }
+      },
+      "confusion": {
+        "0": {
+          "0": 34674,
+          "1": 8540,
+          "NA": 2
+        },
+        "1": {
+          "0": 6414,
+          "1": 40350,
+          "NA": 24
+        }
+      },
+      "utterances": 4821
+    }
+  },
+  "train_time_s": 1113.1,
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "df977a3d1752f03eb1629e9603552613adf8c1c3",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2"
+  }
+}

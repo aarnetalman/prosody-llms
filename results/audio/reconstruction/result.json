@@ -1,0 +1,42 @@
+{
+  "experiment": "reconstruction",
+  "toolkit_commit": "a19fa7c87ff6cd2bb7072b673c8f20bf91aef6d7",
+  "splits": {
+    "dev": {
+      "accuracy": {
+        "3": 90.97479838709677,
+        "2": 94.73185483870968
+      },
+      "accuracy_aligned": {
+        "3": 91.03643152689475,
+        "2": 94.79765869411646
+      },
+      "values": {
+        "pearson": 0.9763,
+        "spearman": 0.9652,
+        "n": 99090,
+        "scored_words": 99090,
+        "words": 99200,
+        "coverage": 0.99889
+      }
+    },
+    "test": {
+      "accuracy": {
+        "3": 91.43377413588266,
+        "2": 94.92799484805082
+      },
+      "accuracy_aligned": {
+        "3": 91.49943855826209,
+        "2": 94.99816558640089
+      },
+      "values": {
+        "pearson": 0.9775,
+        "spearman": 0.9668,
+        "n": 89947,
+        "scored_words": 89947,
+        "words": 90063,
+        "coverage": 0.99871
+      }
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "experiment": "probing",
+  "model": "qwen3.5-9b-base",
+  "model_id": "Qwen/Qwen3.5-9B-Base",
+  "revision": "68c46c4b3498877f3ef123c856ecfde50c39f404",
+  "model_class": "Qwen3_5TextModel",
+  "key_mapping": null,
+  "kind": "decoder",
+  "n_layers": 33,
+  "dim": 4096,
+  "condition": {
+    "context": "echo",
+    "pooling": "last",
+    "style": "natural",
+    "train_set": "train_360",
+    "train_utterances": null
+  },
+  "families": [
+    "ridge",
+    "lda"
+  ],
+  "grids": {
+    "ridge": [
+      1e-05,
+      0.0001,
+      0.001,
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "lda": [
+      0.0001,
+      0.001,
+      0.01,
+      0.05,
+      0.1,
+      0.3,
+      0.6,
+      0.9
+    ]
+  },
+  "train_words": 2076289,
+  "train_utterances": 116263,
+  "summary": [
+    {
+      "task": 2,
+      "probe": "ridge",
+      "best_layer": 19,
+      "layers": 33,
+      "hyper": 0.01,
+      "dev": 82.84375,
+      "test_2019": 82.12412781654149,
+      "test_full": 82.12584524166417,
+      "test_macro_f1": 82.04977463576313
+    },
+    {
+      "task": 2,
+      "probe": "lda",
+      "best_layer": 19,
+      "layers": 33,
+      "hyper": 0.01,
+      "dev": 82.84475806451613,
+      "test_2019": 82.11857250788854,
+      "test_full": 82.12029357227718,
+      "test_macro_f1": 82.0442254046799
+    },
+    {
+      "task": 3,
+      "probe": "ridge",
+      "best_layer": 20,
+      "layers": 33,
+      "hyper": 1e-05,
+      "dev": 67.03024193548387,
+      "test_2019": 66.51482156348607,
+      "test_full": 66.50899925607631,
+      "test_macro_f1": 61.81147446276456
+    },
+    {
+      "task": 3,
+      "probe": "lda",
+      "best_layer": 20,
+      "layers": 33,
+      "hyper": 0.0001,
+      "dev": 67.23689516129032,
+      "test_2019": 66.65925958846273,
+      "test_full": 66.65778399564749,
+      "test_macro_f1": 63.004606602692256
+    }
+  ],
+  "alignment": {
+    "utterances": 126812,
+    "shared_tokens": 1208
+  },
+  "oom_splits": 0,
+  "time_s": {
+    "load_and_pass1": 1960.1,
+    "solve": 15.6,
+    "pass2": 68.1,
+    "total": 2106.5
+  },
+  "config": {
+    "model": "qwen3.5-9b-base",
+    "revision": null,
+    "context": "echo",
+    "pooling": "last",
+    "style": "natural",
+    "families": [
+      "ridge",
+      "lda"
+    ],
+    "data_dir": "data",
+    "train_set": "train_360",
+    "train_utterances": null,
+    "out_root": "runs/probing",
+    "dtype": "bfloat16",
+    "device": null,
+    "max_tokens": 4096,
+    "stats_device": "auto",
+    "checkpoint_minutes": 30.0,
+    "resume": true,
+    "keep_stats": false,
+    "max_batches": null,
+    "stats_device_used": "cuda:0"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "8ee8ab5bbe2534b3b589f8e89cfa42f9a60afd7e",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2",
+    "max_gpu_memory_gb": 80.2
+  }
+}

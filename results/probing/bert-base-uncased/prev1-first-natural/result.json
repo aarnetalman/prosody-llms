@@ -1,0 +1,144 @@
+{
+  "experiment": "probing",
+  "model": "bert-base-uncased",
+  "model_id": "google-bert/bert-base-uncased",
+  "revision": "86b5e0934494bd15c9632b12f734a8a67f723594",
+  "model_class": "BertModel",
+  "key_mapping": null,
+  "kind": "encoder",
+  "n_layers": 13,
+  "dim": 768,
+  "condition": {
+    "context": "prev1",
+    "pooling": "first",
+    "style": "natural",
+    "train_set": "train_360",
+    "train_utterances": null
+  },
+  "families": [
+    "ridge",
+    "lda"
+  ],
+  "grids": {
+    "ridge": [
+      1e-05,
+      0.0001,
+      0.001,
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "lda": [
+      0.0001,
+      0.001,
+      0.01,
+      0.05,
+      0.1,
+      0.3,
+      0.6,
+      0.9
+    ]
+  },
+  "train_words": 2076289,
+  "train_utterances": 116263,
+  "summary": [
+    {
+      "task": 2,
+      "probe": "ridge",
+      "best_layer": 5,
+      "layers": 13,
+      "hyper": 0.001,
+      "dev": 82.51209677419354,
+      "test_2019": 81.74081151948802,
+      "test_full": 81.74500072171702,
+      "test_macro_f1": 81.6575697119645,
+      "test_aligned": null
+    },
+    {
+      "task": 2,
+      "probe": "lda",
+      "best_layer": 5,
+      "layers": 13,
+      "hyper": 0.0001,
+      "dev": 82.51008064516128,
+      "test_2019": 81.73747833429626,
+      "test_full": 81.74055938620744,
+      "test_macro_f1": 81.65305056879234,
+      "test_aligned": null
+    },
+    {
+      "task": 3,
+      "probe": "ridge",
+      "best_layer": 4,
+      "layers": 13,
+      "hyper": 0.0001,
+      "dev": 64.97983870967742,
+      "test_2019": 64.46491267054797,
+      "test_full": 64.46154358615635,
+      "test_macro_f1": 59.06923044911767,
+      "test_aligned": null
+    },
+    {
+      "task": 3,
+      "probe": "lda",
+      "best_layer": 8,
+      "layers": 13,
+      "hyper": 0.0001,
+      "dev": 65.17137096774194,
+      "test_2019": 64.71934580685303,
+      "test_full": 64.71469971020286,
+      "test_macro_f1": 60.47552735218875,
+      "test_aligned": null
+    }
+  ],
+  "alignment": {
+    "utterances": 126812,
+    "shared_tokens": 0
+  },
+  "oom_splits": 0,
+  "time_s": {
+    "load_and_pass1": 1115.1,
+    "solve": 120.5,
+    "pass2": 37.2,
+    "total": 1297.9
+  },
+  "config": {
+    "model": "bert-base-uncased",
+    "revision": null,
+    "context": "prev1",
+    "pooling": "first",
+    "style": "natural",
+    "families": [
+      "ridge",
+      "lda"
+    ],
+    "data_dir": "data",
+    "train_set": "train_360",
+    "audio_dir": null,
+    "kind": null,
+    "part": "llm",
+    "train_utterances": null,
+    "out_root": "runs/probing",
+    "dtype": "bfloat16",
+    "device": "cpu",
+    "max_tokens": 4096,
+    "stats_device": "cpu",
+    "checkpoint_minutes": 30.0,
+    "resume": true,
+    "keep_stats": false,
+    "max_batches": null,
+    "stats_device_used": "cpu"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.58.1.1.el9_8.x86_64-x86_64-with-glibc2.34",
+    "git_commit": "001f27819874836830e9c36b5636c5f0e62a4f99",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cpu",
+    "cuda": null,
+    "device": "cpu",
+    "transformers": "5.22.2"
+  }
+}

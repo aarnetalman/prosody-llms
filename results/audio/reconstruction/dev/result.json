@@ -1,0 +1,283 @@
+{
+  "experiment": "reconstruction",
+  "split": "dev",
+  "toolkit_commit": "a19fa7c87ff6cd2bb7072b673c8f20bf91aef6d7",
+  "accuracy": {
+    "3": 90.97479838709677,
+    "2": 94.73185483870968
+  },
+  "accuracy_aligned": {
+    "3": 91.03643152689475,
+    "2": 94.79765869411646
+  },
+  "values": {
+    "pearson": 0.9763,
+    "spearman": 0.9652,
+    "n": 99090,
+    "scored_words": 99090,
+    "words": 99200,
+    "coverage": 0.99889
+  },
+  "worst_utterances": [
+    {
+      "utt_id": "1988_24833_000042_000000",
+      "agreement_3way": 0.0,
+      "words": 1
+    },
+    {
+      "utt_id": "1993_147149_000037_000000",
+      "agreement_3way": 0.0,
+      "words": 1
+    },
+    {
+      "utt_id": "1993_147966_000002_000000",
+      "agreement_3way": 0.0,
+      "words": 1
+    },
+    {
+      "utt_id": "2078_142845_000002_000000",
+      "agreement_3way": 0.0,
+      "words": 1
+    },
+    {
+      "utt_id": "2428_83705_000000_000000",
+      "agreement_3way": 0.0,
+      "words": 1
+    },
+    {
+      "utt_id": "251_118436_000023_000000",
+      "agreement_3way": 0.0,
+      "words": 1
+    },
+    {
+      "utt_id": "251_137823_000024_000002",
+      "agreement_3way": 0.0,
+      "words": 1
+    },
+    {
+      "utt_id": "2902_9006_000007_000000",
+      "agreement_3way": 0.0,
+      "words": 1
+    },
+    {
+      "utt_id": "2902_9008_000005_000000",
+      "agreement_3way": 0.0,
+      "words": 1
+    },
+    {
+      "utt_id": "6313_66125_000025_000002",
+      "agreement_3way": 0.0,
+      "words": 1
+    },
+    {
+      "utt_id": "6313_66125_000054_000000",
+      "agreement_3way": 0.0,
+      "words": 1
+    },
+    {
+      "utt_id": "6345_93302_000074_000000",
+      "agreement_3way": 0.0,
+      "words": 1
+    },
+    {
+      "utt_id": "84_121123_000034_000000",
+      "agreement_3way": 0.0,
+      "words": 1
+    },
+    {
+      "utt_id": "84_121123_000042_000000",
+      "agreement_3way": 0.0,
+      "words": 1
+    },
+    {
+      "utt_id": "8842_304647_000005_000000",
+      "agreement_3way": 0.0,
+      "words": 1
+    },
+    {
+      "utt_id": "8842_304647_000013_000000",
+      "agreement_3way": 0.0,
+      "words": 1
+    },
+    {
+      "utt_id": "1272_141231_000020_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "1462_170138_000010_000001",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "1462_170145_000007_000003",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "1462_170145_000032_000003",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "174_50561_000007_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "174_50561_000027_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "1919_142785_000007_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "2078_142845_000010_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "2277_149896_000025_000005",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "2277_149897_000047_000001",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "2428_83699_000004_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "251_136532_000009_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "251_136532_000019_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "251_137823_000055_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "2803_154320_000016_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "3752_4943_000002_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "3752_4943_000022_000003",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "3752_4944_000054_000001",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "3853_163249_000024_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "422_122949_000001_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "5338_284437_000041_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "5895_34622_000003_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "6295_244435_000004_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "6313_66125_000073_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "6313_76958_000001_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "6345_64257_000001_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "6345_93302_000074_000001",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "8297_275155_000024_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "8297_275156_000010_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "8297_275156_000014_000000",
+      "agreement_3way": 0.0,
+      "words": 2
+    },
+    {
+      "utt_id": "2277_149897_000016_000001",
+      "agreement_3way": 0.0,
+      "words": 3
+    },
+    {
+      "utt_id": "2428_83699_000033_000001",
+      "agreement_3way": 0.0,
+      "words": 3
+    },
+    {
+      "utt_id": "7850_281318_000000_000000",
+      "agreement_3way": 0.0,
+      "words": 3
+    },
+    {
+      "utt_id": "2035_147961_000020_000000",
+      "agreement_3way": 25.0,
+      "words": 4
+    }
+  ],
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "c72aee7940d85396973f5fa42c00ed6ed89e2286",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "cpu",
+    "transformers": "5.22.2"
+  }
+}

@@ -1,0 +1,433 @@
+{
+  "experiment": "probing_nonlinear",
+  "model": "xlm-roberta-base",
+  "model_id": "FacebookAI/xlm-roberta-base",
+  "revision": "e73636d4f797dec63c3081bb6ed5c7b0bb3f2089",
+  "kind": "encoder",
+  "condition": "plain-first-natural",
+  "layers": {
+    "2": 4,
+    "3": 7
+  },
+  "model_class": "XLMRobertaModel",
+  "n_layers": 13,
+  "dim": 768,
+  "oom_splits": 0,
+  "summary": [
+    {
+      "task": 2,
+      "probe": "logistic",
+      "layer": 4,
+      "dev": 82.42573924731182,
+      "test_2019": 81.84932521517563,
+      "test_2019_sd": 0.044668735010665366,
+      "test_macro_f1": 81.7634995754931,
+      "epochs": [
+        4,
+        2,
+        1
+      ]
+    },
+    {
+      "task": 2,
+      "probe": "mlp",
+      "layer": 4,
+      "dev": 83.18951612903226,
+      "test_2019": 82.59151445120958,
+      "test_2019_sd": 0.04719506354757045,
+      "test_macro_f1": 82.51074801308148,
+      "epochs": [
+        3,
+        3,
+        2
+      ]
+    },
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "layer": 4,
+      "dev": 83.46471774193549,
+      "test_2019": 82.8715020073182,
+      "test_2019_sd": 0.02277902362070556,
+      "test_macro_f1": 82.79935910994382,
+      "epochs": [
+        3,
+        2,
+        3
+      ]
+    },
+    {
+      "task": 3,
+      "probe": "logistic",
+      "layer": 7,
+      "dev": 65.70127688172043,
+      "test_2019": 65.14932669659126,
+      "test_2019_sd": 0.04500828652177127,
+      "test_macro_f1": 60.31504001770278,
+      "epochs": [
+        2,
+        3,
+        2
+      ]
+    },
+    {
+      "task": 3,
+      "probe": "mlp",
+      "layer": 7,
+      "dev": 67.77385752688173,
+      "test_2019": 67.17405152363598,
+      "test_2019_sd": 0.05627429866293981,
+      "test_macro_f1": 62.86190302631618,
+      "epochs": [
+        3,
+        5,
+        3
+      ]
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "layer": 7,
+      "dev": 68.44052419354838,
+      "test_2019": 67.74032265232657,
+      "test_2019_sd": 0.06667296204025346,
+      "test_macro_f1": 63.68622351832971,
+      "epochs": [
+        3,
+        5,
+        2
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "task": 2,
+      "probe": "logistic",
+      "seed": 0,
+      "layer": 4,
+      "best_epoch": 4,
+      "dev_accuracy": 82.45262145996094,
+      "dev_history": [
+        82.381,
+        82.444,
+        82.438,
+        82.453,
+        82.425,
+        82.415
+      ],
+      "time_s": 3.1
+    },
+    {
+      "task": 2,
+      "probe": "logistic",
+      "seed": 1,
+      "layer": 4,
+      "best_epoch": 2,
+      "dev_accuracy": 82.3951644897461,
+      "dev_history": [
+        82.346,
+        82.395,
+        82.392,
+        82.356
+      ],
+      "time_s": 2.3
+    },
+    {
+      "task": 2,
+      "probe": "logistic",
+      "seed": 2,
+      "layer": 4,
+      "best_epoch": 1,
+      "dev_accuracy": 82.42943572998047,
+      "dev_history": [
+        82.429,
+        82.408,
+        82.34
+      ],
+      "time_s": 1.7
+    },
+    {
+      "task": 2,
+      "probe": "mlp",
+      "seed": 0,
+      "layer": 4,
+      "best_epoch": 3,
+      "dev_accuracy": 83.2258071899414,
+      "dev_history": [
+        82.981,
+        83.145,
+        83.226,
+        83.222,
+        83.166
+      ],
+      "time_s": 3.8
+    },
+    {
+      "task": 2,
+      "probe": "mlp",
+      "seed": 1,
+      "layer": 4,
+      "best_epoch": 3,
+      "dev_accuracy": 83.19960021972656,
+      "dev_history": [
+        83.037,
+        83.12,
+        83.2,
+        83.198,
+        83.195
+      ],
+      "time_s": 3.1
+    },
+    {
+      "task": 2,
+      "probe": "mlp",
+      "seed": 2,
+      "layer": 4,
+      "best_epoch": 2,
+      "dev_accuracy": 83.14315032958984,
+      "dev_history": [
+        82.968,
+        83.143,
+        83.104,
+        83.139
+      ],
+      "time_s": 2.9
+    },
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "seed": 0,
+      "layer": 4,
+      "best_epoch": 3,
+      "dev_accuracy": 83.50403594970703,
+      "dev_history": [
+        83.299,
+        83.393,
+        83.504,
+        83.476,
+        83.383
+      ],
+      "time_s": 138.0
+    },
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "seed": 1,
+      "layer": 4,
+      "best_epoch": 2,
+      "dev_accuracy": 83.4576644897461,
+      "dev_history": [
+        83.27,
+        83.458,
+        83.398,
+        83.456
+      ],
+      "time_s": 114.7
+    },
+    {
+      "task": 2,
+      "probe": "bilstm",
+      "seed": 2,
+      "layer": 4,
+      "best_epoch": 3,
+      "dev_accuracy": 83.43246459960938,
+      "dev_history": [
+        83.317,
+        83.428,
+        83.432,
+        83.344,
+        83.403
+      ],
+      "time_s": 141.6
+    },
+    {
+      "task": 3,
+      "probe": "logistic",
+      "seed": 0,
+      "layer": 7,
+      "best_epoch": 2,
+      "dev_accuracy": 65.67943572998047,
+      "dev_history": [
+        65.534,
+        65.679,
+        65.576,
+        65.672
+      ],
+      "time_s": 2.2
+    },
+    {
+      "task": 3,
+      "probe": "logistic",
+      "seed": 1,
+      "layer": 7,
+      "best_epoch": 3,
+      "dev_accuracy": 65.74495697021484,
+      "dev_history": [
+        65.464,
+        65.64,
+        65.745,
+        65.48,
+        65.733
+      ],
+      "time_s": 2.4
+    },
+    {
+      "task": 3,
+      "probe": "logistic",
+      "seed": 2,
+      "layer": 7,
+      "best_epoch": 2,
+      "dev_accuracy": 65.67943572998047,
+      "dev_history": [
+        65.637,
+        65.679,
+        65.672,
+        65.653
+      ],
+      "time_s": 2.1
+    },
+    {
+      "task": 3,
+      "probe": "mlp",
+      "seed": 0,
+      "layer": 7,
+      "best_epoch": 3,
+      "dev_accuracy": 67.88911437988281,
+      "dev_history": [
+        67.404,
+        67.729,
+        67.889,
+        67.831,
+        67.692
+      ],
+      "time_s": 3.8
+    },
+    {
+      "task": 3,
+      "probe": "mlp",
+      "seed": 1,
+      "layer": 7,
+      "best_epoch": 5,
+      "dev_accuracy": 67.75907135009766,
+      "dev_history": [
+        67.478,
+        67.601,
+        67.74,
+        67.673,
+        67.759,
+        67.655,
+        67.583
+      ],
+      "time_s": 4.2
+    },
+    {
+      "task": 3,
+      "probe": "mlp",
+      "seed": 2,
+      "layer": 7,
+      "best_epoch": 3,
+      "dev_accuracy": 67.67339324951172,
+      "dev_history": [
+        67.306,
+        67.654,
+        67.673,
+        67.627,
+        67.621
+      ],
+      "time_s": 3.6
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "seed": 0,
+      "layer": 7,
+      "best_epoch": 3,
+      "dev_accuracy": 68.40020751953125,
+      "dev_history": [
+        68.135,
+        68.318,
+        68.4,
+        68.331,
+        68.197
+      ],
+      "time_s": 141.2
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "seed": 1,
+      "layer": 7,
+      "best_epoch": 5,
+      "dev_accuracy": 68.43145751953125,
+      "dev_history": [
+        68.276,
+        68.312,
+        68.397,
+        68.379,
+        68.431,
+        68.326,
+        68.354
+      ],
+      "time_s": 202.3
+    },
+    {
+      "task": 3,
+      "probe": "bilstm",
+      "seed": 2,
+      "layer": 7,
+      "best_epoch": 2,
+      "dev_accuracy": 68.48992156982422,
+      "dev_history": [
+        68.071,
+        68.49,
+        68.481,
+        68.437
+      ],
+      "time_s": 106.8
+    }
+  ],
+  "train_utterances": 116263,
+  "time_s": {
+    "extract": 160.2,
+    "total": 1065.9
+  },
+  "config": {
+    "model": "xlm-roberta-base",
+    "revision": null,
+    "context": "plain",
+    "pooling": "first",
+    "style": "natural",
+    "layers": null,
+    "probes": [
+      "logistic",
+      "mlp",
+      "bilstm"
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "epochs": 10,
+    "patience": 2,
+    "data_dir": "data",
+    "train_set": "train_360",
+    "train_utterances": null,
+    "linear_root": "runs/probing",
+    "out_root": "runs/probing_nonlinear",
+    "dtype": "bfloat16",
+    "device": null,
+    "max_tokens": 4096
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "8ee8ab5bbe2534b3b589f8e89cfa42f9a60afd7e",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2",
+    "max_gpu_memory_gb": 4.6
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "experiment": "finetune",
+  "model": "bert-large-uncased",
+  "tokenisation": {
+    "word_start_space": false,
+    "pad_id": 0
+  },
+  "config": {
+    "data_dir": "data",
+    "out_dir": "runs/finetune/bert-large-uncased/2way/seed2",
+    "n_classes": 2,
+    "train_set": "train_360",
+    "fraction_of_train_data": 1.0,
+    "protocol": "legacy",
+    "model": "google-bert/bert-large-uncased",
+    "name": "bert-large-uncased",
+    "revision": "6da4b6a26a1877e173fca3225479512db81a5e5b",
+    "batch_size": 32,
+    "epochs": 2,
+    "learning_rate": 2e-05,
+    "weight_decay": 0.0,
+    "seed": 2,
+    "attn_implementation": "eager",
+    "attention_mask": true,
+    "eval_batch_size": 64,
+    "log_every": 50,
+    "device": null,
+    "resume": false,
+    "no_checkpoint": true,
+    "keep_checkpoint": false,
+    "max_train_steps": null
+  },
+  "labels": [
+    "<pad>",
+    "0",
+    "1",
+    "NA"
+  ],
+  "data": {
+    "train_utterances": 116262,
+    "sha256_ok": {
+      "train_360.txt": true,
+      "dev.txt": true,
+      "test.txt": true
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "dev_accuracy_full": 83.58266129032258,
+      "dev_accuracy_legacy_2019": 83.58233028891712,
+      "elapsed_s": 455.8
+    },
+    {
+      "epoch": 2,
+      "dev_accuracy_full": 83.84677419354838,
+      "dev_accuracy_legacy_2019": 83.8464485171072,
+      "elapsed_s": 909.7
+    }
+  ],
+  "dev": {
+    "full": {
+      "accuracy": 83.84677419354838,
+      "scored_words": 99200,
+      "macro_f1": 83.83337374246844,
+      "per_class": {
+        "0": {
+          "precision": 83.98983481575604,
+          "recall": 82.04270537498685,
+          "f1": 83.00485271581815,
+          "support": 47535
+        },
+        "1": {
+          "precision": 83.8336875664187,
+          "recall": 85.50662924610471,
+          "f1": 84.66189476911873,
+          "support": 51665
+        }
+      },
+      "confusion": {
+        "0": {
+          "0": 38999,
+          "1": 8519,
+          "NA": 17
+        },
+        "1": {
+          "0": 7434,
+          "1": 44177,
+          "NA": 54
+        }
+      },
+      "utterances": 5727
+    },
+    "legacy_2019": {
+      "accuracy": 83.8464485171072,
+      "scored_words": 99198,
+      "macro_f1": 83.83307978796168,
+      "per_class": {
+        "0": {
+          "precision": 83.98983481575604,
+          "recall": 82.04270537498685,
+          "f1": 83.00485271581815,
+          "support": 47535
+        },
+        "1": {
+          "precision": 83.83307397426653,
+          "recall": 85.50606817257999,
+          "f1": 84.66130686010521,
+          "support": 51663
+        }
+      },
+      "confusion": {
+        "0": {
+          "0": 38999,
+          "1": 8519,
+          "NA": 17
+        },
+        "1": {
+          "0": 7434,
+          "1": 44175,
+          "NA": 54
+        }
+      },
+      "utterances": 5726
+    }
+  },
+  "test": {
+    "full": {
+      "accuracy": 83.11182172479265,
+      "scored_words": 90063,
+      "macro_f1": 83.10790938554854,
+      "per_class": {
+        "0": {
+          "precision": 83.58754901023238,
+          "recall": 80.86922329647962,
+          "f1": 82.20592038748207,
+          "support": 43234
+        },
+        "1": {
+          "precision": 82.869370117999,
+          "recall": 85.18225885669136,
+          "f1": 84.00989838361501,
+          "support": 46829
+        }
+      },
+      "confusion": {
+        "0": {
+          "0": 34963,
+          "1": 8246,
+          "NA": 25
+        },
+        "1": {
+          "0": 6865,
+          "1": 39890,
+          "NA": 74
+        }
+      },
+      "utterances": 4822
+    },
+    "legacy_2019": {
+      "accuracy": 83.11408381849695,
+      "scored_words": 90004,
+      "macro_f1": 83.11061312143255,
+      "per_class": {
+        "0": {
+          "precision": 83.59483377182492,
+          "recall": 80.8751388374676,
+          "f1": 82.21249970597228,
+          "support": 43216
+        },
+        "1": {
+          "precision": 82.8672419170392,
+          "recall": 85.18209797383945,
+          "f1": 84.00872653689282,
+          "support": 46788
+        }
+      },
+      "confusion": {
+        "0": {
+          "0": 34951,
+          "1": 8240,
+          "NA": 25
+        },
+        "1": {
+          "0": 6859,
+          "1": 39855,
+          "NA": 74
+        }
+      },
+      "utterances": 4821
+    }
+  },
+  "train_time_s": 916.7,
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "df977a3d1752f03eb1629e9603552613adf8c1c3",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2"
+  }
+}

@@ -1,0 +1,1763 @@
+{
+ "agreement": {
+  "labels": [
+   "Gold labels",
+   "Whisper large-v3",
+   "HuBERT-large",
+   "WavLM-large",
+   "Qwen2-Audio encoder",
+   "Qwen2-Audio LM",
+   "Duration only",
+   "ModernBERT-large",
+   "BERT-base",
+   "Qwen3.5 0.8B",
+   "Qwen3.8 27B",
+   "Muse Glimmer 30B",
+   "DeepSeek-V4-Pro (prompted)",
+   "GPT-4o (prompted)",
+   "Mistral Large 3 (prompted)"
+  ],
+  "groups": [
+   "gold",
+   "speech",
+   "speech",
+   "speech",
+   "speech",
+   "speech",
+   "speech",
+   "text",
+   "text",
+   "text",
+   "text",
+   "text",
+   "prompted",
+   "prompted",
+   "prompted"
+  ],
+  "matrix": [
+   [
+    100.0,
+    84.6,
+    84.19,
+    84.04,
+    84.12,
+    76.69,
+    65.05,
+    68.07,
+    67.7,
+    68.07,
+    67.78,
+    67.91,
+    60.54,
+    59.47,
+    59.76
+   ],
+   [
+    84.6,
+    100.0,
+    87.91,
+    88.27,
+    89.26,
+    79.56,
+    66.11,
+    70.07,
+    69.61,
+    70.01,
+    69.89,
+    69.8,
+    61.51,
+    60.5,
+    61.07
+   ],
+   [
+    84.19,
+    87.91,
+    100.0,
+    88.98,
+    88.0,
+    79.34,
+    65.72,
+    69.55,
+    69.01,
+    69.39,
+    69.39,
+    69.28,
+    60.88,
+    59.79,
+    60.45
+   ],
+   [
+    84.04,
+    88.27,
+    88.98,
+    100.0,
+    88.23,
+    79.78,
+    65.95,
+    70.06,
+    69.5,
+    69.92,
+    69.78,
+    69.71,
+    61.18,
+    60.08,
+    60.74
+   ],
+   [
+    84.12,
+    89.26,
+    88.0,
+    88.23,
+    100.0,
+    79.89,
+    65.7,
+    70.31,
+    69.82,
+    70.36,
+    70.23,
+    70.09,
+    61.48,
+    60.22,
+    61.19
+   ],
+   [
+    76.69,
+    79.56,
+    79.34,
+    79.78,
+    79.89,
+    100.0,
+    69.53,
+    74.14,
+    73.29,
+    74.0,
+    73.88,
+    73.92,
+    64.47,
+    63.19,
+    63.34
+   ],
+   [
+    65.05,
+    66.11,
+    65.72,
+    65.95,
+    65.7,
+    69.53,
+    100.0,
+    68.66,
+    68.4,
+    68.62,
+    68.88,
+    69.32,
+    65.83,
+    65.27,
+    66.65
+   ],
+   [
+    68.07,
+    70.07,
+    69.55,
+    70.06,
+    70.31,
+    74.14,
+    68.66,
+    100.0,
+    83.73,
+    85.21,
+    84.24,
+    84.52,
+    69.94,
+    68.23,
+    68.64
+   ],
+   [
+    67.7,
+    69.61,
+    69.01,
+    69.5,
+    69.82,
+    73.29,
+    68.4,
+    83.73,
+    100.0,
+    83.84,
+    82.88,
+    83.27,
+    69.07,
+    67.25,
+    68.0
+   ],
+   [
+    68.07,
+    70.01,
+    69.39,
+    69.92,
+    70.36,
+    74.0,
+    68.62,
+    85.21,
+    83.84,
+    100.0,
+    85.29,
+    85.35,
+    69.21,
+    67.85,
+    69.06
+   ],
+   [
+    67.78,
+    69.89,
+    69.39,
+    69.78,
+    70.23,
+    73.88,
+    68.88,
+    84.24,
+    82.88,
+    85.29,
+    100.0,
+    85.28,
+    69.3,
+    67.77,
+    68.96
+   ],
+   [
+    67.91,
+    69.8,
+    69.28,
+    69.71,
+    70.09,
+    73.92,
+    69.32,
+    84.52,
+    83.27,
+    85.35,
+    85.28,
+    100.0,
+    70.18,
+    68.66,
+    69.82
+   ],
+   [
+    60.54,
+    61.51,
+    60.88,
+    61.18,
+    61.48,
+    64.47,
+    65.83,
+    69.94,
+    69.07,
+    69.21,
+    69.3,
+    70.18,
+    100.0,
+    79.23,
+    76.65
+   ],
+   [
+    59.47,
+    60.5,
+    59.79,
+    60.08,
+    60.22,
+    63.19,
+    65.27,
+    68.23,
+    67.25,
+    67.85,
+    67.77,
+    68.66,
+    79.23,
+    100.0,
+    79.16
+   ],
+   [
+    59.76,
+    61.07,
+    60.45,
+    60.74,
+    61.19,
+    63.34,
+    66.65,
+    68.64,
+    68.0,
+    69.06,
+    68.96,
+    69.82,
+    76.65,
+    79.16,
+    100.0
+   ]
+  ],
+  "words": 89935
+ },
+ "accuracy": [
+  {
+   "system": "Majority class",
+   "group": "Reference",
+   "task": 2,
+   "accuracy": 51.98,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Word majority",
+   "group": "Reference",
+   "task": 2,
+   "accuracy": 80.69,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Majority class",
+   "group": "Reference",
+   "task": 3,
+   "accuracy": 48.02,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Word majority",
+   "group": "Reference",
+   "task": 3,
+   "accuracy": 61.96,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "BERT-base",
+   "group": "Text, fine-tuned",
+   "task": 2,
+   "accuracy": 83.02,
+   "sd": 0.13,
+   "derived": false
+  },
+  {
+   "system": "BERT-base",
+   "group": "Text, fine-tuned",
+   "task": 3,
+   "accuracy": 68.49,
+   "sd": 0.1,
+   "derived": false
+  },
+  {
+   "system": "BERT-large",
+   "group": "Text, fine-tuned",
+   "task": 2,
+   "accuracy": 83.15,
+   "sd": 0.09,
+   "derived": false
+  },
+  {
+   "system": "BERT-large",
+   "group": "Text, fine-tuned",
+   "task": 3,
+   "accuracy": 68.54,
+   "sd": 0.13,
+   "derived": false
+  },
+  {
+   "system": "ModernBERT-large",
+   "group": "Text, fine-tuned",
+   "task": 2,
+   "accuracy": 83.22,
+   "sd": 0.05,
+   "derived": false
+  },
+  {
+   "system": "ModernBERT-large",
+   "group": "Text, fine-tuned",
+   "task": 3,
+   "accuracy": 68.8,
+   "sd": 0.08,
+   "derived": false
+  },
+  {
+   "system": "XLM-R large",
+   "group": "Text, fine-tuned",
+   "task": 2,
+   "accuracy": 83.28,
+   "sd": 0.11,
+   "derived": false
+  },
+  {
+   "system": "XLM-R large",
+   "group": "Text, fine-tuned",
+   "task": 3,
+   "accuracy": 68.8,
+   "sd": 0.17,
+   "derived": false
+  },
+  {
+   "system": "BERT-base cased",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 81.83,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "BERT-base cased",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 64.57,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "BERT-base",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 81.84,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "BERT-base",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 64.61,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "BERT-large",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 81.96,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "BERT-large",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 65.04,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "HuBERT-large",
+   "group": "Speech, linear probe",
+   "task": 2,
+   "accuracy": 88.23,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "HuBERT-large",
+   "group": "Speech, linear probe",
+   "task": 3,
+   "accuracy": 78.82,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "ModernBERT-base",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 81.66,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "ModernBERT-base",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 64.93,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "ModernBERT-large",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 81.86,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "ModernBERT-large",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 65.26,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Muse Glimmer 30B, echo",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 82.59,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Muse Glimmer 30B, echo",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 66.91,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Muse Glimmer 30B",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 82.19,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Muse Glimmer 30B",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 66.13,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "OLMo 3 32B, echo",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 82.16,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "OLMo 3 32B, echo",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 66.71,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "OLMo 3 32B",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 81.92,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "OLMo 3 32B",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 65.51,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "OLMo 3 7B, echo",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 82.11,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "OLMo 3 7B, echo",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 66.37,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "OLMo 3 7B",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 81.82,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "OLMo 3 7B",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 65.54,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen2-Audio 7B (encoder)",
+   "group": "Speech, linear probe",
+   "task": 2,
+   "accuracy": 88.08,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen2-Audio 7B (encoder)",
+   "group": "Speech, linear probe",
+   "task": 3,
+   "accuracy": 78.11,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen2-Audio 7B (LM)",
+   "group": "Speech, linear probe",
+   "task": 2,
+   "accuracy": 86.45,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen2-Audio 7B (LM)",
+   "group": "Speech, linear probe",
+   "task": 3,
+   "accuracy": 74.39,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 0.8B, echo",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 81.74,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 0.8B, echo",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 65.74,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 0.8B",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 81.54,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 0.8B",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 64.72,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 2B, echo",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 82.03,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 2B, echo",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 66.22,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 2B",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 81.7,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 2B",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 65.28,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 4B, echo",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 82.09,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 4B, echo",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 66.29,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 4B",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 81.71,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 4B",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 65.51,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 9B, echo",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 82.12,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 9B, echo",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 66.66,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 9B",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 81.82,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 9B",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 65.73,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.8 27B, echo",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 82.35,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.8 27B, echo",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 66.73,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.8 27B",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 81.9,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.8 27B",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 65.83,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "WavLM-large",
+   "group": "Speech, linear probe",
+   "task": 2,
+   "accuracy": 87.82,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "WavLM-large",
+   "group": "Speech, linear probe",
+   "task": 3,
+   "accuracy": 77.99,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Whisper large-v3 (encoder)",
+   "group": "Speech, linear probe",
+   "task": 2,
+   "accuracy": 88.22,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Whisper large-v3 (encoder)",
+   "group": "Speech, linear probe",
+   "task": 3,
+   "accuracy": 78.74,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "XLM-R base",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 81.82,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "XLM-R base",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 64.95,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "XLM-R large",
+   "group": "Text, linear probe",
+   "task": 2,
+   "accuracy": 82.04,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "XLM-R large",
+   "group": "Text, linear probe",
+   "task": 3,
+   "accuracy": 65.17,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "BERT-base cased",
+   "group": "Text, non-linear probe",
+   "task": 2,
+   "accuracy": 82.96,
+   "sd": 0.05,
+   "derived": false
+  },
+  {
+   "system": "BERT-base cased",
+   "group": "Text, non-linear probe",
+   "task": 3,
+   "accuracy": 67.84,
+   "sd": 0.08,
+   "derived": false
+  },
+  {
+   "system": "BERT-base",
+   "group": "Text, non-linear probe",
+   "task": 2,
+   "accuracy": 82.91,
+   "sd": 0.06,
+   "derived": false
+  },
+  {
+   "system": "BERT-base",
+   "group": "Text, non-linear probe",
+   "task": 3,
+   "accuracy": 67.72,
+   "sd": 0.15,
+   "derived": false
+  },
+  {
+   "system": "BERT-large",
+   "group": "Text, non-linear probe",
+   "task": 2,
+   "accuracy": 82.98,
+   "sd": 0.05,
+   "derived": false
+  },
+  {
+   "system": "BERT-large",
+   "group": "Text, non-linear probe",
+   "task": 3,
+   "accuracy": 67.85,
+   "sd": 0.07,
+   "derived": false
+  },
+  {
+   "system": "HuBERT-large",
+   "group": "Speech, non-linear probe",
+   "task": 2,
+   "accuracy": 90.88,
+   "sd": 0.12,
+   "derived": false
+  },
+  {
+   "system": "HuBERT-large",
+   "group": "Speech, non-linear probe",
+   "task": 3,
+   "accuracy": 84.1,
+   "sd": 0.12,
+   "derived": false
+  },
+  {
+   "system": "ModernBERT-base",
+   "group": "Text, non-linear probe",
+   "task": 2,
+   "accuracy": 82.9,
+   "sd": 0.04,
+   "derived": false
+  },
+  {
+   "system": "ModernBERT-base",
+   "group": "Text, non-linear probe",
+   "task": 3,
+   "accuracy": 67.67,
+   "sd": 0.11,
+   "derived": false
+  },
+  {
+   "system": "ModernBERT-large",
+   "group": "Text, non-linear probe",
+   "task": 2,
+   "accuracy": 83.03,
+   "sd": 0.03,
+   "derived": false
+  },
+  {
+   "system": "ModernBERT-large",
+   "group": "Text, non-linear probe",
+   "task": 3,
+   "accuracy": 68.0,
+   "sd": 0.06,
+   "derived": false
+  },
+  {
+   "system": "Muse Glimmer 30B, echo",
+   "group": "Text, non-linear probe",
+   "task": 2,
+   "accuracy": 82.78,
+   "sd": 0.06,
+   "derived": false
+  },
+  {
+   "system": "Muse Glimmer 30B, echo",
+   "group": "Text, non-linear probe",
+   "task": 3,
+   "accuracy": 67.94,
+   "sd": 0.03,
+   "derived": false
+  },
+  {
+   "system": "OLMo 3 32B, echo",
+   "group": "Text, non-linear probe",
+   "task": 2,
+   "accuracy": 82.76,
+   "sd": 0.03,
+   "derived": false
+  },
+  {
+   "system": "OLMo 3 32B, echo",
+   "group": "Text, non-linear probe",
+   "task": 3,
+   "accuracy": 67.88,
+   "sd": 0.07,
+   "derived": false
+  },
+  {
+   "system": "OLMo 3 7B, echo",
+   "group": "Text, non-linear probe",
+   "task": 2,
+   "accuracy": 82.84,
+   "sd": 0.06,
+   "derived": false
+  },
+  {
+   "system": "OLMo 3 7B, echo",
+   "group": "Text, non-linear probe",
+   "task": 3,
+   "accuracy": 67.84,
+   "sd": 0.05,
+   "derived": false
+  },
+  {
+   "system": "Qwen2-Audio 7B (encoder)",
+   "group": "Speech, non-linear probe",
+   "task": 2,
+   "accuracy": 90.97,
+   "sd": 0.04,
+   "derived": false
+  },
+  {
+   "system": "Qwen2-Audio 7B (encoder)",
+   "group": "Speech, non-linear probe",
+   "task": 3,
+   "accuracy": 84.2,
+   "sd": 0.13,
+   "derived": false
+  },
+  {
+   "system": "Qwen2-Audio 7B (LM)",
+   "group": "Speech, non-linear probe",
+   "task": 2,
+   "accuracy": 87.3,
+   "sd": 0.1,
+   "derived": false
+  },
+  {
+   "system": "Qwen2-Audio 7B (LM)",
+   "group": "Speech, non-linear probe",
+   "task": 3,
+   "accuracy": 76.48,
+   "sd": 0.14,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 0.8B, echo",
+   "group": "Text, non-linear probe",
+   "task": 2,
+   "accuracy": 82.92,
+   "sd": 0.03,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 0.8B, echo",
+   "group": "Text, non-linear probe",
+   "task": 3,
+   "accuracy": 67.98,
+   "sd": 0.1,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 2B, echo",
+   "group": "Text, non-linear probe",
+   "task": 2,
+   "accuracy": 82.87,
+   "sd": 0.03,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 2B, echo",
+   "group": "Text, non-linear probe",
+   "task": 3,
+   "accuracy": 67.92,
+   "sd": 0.07,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 4B, echo",
+   "group": "Text, non-linear probe",
+   "task": 2,
+   "accuracy": 82.9,
+   "sd": 0.02,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 4B, echo",
+   "group": "Text, non-linear probe",
+   "task": 3,
+   "accuracy": 67.85,
+   "sd": 0.18,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 9B, echo",
+   "group": "Text, non-linear probe",
+   "task": 2,
+   "accuracy": 82.8,
+   "sd": 0.06,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.5 9B, echo",
+   "group": "Text, non-linear probe",
+   "task": 3,
+   "accuracy": 67.83,
+   "sd": 0.08,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.8 27B, echo",
+   "group": "Text, non-linear probe",
+   "task": 2,
+   "accuracy": 82.89,
+   "sd": 0.1,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.8 27B, echo",
+   "group": "Text, non-linear probe",
+   "task": 3,
+   "accuracy": 67.83,
+   "sd": 0.07,
+   "derived": false
+  },
+  {
+   "system": "WavLM-large",
+   "group": "Speech, non-linear probe",
+   "task": 2,
+   "accuracy": 90.64,
+   "sd": 0.04,
+   "derived": false
+  },
+  {
+   "system": "WavLM-large",
+   "group": "Speech, non-linear probe",
+   "task": 3,
+   "accuracy": 83.93,
+   "sd": 0.11,
+   "derived": false
+  },
+  {
+   "system": "Whisper large-v3 (encoder)",
+   "group": "Speech, non-linear probe",
+   "task": 2,
+   "accuracy": 90.99,
+   "sd": 0.19,
+   "derived": false
+  },
+  {
+   "system": "Whisper large-v3 (encoder)",
+   "group": "Speech, non-linear probe",
+   "task": 3,
+   "accuracy": 84.66,
+   "sd": 0.16,
+   "derived": false
+  },
+  {
+   "system": "XLM-R base",
+   "group": "Text, non-linear probe",
+   "task": 2,
+   "accuracy": 82.87,
+   "sd": 0.02,
+   "derived": false
+  },
+  {
+   "system": "XLM-R base",
+   "group": "Text, non-linear probe",
+   "task": 3,
+   "accuracy": 67.74,
+   "sd": 0.07,
+   "derived": false
+  },
+  {
+   "system": "XLM-R large",
+   "group": "Text, non-linear probe",
+   "task": 2,
+   "accuracy": 82.86,
+   "sd": 0.05,
+   "derived": false
+  },
+  {
+   "system": "XLM-R large",
+   "group": "Text, non-linear probe",
+   "task": 3,
+   "accuracy": 67.89,
+   "sd": 0.09,
+   "derived": false
+  },
+  {
+   "system": "DeepSeek-V4-Pro (k5)",
+   "group": "Prompted LLM",
+   "task": 3,
+   "accuracy": 60.52,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "DeepSeek-V4-Pro (k5)",
+   "group": "Prompted LLM",
+   "task": 2,
+   "accuracy": 79.21,
+   "sd": null,
+   "derived": true
+  },
+  {
+   "system": "GPT-4o (k5)",
+   "group": "Prompted LLM",
+   "task": 3,
+   "accuracy": 59.44,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "GPT-4o (k5)",
+   "group": "Prompted LLM",
+   "task": 2,
+   "accuracy": 79.67,
+   "sd": null,
+   "derived": true
+  },
+  {
+   "system": "Mistral Large 3 (k0)",
+   "group": "Prompted LLM",
+   "task": 3,
+   "accuracy": 59.74,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Mistral Large 3 (k0)",
+   "group": "Prompted LLM",
+   "task": 2,
+   "accuracy": 78.93,
+   "sd": null,
+   "derived": true
+  },
+  {
+   "system": "Qwen3.8 27B (k0)",
+   "group": "Prompted LLM",
+   "task": 3,
+   "accuracy": 58.63,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.8 27B (k0)",
+   "group": "Prompted LLM",
+   "task": 2,
+   "accuracy": 78.79,
+   "sd": null,
+   "derived": true
+  },
+  {
+   "system": "Qwen3.8 27B (k500)",
+   "group": "Prompted LLM",
+   "task": 3,
+   "accuracy": 62.01,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen3.8 27B (k500)",
+   "group": "Prompted LLM",
+   "task": 2,
+   "accuracy": 78.3,
+   "sd": null,
+   "derived": true
+  },
+  {
+   "system": "Qwen2-Audio 7B Instruct (audio)",
+   "group": "Prompted speech LLM",
+   "task": 3,
+   "accuracy": 39.23,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen2-Audio 7B Instruct (audio)",
+   "group": "Prompted speech LLM",
+   "task": 2,
+   "accuracy": 50.98,
+   "sd": null,
+   "derived": true
+  },
+  {
+   "system": "Qwen2-Audio 7B Instruct (no_audio)",
+   "group": "Prompted speech LLM",
+   "task": 3,
+   "accuracy": 43.09,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Qwen2-Audio 7B Instruct (no_audio)",
+   "group": "Prompted speech LLM",
+   "task": 2,
+   "accuracy": 51.61,
+   "sd": null,
+   "derived": true
+  },
+  {
+   "system": "Labelling procedure (toolkit)",
+   "group": "Reference",
+   "task": 3,
+   "accuracy": 91.44,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Labelling procedure (toolkit)",
+   "group": "Reference",
+   "task": 2,
+   "accuracy": 94.93,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Duration only",
+   "group": "Reference",
+   "task": 3,
+   "accuracy": 65.02,
+   "sd": null,
+   "derived": false
+  },
+  {
+   "system": "Duration only",
+   "group": "Reference",
+   "task": 2,
+   "accuracy": 83.2,
+   "sd": null,
+   "derived": false
+  }
+ ],
+ "sentences": [
+  {
+   "utt_id": "4446_2273_000023_000001",
+   "words": [
+    {
+     "word": "Oh",
+     "punct": false,
+     "gold": "2",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": ",",
+     "punct": true,
+     "gold": "NA",
+     "text": "NA",
+     "speech": "NA"
+    },
+    {
+     "word": "yes",
+     "punct": false,
+     "gold": "2",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": ",",
+     "punct": true,
+     "gold": "NA",
+     "text": "NA",
+     "speech": "NA"
+    },
+    {
+     "word": "I",
+     "punct": false,
+     "gold": "0",
+     "text": "1",
+     "speech": "0"
+    },
+    {
+     "word": "go",
+     "punct": false,
+     "gold": "0",
+     "text": "0",
+     "speech": "0"
+    },
+    {
+     "word": "over",
+     "punct": false,
+     "gold": "1",
+     "text": "0",
+     "speech": "1"
+    },
+    {
+     "word": "to",
+     "punct": false,
+     "gold": "0",
+     "text": "0",
+     "speech": "0"
+    },
+    {
+     "word": "Paris",
+     "punct": false,
+     "gold": "0",
+     "text": "1",
+     "speech": "0"
+    },
+    {
+     "word": "often",
+     "punct": false,
+     "gold": "2",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": ".",
+     "punct": true,
+     "gold": "NA",
+     "text": "NA",
+     "speech": "NA"
+    }
+   ],
+   "text_system": "modernbert-large (plain-first-natural) bilstm",
+   "speech_system": "whisper-large-v3 (audio-mean) bilstm"
+  },
+  {
+   "utt_id": "1284_1180_000011_000000",
+   "words": [
+    {
+     "word": "Ah",
+     "punct": false,
+     "gold": "2",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": ",",
+     "punct": true,
+     "gold": "NA",
+     "text": "NA",
+     "speech": "NA"
+    },
+    {
+     "word": "said",
+     "punct": false,
+     "gold": "0",
+     "text": "0",
+     "speech": "0"
+    },
+    {
+     "word": "Ojo",
+     "punct": false,
+     "gold": "0",
+     "text": "1",
+     "speech": "0"
+    },
+    {
+     "word": ";",
+     "punct": true,
+     "gold": "NA",
+     "text": "NA",
+     "speech": "NA"
+    },
+    {
+     "word": "you",
+     "punct": false,
+     "gold": "2",
+     "text": "0",
+     "speech": "1"
+    },
+    {
+     "word": "must",
+     "punct": false,
+     "gold": "0",
+     "text": "1",
+     "speech": "0"
+    },
+    {
+     "word": "be",
+     "punct": false,
+     "gold": "0",
+     "text": "0",
+     "speech": "0"
+    },
+    {
+     "word": "Dame",
+     "punct": false,
+     "gold": "0",
+     "text": "0",
+     "speech": "1"
+    },
+    {
+     "word": "Margolotte",
+     "punct": false,
+     "gold": "0",
+     "text": "1",
+     "speech": "0"
+    },
+    {
+     "word": ",",
+     "punct": true,
+     "gold": "NA",
+     "text": "NA",
+     "speech": "NA"
+    },
+    {
+     "word": "the",
+     "punct": false,
+     "gold": "2",
+     "text": "0",
+     "speech": "1"
+    },
+    {
+     "word": "good",
+     "punct": false,
+     "gold": "1",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": "wife",
+     "punct": false,
+     "gold": "0",
+     "text": "1",
+     "speech": "0"
+    },
+    {
+     "word": "of",
+     "punct": false,
+     "gold": "0",
+     "text": "0",
+     "speech": "0"
+    },
+    {
+     "word": "dr",
+     "punct": false,
+     "gold": "0",
+     "text": "0",
+     "speech": "0"
+    },
+    {
+     "word": "Pipt",
+     "punct": false,
+     "gold": "2",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": ".",
+     "punct": true,
+     "gold": "NA",
+     "text": "NA",
+     "speech": "NA"
+    }
+   ],
+   "text_system": "modernbert-large (plain-first-natural) bilstm",
+   "speech_system": "whisper-large-v3 (audio-mean) bilstm"
+  },
+  {
+   "utt_id": "8463_294825_000030_000000",
+   "words": [
+    {
+     "word": "Because",
+     "punct": false,
+     "gold": "2",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": ",",
+     "punct": true,
+     "gold": "NA",
+     "text": "NA",
+     "speech": "NA"
+    },
+    {
+     "word": "as",
+     "punct": false,
+     "gold": "1",
+     "text": "0",
+     "speech": "1"
+    },
+    {
+     "word": "that",
+     "punct": false,
+     "gold": "0",
+     "text": "0",
+     "speech": "0"
+    },
+    {
+     "word": "Time",
+     "punct": false,
+     "gold": "1",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": "cover",
+     "punct": false,
+     "gold": "0",
+     "text": "0",
+     "speech": "1"
+    },
+    {
+     "word": "story",
+     "punct": false,
+     "gold": "0",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": "suggests",
+     "punct": false,
+     "gold": "1",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": ",",
+     "punct": true,
+     "gold": "NA",
+     "text": "NA",
+     "speech": "NA"
+    },
+    {
+     "word": "we",
+     "punct": false,
+     "gold": "0",
+     "text": "0",
+     "speech": "0"
+    },
+    {
+     "word": "still",
+     "punct": false,
+     "gold": "0",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": "haven't",
+     "punct": false,
+     "gold": "1",
+     "text": "0",
+     "speech": "1"
+    },
+    {
+     "word": "caught",
+     "punct": false,
+     "gold": "1",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": "up",
+     "punct": false,
+     "gold": "1",
+     "text": "0",
+     "speech": "1"
+    },
+    {
+     "word": "with",
+     "punct": false,
+     "gold": "0",
+     "text": "0",
+     "speech": "0"
+    },
+    {
+     "word": "Verne",
+     "punct": false,
+     "gold": "1",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": ".",
+     "punct": true,
+     "gold": "NA",
+     "text": "NA",
+     "speech": "NA"
+    }
+   ],
+   "text_system": "modernbert-large (plain-first-natural) bilstm",
+   "speech_system": "whisper-large-v3 (audio-mean) bilstm"
+  },
+  {
+   "utt_id": "7176_88083_000016_000005",
+   "words": [
+    {
+     "word": "It",
+     "punct": false,
+     "gold": "0",
+     "text": "0",
+     "speech": "0"
+    },
+    {
+     "word": "was",
+     "punct": false,
+     "gold": "1",
+     "text": "0",
+     "speech": "1"
+    },
+    {
+     "word": "a",
+     "punct": false,
+     "gold": "0",
+     "text": "0",
+     "speech": "0"
+    },
+    {
+     "word": "mongrel",
+     "punct": false,
+     "gold": "2",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": "method",
+     "punct": false,
+     "gold": "1",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": "of",
+     "punct": false,
+     "gold": "0",
+     "text": "0",
+     "speech": "0"
+    },
+    {
+     "word": "progression",
+     "punct": false,
+     "gold": "2",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": ",",
+     "punct": true,
+     "gold": "NA",
+     "text": "NA",
+     "speech": "NA"
+    },
+    {
+     "word": "in",
+     "punct": false,
+     "gold": "0",
+     "text": "1",
+     "speech": "0"
+    },
+    {
+     "word": "which",
+     "punct": false,
+     "gold": "0",
+     "text": "1",
+     "speech": "0"
+    },
+    {
+     "word": "he",
+     "punct": false,
+     "gold": "0",
+     "text": "0",
+     "speech": "0"
+    },
+    {
+     "word": "was",
+     "punct": false,
+     "gold": "0",
+     "text": "0",
+     "speech": "0"
+    },
+    {
+     "word": "singularly",
+     "punct": false,
+     "gold": "2",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": "expert",
+     "punct": false,
+     "gold": "2",
+     "text": "1",
+     "speech": "1"
+    },
+    {
+     "word": ".",
+     "punct": true,
+     "gold": "NA",
+     "text": "NA",
+     "speech": "NA"
+    }
+   ],
+   "text_system": "modernbert-large (plain-first-natural) bilstm",
+   "speech_system": "whisper-large-v3 (audio-mean) bilstm"
+  }
+ ]
+}

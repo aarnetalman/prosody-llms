@@ -1,0 +1,17 @@
+{
+  "condition": "linguistic-freegen-audio",
+  "utterances": 20,
+  "kinds": {
+    "labels": 4,
+    "enumeration": 14,
+    "other": 2
+  },
+  "labelled_words": 94,
+  "labels_given": {
+    "0": 93,
+    "1": 1,
+    "2": 0
+  },
+  "accuracy_on_labelled_3": 46.808510638297875,
+  "gold_nonprominent_share": 49.720670391061454
+}

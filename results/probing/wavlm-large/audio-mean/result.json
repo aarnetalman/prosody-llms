@@ -1,0 +1,146 @@
+{
+  "experiment": "probing",
+  "model": "wavlm-large",
+  "model_id": "microsoft/wavlm-large",
+  "revision": "c1423ed94bb01d80a3f5ce5bc39f6026a0f4828c",
+  "model_class": "WavLMModel",
+  "key_mapping": null,
+  "kind": "speech",
+  "n_layers": 25,
+  "dim": 1024,
+  "condition": {
+    "input": "audio",
+    "pooling": "mean",
+    "train_set": "train_100",
+    "train_utterances": null
+  },
+  "families": [
+    "ridge",
+    "lda"
+  ],
+  "grids": {
+    "ridge": [
+      1e-05,
+      0.0001,
+      0.001,
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "lda": [
+      0.0001,
+      0.001,
+      0.01,
+      0.05,
+      0.1,
+      0.3,
+      0.6,
+      0.9
+    ]
+  },
+  "train_words": 569966,
+  "train_utterances": 33042,
+  "summary": [
+    {
+      "task": 2,
+      "probe": "ridge",
+      "best_layer": 16,
+      "layers": 25,
+      "hyper": 0.0001,
+      "dev": 87.90120967741936,
+      "test_2019": 87.8249855561975,
+      "test_full": 87.82852003597482,
+      "test_macro_f1": 87.77047026501278,
+      "test_aligned": 87.88771539744302
+    },
+    {
+      "task": 2,
+      "probe": "lda",
+      "best_layer": 16,
+      "layers": 25,
+      "hyper": 0.0001,
+      "dev": 87.90120967741936,
+      "test_2019": 87.8249855561975,
+      "test_full": 87.82852003597482,
+      "test_macro_f1": 87.77047026501278,
+      "test_aligned": 87.88771539744302
+    },
+    {
+      "task": 3,
+      "probe": "ridge",
+      "best_layer": 10,
+      "layers": 25,
+      "hyper": 0.0001,
+      "dev": 76.77217741935483,
+      "test_2019": 77.42433669614684,
+      "test_full": 77.42247093701076,
+      "test_macro_f1": 74.64379771875788,
+      "test_aligned": 77.4685936631462
+    },
+    {
+      "task": 3,
+      "probe": "lda",
+      "best_layer": 13,
+      "layers": 25,
+      "hyper": 0.0001,
+      "dev": 77.56350806451613,
+      "test_2019": 77.99097817874761,
+      "test_full": 77.98985154836059,
+      "test_macro_f1": 76.1761940581706,
+      "test_aligned": 78.0366870483602
+    }
+  ],
+  "alignment": {
+    "utterances": 43591,
+    "tokens": 869468,
+    "aligned_tokens": 759012,
+    "beyond_window": 0
+  },
+  "oom_splits": 0,
+  "time_s": {
+    "load_and_pass1": 2163.8,
+    "solve": 1.4,
+    "pass2": 618.9,
+    "total": 2942.2
+  },
+  "config": {
+    "model": "wavlm-large",
+    "revision": null,
+    "context": "plain",
+    "pooling": "mean",
+    "style": "natural",
+    "families": [
+      "ridge",
+      "lda"
+    ],
+    "data_dir": "data",
+    "train_set": "train_100",
+    "audio_dir": null,
+    "kind": null,
+    "part": "llm",
+    "train_utterances": null,
+    "out_root": "runs/probing",
+    "dtype": "bfloat16",
+    "device": null,
+    "max_tokens": 4096,
+    "stats_device": "auto",
+    "checkpoint_minutes": 30.0,
+    "resume": true,
+    "keep_stats": false,
+    "max_batches": null,
+    "stats_device_used": "cuda:0"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "df977a3d1752f03eb1629e9603552613adf8c1c3",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2",
+    "max_gpu_memory_gb": 1.5
+  }
+}

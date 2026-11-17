@@ -1,0 +1,63 @@
+{
+  "experiment": "prompting",
+  "model": "gpt-4o",
+  "split": "dev500",
+  "prompt": {
+    "variant": "minimal",
+    "fmt": "lines",
+    "task": 3,
+    "shots": 0
+  },
+  "example_request": {
+    "model": "gpt-4o",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Mark which words in the sentence are prosodically prominent when it is read aloud.\nLabels: 0 = not prominent, 1 = somewhat prominent, 2 = strongly prominent.\nAnswer with one line per numbered word, in order: the number, the word and its label (0, 1 or 2), separated by spaces. Write nothing else.\n\nSentence: There is a healthy bank holiday atmosphere about this book which is extremely pleasant.\nWords:\n1 There\n2 is\n3 a\n4 healthy\n5 bank\n6 holiday\n7 atmosphere\n8 about\n9 this\n10 book\n11 which\n12 is\n13 extremely\n14 pleasant"
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 180,
+    "seed": 0,
+    "logprobs": true,
+    "top_logprobs": 10
+  },
+  "coverage": {
+    "utterances": 500,
+    "missing_responses": 0,
+    "content_filtered": 3,
+    "words": 9100,
+    "words_parsed": 9025,
+    "word_coverage": 0.9918,
+    "words_with_probabilities": 9025,
+    "bad_lines": 0
+  },
+  "accuracy": {
+    "3": 57.824175824175825,
+    "2": 78.0
+  },
+  "auc_prominent": 0.8479772675240115,
+  "plan": {
+    "model": "gpt-4o",
+    "deployment": "gpt-4o",
+    "requests": 4500,
+    "cached": 4500,
+    "to_send": 0,
+    "est_input_tokens": 0,
+    "est_output_tokens": 0,
+    "max_output_tokens": 0,
+    "est_usd_expected": 0.0,
+    "est_usd_upper_bound": 0.0
+  },
+  "sent": null,
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "3292f8c4b1fabce5266bbb759de397c0b30ee6b2",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "cpu",
+    "transformers": "5.22.2"
+  }
+}

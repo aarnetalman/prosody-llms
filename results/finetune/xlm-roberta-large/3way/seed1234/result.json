@@ -1,0 +1,261 @@
+{
+  "experiment": "finetune",
+  "model": "xlm-roberta-large",
+  "tokenisation": {
+    "word_start_space": false,
+    "pad_id": 1
+  },
+  "config": {
+    "data_dir": "data",
+    "out_dir": "runs/finetune/xlm-roberta-large/3way/seed1234",
+    "n_classes": 3,
+    "train_set": "train_360",
+    "fraction_of_train_data": 1.0,
+    "protocol": "legacy",
+    "model": "FacebookAI/xlm-roberta-large",
+    "name": "xlm-roberta-large",
+    "revision": "c23d21b0620b635a76227c604d44e43a9f0ee389",
+    "batch_size": 32,
+    "epochs": 2,
+    "learning_rate": 2e-05,
+    "weight_decay": 0.0,
+    "seed": 1234,
+    "attn_implementation": "eager",
+    "attention_mask": true,
+    "eval_batch_size": 64,
+    "log_every": 50,
+    "device": null,
+    "resume": false,
+    "no_checkpoint": true,
+    "keep_checkpoint": false,
+    "max_train_steps": null
+  },
+  "labels": [
+    "<pad>",
+    "0",
+    "1",
+    "2",
+    "NA"
+  ],
+  "data": {
+    "train_utterances": 116262,
+    "sha256_ok": {
+      "train_360.txt": true,
+      "dev.txt": true,
+      "test.txt": true
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "dev_accuracy_full": 69.1975806451613,
+      "dev_accuracy_legacy_2019": 69.19897578580213,
+      "elapsed_s": 555.3
+    },
+    {
+      "epoch": 2,
+      "dev_accuracy_full": 69.65524193548387,
+      "dev_accuracy_legacy_2019": 69.65664630335289,
+      "elapsed_s": 1111.6
+    }
+  ],
+  "dev": {
+    "full": {
+      "accuracy": 69.65524193548387,
+      "scored_words": 99200,
+      "macro_f1": 65.76636640082579,
+      "per_class": {
+        "0": {
+          "precision": 82.36202000246944,
+          "recall": 84.1969075418113,
+          "f1": 83.26935680179758,
+          "support": 47535
+        },
+        "1": {
+          "precision": 52.64481583644329,
+          "recall": 47.27180010198878,
+          "f1": 49.813841016389674,
+          "support": 27454
+        },
+        "2": {
+          "precision": 62.095436484974734,
+          "recall": 66.48630787658503,
+          "f1": 64.21590138429009,
+          "support": 24211
+        }
+      },
+      "confusion": {
+        "0": {
+          "0": 40023,
+          "1": 5405,
+          "2": 2102,
+          "NA": 5
+        },
+        "1": {
+          "0": 6745,
+          "1": 12978,
+          "2": 7724,
+          "NA": 7
+        },
+        "2": {
+          "0": 1826,
+          "1": 6269,
+          "2": 16097,
+          "NA": 19
+        }
+      },
+      "utterances": 5727
+    },
+    "legacy_2019": {
+      "accuracy": 69.65664630335289,
+      "scored_words": 99198,
+      "macro_f1": 65.7678277791277,
+      "per_class": {
+        "0": {
+          "precision": 82.3637149383656,
+          "recall": 84.1969075418113,
+          "f1": 83.27022303595206,
+          "support": 47535
+        },
+        "1": {
+          "precision": 52.64481583644329,
+          "recall": 47.27352201945143,
+          "f1": 49.81479704442952,
+          "support": 27453
+        },
+        "2": {
+          "precision": 62.09783195741069,
+          "recall": 66.48905410987196,
+          "f1": 64.21846325700152,
+          "support": 24210
+        }
+      },
+      "confusion": {
+        "0": {
+          "0": 40023,
+          "1": 5405,
+          "2": 2102,
+          "NA": 5
+        },
+        "1": {
+          "0": 6745,
+          "1": 12978,
+          "2": 7723,
+          "NA": 7
+        },
+        "2": {
+          "0": 1825,
+          "1": 6269,
+          "2": 16097,
+          "NA": 19
+        }
+      },
+      "utterances": 5726
+    }
+  },
+  "test": {
+    "full": {
+      "accuracy": 68.95506478798174,
+      "scored_words": 90063,
+      "macro_f1": 65.10745245493015,
+      "per_class": {
+        "0": {
+          "precision": 82.40108513230797,
+          "recall": 82.90234537632419,
+          "f1": 82.65095525244722,
+          "support": 43234
+        },
+        "1": {
+          "precision": 50.83406884377758,
+          "recall": 46.93395265452471,
+          "f1": 48.806219943647655,
+          "support": 24543
+        },
+        "2": {
+          "precision": 61.733668341708544,
+          "recall": 66.14915193394957,
+          "f1": 63.86518216869558,
+          "support": 22286
+        }
+      },
+      "confusion": {
+        "0": {
+          "0": 35842,
+          "1": 5297,
+          "2": 2093,
+          "NA": 2
+        },
+        "1": {
+          "0": 5974,
+          "1": 11519,
+          "2": 7045,
+          "NA": 5
+        },
+        "2": {
+          "0": 1681,
+          "1": 5844,
+          "2": 14742,
+          "NA": 19
+        }
+      },
+      "utterances": 4822
+    },
+    "legacy_2019": {
+      "accuracy": 68.9624905559753,
+      "scored_words": 90004,
+      "macro_f1": 65.11231287946894,
+      "per_class": {
+        "0": {
+          "precision": 82.40110395584176,
+          "recall": 82.90447982228804,
+          "f1": 82.65202546830304,
+          "support": 43216
+        },
+        "1": {
+          "precision": 50.843863214632854,
+          "recall": 46.92546077312021,
+          "f1": 48.80614105772085,
+          "support": 24524
+        },
+        "2": {
+          "precision": 61.73734495474355,
+          "recall": 66.17409270571326,
+          "f1": 63.87877211238293,
+          "support": 22264
+        }
+      },
+      "confusion": {
+        "0": {
+          "0": 35828,
+          "1": 5294,
+          "2": 2092,
+          "NA": 2
+        },
+        "1": {
+          "0": 5972,
+          "1": 11508,
+          "2": 7039,
+          "NA": 5
+        },
+        "2": {
+          "0": 1680,
+          "1": 5832,
+          "2": 14733,
+          "NA": 19
+        }
+      },
+      "utterances": 4821
+    }
+  },
+  "train_time_s": 1120.0,
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.66.2.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "git_commit": "df977a3d1752f03eb1629e9603552613adf8c1c3",
+    "numpy": "2.5.2",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GH200 120GB",
+    "transformers": "5.22.2"
+  }
+}
