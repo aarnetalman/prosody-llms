@@ -21,4 +21,4 @@ jobs*.txt
 .vscode/
 
 # Written by the analysis (LaTeX tables, numbers and figure data); regenerated, not tracked
-/results/paper/
+/paper/

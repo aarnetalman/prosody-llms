@@ -1,10 +1,10 @@
 """Run the whole analysis:
 
-    python -m prosody_llms.analysis [--results results] [--data-dir data] [--paper results/paper]
+    python -m prosody_llms.analysis [--results results] [--data-dir data] [--paper paper]
 
 Reads only ``results/`` and the corpus; writes ``results/analysis/`` and
-``results/paper/generated/`` (the numbers, tables and figure data of the paper). Parts
-whose inputs do not exist are skipped.
+``paper/results/`` (the numbers, tables and figure data of the paper). Parts whose
+inputs do not exist are skipped.
 """
 
 from __future__ import annotations
@@ -29,8 +29,8 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--results", type=Path, default=Path("results"))
     p.add_argument("--data-dir", type=Path, default=default_data_dir())
-    p.add_argument("--paper", type=Path, default=Path("results/paper"),
-                   help="LaTeX tables, numbers and figure data go to PAPER/generated")
+    p.add_argument("--paper", type=Path, default=Path("paper"),
+                   help="LaTeX tables, numbers and figure data go to PAPER/results")
     args = p.parse_args(argv)
     extra = errors.write_all(args.results, args.data_dir, args.paper)
     extra.update(readings.write_all(args.results, args.data_dir, args.paper))
@@ -43,7 +43,7 @@ def main(argv: list[str] | None = None) -> int:
           f"{info['numbers']} numbers for the paper, figure data: {', '.join(info['figure_files'])}")
     if vis:
         print(f"visuals: {vis}")
-    print(f"written: {args.results / 'analysis'}, {args.paper / 'generated'}")
+    print(f"written: {args.results / 'analysis'}, {args.paper / 'results'}")
     return 0
 
 

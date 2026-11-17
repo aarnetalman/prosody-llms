@@ -185,9 +185,9 @@ This reads only `results/` and the corpus, and takes a few seconds on a CPU. It 
   - every result as one CSV (`all_results.csv`);
   - the main table;
   - the error analysis.
-- `results/paper/generated/`, the paper's tables as LaTeX, every number quoted in the
-  paper (`numbers.tex`) and the figure data. This folder is generated on your machine and
-  is not part of the repository.
+- `paper/results/`: the paper's tables as LaTeX, every number quoted in the paper
+  (`numbers.tex`) and the figure data. This folder is written on your machine and is not
+  part of the repository.
 
 ## Layout
 

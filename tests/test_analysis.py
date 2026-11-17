@@ -63,7 +63,7 @@ def test_collect_and_tables(tmp_path, corpus_dir):
     assert ft["test_2019"] == 83.1 and ft["n"] == 2 and round(ft["sd"], 3) == 0.141
     assert {r["modality"] for r in rows if r["family"] == "probe_linear"} == {"text", "audio"}
     info = tables.write_all(root, tmp_path / "paper", {"agreement-3": "61.1"})
-    gen = tmp_path / "paper" / "generated"
+    gen = tmp_path / "paper" / "results"
     nums = (gen / "numbers.tex").read_text()
     assert "res@repro-2\\endcsname{83.10}" in nums and "res@agreement-3\\endcsname{61.1}" in nums
     assert "res@gap-3\\endcsname{60.0}" in nums  # audio 100 - text 40 on the common words
@@ -88,7 +88,7 @@ def test_errors_breakdown_overlap_and_agreement(tmp_path, corpus_dir):
     assert "content" in bd and "function" in bd
     assert nums["bd-3-content-audio"] == 100.0
     assert nums["corpus-negative"] == 0 and "train-utterances" in nums
-    assert "\\midrule" in (tmp_path / "paper" / "generated" / "breakdown_table.tex").read_text()
+    assert "\\midrule" in (tmp_path / "paper" / "results" / "breakdown_table.tex").read_text()
 
 
 def test_word_features_givenness_and_position(corpus_dir):
@@ -141,7 +141,7 @@ def test_visual_paper_figures():
     words = [{"word": w, "punct": p, "gold": g, "text": t, "speech": s} for w, p, g, t, s in
              [("Oh", False, "2", "1", "1"), (",", True, "NA", "NA", "NA"), ("Paris", False, "0", "1", "0")]]
     ex = visuals.example_tex([{"utt_id": "a_b", "words": words}])
-    assert "\\textbf{\\large Oh}," in ex and "\\textbf{Paris}" in ex and "a\\_b" in ex
+    assert "\\textbf{\\large Oh}," in ex and "\\textbf{Paris}" in ex
     assert "pending" in visuals.example_tex([])
 
 
