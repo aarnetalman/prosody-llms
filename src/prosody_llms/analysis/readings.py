@@ -283,8 +283,8 @@ def class_results(root: Path, data_dir: Path) -> tuple[list[dict], dict]:
 # ----------------------------------------------------------------------------- two readers, one text
 
 def two_reader_example(root: Path, data_dir: Path) -> tuple[list[dict], dict]:
-    """One test sentence that another speaker also reads in the development set, typeset
-    by prominence: the test reader, the speech model hearing that reader, the other reader,
+    """One test sentence that another speaker also reads in the development set, labelled
+    by the test reader, the speech model hearing that reader, the other reader,
     and the text model (whose prediction is the same for both readings). Chosen as the
     sentence of 6-14 words where the speech model's preference for its own reader is
     largest (ties broken by utterance id). One row per token, with the four 3-way labels."""
