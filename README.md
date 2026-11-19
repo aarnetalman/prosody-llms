@@ -261,15 +261,27 @@ Python's hash randomisation, and the kernels are deterministic. The reproduction
 ## Citation
 
 If you use the code or the results, please cite the paper, and the 2019 paper whose corpus
-and task this builds on. Both are in `CITATION.cff`, which GitHub also offers in other
-formats under "Cite this repository".
+and task this builds on (also in `CITATION.cff`):
 
-- Aarne Talman and Stergios Chatzikyriakidis. 2026. Language models represent more about
-  emphasis than they can tell you. arXiv preprint.
-- Aarne Talman, Antti Suni, Hande Celikkanat, Sofoklis Kakouros, Jörg Tiedemann and Martti
-  Vainio. 2019. Predicting Prosodic Prominence from Text with Pre-trained Contextualized
-  Word Representations. In *Proceedings of the 22nd Nordic Conference on Computational
-  Linguistics (NoDaLiDa)*, pages 281–290.
+```bibtex
+@misc{talman2026emphasis,
+  author = {Aarne Talman and Stergios Chatzikyriakidis},
+  title  = {Language models represent more about emphasis than they can tell you},
+  year   = {2026},
+  note   = {arXiv preprint}
+}
+
+@inproceedings{talman2019,
+  author    = {Aarne Talman and Antti Suni and Hande Celikkanat and Sofoklis Kakouros
+               and J{\"o}rg Tiedemann and Martti Vainio},
+  title     = {Predicting Prosodic Prominence from Text with Pre-trained Contextualized
+               Word Representations},
+  booktitle = {Proceedings of the 22nd Nordic Conference on Computational Linguistics (NoDaLiDa)},
+  pages     = {281--290},
+  year      = {2019},
+  url       = {https://aclanthology.org/W19-6129/}
+}
+```
 
 ## Licence
 
