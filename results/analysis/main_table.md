@@ -19,7 +19,7 @@ Accuracy on scored words; mean ± sd over seeds where there are several. Best la
 | Prompting | GPT-4o | text | 79.67 | 59.44 |  |
 | Prompting | DeepSeek-V4-Pro | text | 79.21 | 60.52 |  |
 | Prompting | Mistral Large 3 | text | 78.93 | 59.74 |  |
-| Prompting | GPT-5.5$^{\dagger}$ | text | 78.90 | 58.75 | test200 |
+| Prompting | GPT-5.5 (200 test utterances) | text | 78.90 | 58.75 | test200 |
 | Prompting | Qwen3.8 27B, 500 examples | text | 78.30 | 62.01 |  |
 | Prompting | Qwen2-Audio, with recording | audio | 50.98 | 39.23 |  |
 | Prompting | Qwen2-Audio, text only | text | 51.61 | 43.09 |  |

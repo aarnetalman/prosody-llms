@@ -1,0 +1,5 @@
+split,libritts_subset,utterances,words,speakers,label0,label1,label2,used_for
+train_360,train-clean-360,116263,2076289,904,48.3,27.4,24.2,training (text)
+train_100,train-clean-100,33042,570592,245,48.1,27.3,24.6,training (speech; matched text)
+dev,dev-clean,5727,99200,40,47.9,27.7,24.4,"model, layer and prompt selection"
+test,test-clean,4822,90063,39,48.0,27.3,24.7,evaluation

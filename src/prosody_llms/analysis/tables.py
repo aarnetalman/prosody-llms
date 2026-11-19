@@ -1,14 +1,14 @@
-"""Results tables, numbers for the paper and data for its figures.
+"""Results tables, the numbers quoted in the paper and the data behind its figures.
 
-Writes, from ``results/`` only:
+Writes, from ``results/`` only, under ``results/analysis/``:
 
-* ``results/analysis/all_results.csv``: every system, task and test score (tidy);
-* ``results/analysis/main_table.md`` and ``paper/results/main_table.tex``;
-* ``paper/results/comparison_table.tex``: text against audio on identical words;
-* ``paper/results/numbers.tex``: named numbers for the text, used as
-  ``\\resval{key}``; a missing key prints a bold ``??`` in the PDF;
-* ``paper/results/*.csv``: data for the pgfplots figures (layer curves, model size,
-  number of examples).
+* ``all_results.csv``: every system, task and test score (tidy);
+* ``main_table.md`` and ``tables/main_table.csv``;
+* ``tables/comparison.csv``: text against audio on identical words;
+* ``tables/paired.csv``: probing against prompting the same model;
+* ``tables/models.csv``: the models with their pinned revisions;
+* ``numbers.csv``: every number quoted in the paper, by name;
+* ``figures/*.csv``: layer curves, model size, number of examples.
 
 Test accuracy is on the 2019 subset (as in the 2019 paper) unless stated otherwise.
 Systems are chosen on dev where a choice is made (best layer, best text and audio
@@ -17,12 +17,12 @@ model); never on test.
 
 from __future__ import annotations
 
-import csv
 import json
 import re
 from pathlib import Path
 
 from prosody_llms.analysis import collect as C
+from prosody_llms.analysis.output import figures_dir, rnd, tables_dir, write_csv
 
 PAPER_2019 = {2: 83.2, 3: 68.6}  # Talman et al. (2019), BERT-base, Table 3
 
@@ -49,13 +49,6 @@ def display(model: str, cond: str = "") -> str:
     elif cond.startswith("echo"):
         name += ", echo"
     return name
-
-
-def fmt(x, sd=None, nd=1) -> str:
-    if x is None:
-        return "--"
-    s = f"{x:.{nd}f}"
-    return s + (f" $\\pm$ {sd:.{nd}f}" if sd else "")
 
 
 def fmt_md(x, sd=None, nd=2) -> str:
@@ -121,7 +114,7 @@ def main_table_rows(rows) -> list[tuple[str, str, dict, dict]]:
                 else:
                     out.append((group, f"best {modality}: {display(b3['model'], b3['condition'])}", b2, b3))
     for m, name in (("gpt-4o", "GPT-4o"), ("deepseek-v4-pro", "DeepSeek-V4-Pro"),
-                    ("mistral-large-3", "Mistral Large 3"), ("gpt-5.5", "GPT-5.5$^{\\dagger}$")):
+                    ("mistral-large-3", "Mistral Large 3"), ("gpt-5.5", "GPT-5.5 (200 test utterances)")):
         r3 = next((r for r in rows if r["family"] == "prompting" and r["model"] == m and r["task"] == 3), None)
         r2 = next((r for r in rows if r["family"] == "prompting" and r["model"] == m and r["task"] == 2
                    and "derived" in r["system"]), None)
@@ -153,28 +146,6 @@ def main_table_md(trows) -> str:
         note = "; ".join(x for i, x in enumerate(notes) if x and x not in notes[:i])
         lines.append(f"| {group} | {label} | {ref['modality']} | {fmt_md(r2 and r2['test_2019'], r2 and r2['sd'])} | "
                      f"{fmt_md(r3 and r3['test_2019'], r3 and r3['sd'])} | {note} |")
-    return "\n".join(lines) + "\n"
-
-
-def main_table_tex(trows) -> str:
-    lines = ["\\begin{tabular}{@{}llcc@{}}", "\\toprule",
-             " & System & 2-way & 3-way \\\\", "\\midrule"]
-    last = None
-    marks = {t: best_cells([(i, (r3 or r2)["modality"], x and x["test_2019"])
-                            for i, (g, _, r2, r3) in enumerate(trows) if g not in NOT_COMPETING
-                            for x in [(r2 if t == 2 else r3)]]) for t in (2, 3)}
-    for i, (group, label, r2, r3) in enumerate(trows):
-        if group != last:
-            if last is not None:
-                lines.append("\\midrule")
-            lines.append(f"\\multicolumn{{4}}{{@{{}}l}}{{\\textit{{{group}}}}} \\\\")
-            last = group
-        mod = (r3 or r2)["modality"]
-        icon = "\\textsc{a}" if mod == "audio" else "\\textsc{t}"
-        c2 = bold(fmt(r2 and r2['test_2019'], r2 and r2['sd']), i in marks[2])
-        c3 = bold(fmt(r3 and r3['test_2019'], r3 and r3['sd']), i in marks[3])
-        lines.append(f"{icon} & {tex_escape(label)} & {c2} & {c3} \\\\")
-    lines += ["\\bottomrule", "\\end{tabular}"]
     return "\n".join(lines) + "\n"
 
 
@@ -235,32 +206,6 @@ def mcnemar_vs(root: Path, comp: list[dict], ref: dict, others: list[dict]) -> d
     return out
 
 
-def best_cells(items) -> set:
-    """Indices to set in bold: items are (index, group, value or None); within each group,
-    the highest value at the displayed precision (ties are all bold)."""
-    top: dict = {}
-    for _, g, v in items:
-        if v is not None:
-            top[g] = max(top.get(g, float("-inf")), round(v, 1))
-    return {i for i, g, v in items if v is not None and round(v, 1) == top[g]}
-
-
-def bold(cell: str, on: bool) -> str:
-    """Bold the number of a formatted cell (keeps a trailing $\\pm$ sd or mark outside)."""
-    if not on or cell == "--":
-        return cell
-    num, sep, rest = cell.partition(" ")
-    m = re.match(r"^([0-9.]+)(.*)$", num)
-    return f"\\textbf{{{m.group(1)}}}{m.group(2)}{sep}{rest}" if m else cell
-
-
-NOT_COMPETING = ("Baselines", "Audio references")  # main-table groups that are references, not systems
-
-
-def tex_escape(s: str) -> str:
-    return s.replace("_", "\\_").replace("&", "\\&").replace("%", "\\%") if "$" not in s else s
-
-
 # ----------------------------------------------------------------------------- comparison
 
 
@@ -281,11 +226,11 @@ def system_label(name: str) -> str:
     return {"wavelet toolkit (labelling procedure)": "Labelling procedure", "duration only": "Duration only"}.get(name, name)
 
 
-def comparison_table_tex(comp: list[dict], dev: dict | None = None, root: Path | None = None) -> str:
-    """One row per kind of system on the common words (the best of each kind by 3-way
-    accuracy, or by 2-way where there is no 3-way row)."""
+def comparison_rows(comp: list[dict], dev: dict | None = None, root: Path | None = None) -> list[dict]:
+    """One row per kind of system on the common words (the best of each kind on dev, by
+    3-way where there is a 3-way row), with McNemar p-values against the best text system."""
     if not comp:
-        return "\\begin{tabular}{p{0.95\\columnwidth}}\\centering\\textit{results pending}\\end{tabular}\n"
+        return []
     by_sys: dict[str, dict] = {}
     for r in comp:
         by_sys.setdefault(r["system"], {})[int(r["task"])] = r
@@ -303,14 +248,12 @@ def comparison_table_tex(comp: list[dict], dev: dict | None = None, root: Path |
         ("audio prompting", lambda r: r["family"] == "audio_prompting" and r["modality"] == "audio"),
     ]
     chosen = []
-    for _, pred in kinds:
+    for kind, pred in kinds:
         cands = [(name, d) for name, d in by_sys.items() if pred(d.get(3) or d.get(2))]
         if cands:  # the best of each kind on dev (3-way where it exists)
             rep = {id(d.get(3) or d.get(2)): (name, d) for name, d in cands}
             best = pick([d.get(3) or d.get(2) for _, d in cands], dev or {})
-            chosen.append(rep[id(best)])
-    lines = ["\\begin{tabular}{@{}llccc@{}}", "\\toprule", " & System & 2-way & 3-way & 95\\% CI (3-way) \\\\", "\\midrule"]
-    competing = [i for i, (_, d) in enumerate(chosen) if (d.get(3) or d.get(2))["family"] not in ("reference", "baseline")]
+            chosen.append((kind, *rep[id(best)]))
     # Significance against the best text system chosen on dev, recomputed from the predictions.
     pvals: dict = {}
     if root is not None:
@@ -318,34 +261,30 @@ def comparison_table_tex(comp: list[dict], dev: dict | None = None, root: Path |
             text = [r for r in comp if int(r["task"]) == t and r["modality"] == "text"]
             if text:
                 ref = pick(text, dev or {})
-                rows_t = [d[t] for _, d in chosen if d.get(t) and d[t]["system"] != ref["system"]]
+                rows_t = [d[t] for _, _, d in chosen if d.get(t) and d[t]["system"] != ref["system"]]
                 pvals[t] = {"ref": ref["system"], **mcnemar_vs(root, comp, ref, rows_t)}
-    marks = {t: best_cells([(i, (chosen[i][1].get(3) or chosen[i][1].get(2))["modality"],
-                             float(chosen[i][1][t]["accuracy_common"]) if chosen[i][1].get(t) else None)
-                            for i in competing]) for t in (2, 3)}
-    for i, (name, d) in enumerate(chosen):
+    out = []
+    for kind, name, d in chosen:
         r = d.get(3) or d.get(2)
-        icon = "\\textsc{a}" if r["modality"] == "audio" else "\\textsc{t}"
-
-        def cell(t):
+        row = {"kind": kind, "system": system_label(name), "modality": r["modality"]}
+        for t in (2, 3):
             x = d.get(t)
+            row[f"acc{t}"] = rnd(x and x["accuracy_common"])
             if not x:
-                return "--"
-            if t in pvals:
+                pv = None
+            elif t in pvals:
                 pv = None if x["system"] == pvals[t]["ref"] else pvals[t].get(x["system"])
             else:
                 pv = float(x["mcnemar_p"]) if x.get("mcnemar_p") else None
-            mark = "" if pv is None or pv < 0.05 else "$^{\\circ}$"
-            return bold(f"{float(x['accuracy_common']):.1f}{mark}", i in marks[t])
-        ci = (f"{float(d[3]['ci_low']):.1f}--{float(d[3]['ci_high']):.1f}"
-              if d.get(3) and d[3].get("ci_low") not in (None, "") else "--")
-        lines.append(f"{icon} & {tex_escape(system_label(name))} & {cell(2)} & {cell(3)} & {ci} \\\\")
-    lines += ["\\bottomrule", "\\end{tabular}"]
-    return "\n".join(lines) + "\n"
+            row[f"p_vs_best_text{t}"] = "" if pv is None else f"{pv:.3g}"
+        x = d.get(3)
+        row["ci3_low"] = rnd(x and x.get("ci_low"))
+        row["ci3_high"] = rnd(x and x.get("ci_high"))
+        out.append(row)
+    return out
 
 
 # ----------------------------------------------------------------------------- numbers
-
 
 def numbers(rows, comp, root: Path, extra: dict | None = None) -> dict[str, str]:
     """Named numbers used in the paper text."""
@@ -581,7 +520,7 @@ def params_label(n) -> str:
     return f"{n / 1e9:.1f}B" if n >= 1e9 else f"{round(n / 1e6):d}M"
 
 
-def models_tex() -> str:
+def models_rows() -> list[dict]:
     """The models with their Hugging Face identifiers and pinned revisions."""
     from prosody_llms.config import load_registry
 
@@ -592,38 +531,11 @@ def models_tex() -> str:
               ("Speech", ["wavlm-large", "hubert-large", "whisper-large-v3", "qwen2-audio-7b",
                           "qwen2-audio-7b-instruct"])]
     reg = load_registry()
-    lines = [r"\begin{tabular}{@{}llrl@{}}", r"\toprule", r"Model & Hugging Face identifier & Params & Revision \\", r"\midrule"]
-    for gi, (group, names) in enumerate(groups):
-        if gi:
-            lines.append(r"\midrule")
-        lines.append(rf"\multicolumn{{4}}{{@{{}}l}}{{\textit{{{group}}}}} \\")
-        for name in names:
-            m = reg.get(name)
-            if m:
-                lines.append(f"{tex_escape(display(name))} & \\texttt{{{tex_escape(m.id)}}} & {params_label(m.extra.get('params'))} & "
-                             f"\\texttt{{{m.revision[:8]}}} " + r"\\")
-    lines += [r"\bottomrule", r"\end{tabular}"]
-    return "\n".join(lines) + "\n"
-
-
-def numbers_tex(n: dict[str, str]) -> str:
-    lines = ["\\makeatletter",
-             "\\providecommand{\\resval}[1]{\\ifcsname res@#1\\endcsname\\csname res@#1\\endcsname"
-             "\\else\\textbf{??}\\fi}"]
-    for key in sorted(n):
-        lines.append(f"\\expandafter\\def\\csname res@{key}\\endcsname{{{tex_escape(n[key])}}}")
-    lines.append("\\makeatother")
-    return "\n".join(lines) + "\n"
+    return [{"group": group, "model": display(name), "hf_id": m.id, "params": params_label(m.extra.get("params")),
+             "revision": m.revision} for group, names in groups for name in names if (m := reg.get(name))]
 
 
 # ----------------------------------------------------------------------------- figure data
-
-
-def write_csv(path: Path, rows: list[dict], fields: list[str]) -> None:
-    with open(path, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
-        w.writeheader()
-        w.writerows(rows)
 
 
 def layer_curve_rows(root: Path, model: str, cond: str) -> list[dict]:
@@ -652,6 +564,7 @@ LAYER_SERIES = [("bert-base-uncased", "plain-first-natural"), ("muse-glimmer-30b
 
 
 def figure_data(rows, root: Path, out: Path) -> list[str]:
+    out.mkdir(parents=True, exist_ok=True)
     written = []
     for model, cond in LAYER_SERIES:
         r = layer_curve_rows(root, model, cond)
@@ -717,40 +630,37 @@ def paired_rows(rows):
     return out
 
 
-def paired_table_tex(prows) -> str:
-    lines = [r"\begin{tabular}{@{}llcc@{}}", r"\toprule", r"Model & Access & 2-way & 3-way \\", r"\midrule"]
-    last = None
-    marks = {t: best_cells([(i, model, x and x["test_2019"]) for i, (model, _, _, r2, r3) in enumerate(prows)
-                            for x in [(r2 if t == 2 else r3)]]) for t in (2, 3)}
-    for i, (model, modality, label, r2, r3) in enumerate(prows):
-        if last is not None and model != last:
-            lines.append(r"\midrule")
-        icon = "a" if modality == "audio" else "t"
-        name = f"{model} (\\textsc{{{icon}}})" if model != last else ""
-        last = model
-        lines.append(f"{name} & {label} & {bold(fmt(r2 and r2['test_2019'], r2 and r2['sd']), i in marks[2])} & "
-                     f"{bold(fmt(r3 and r3['test_2019'], r3 and r3['sd']), i in marks[3])} " + r"\\")
-    lines += [r"\bottomrule", r"\end{tabular}"]
-    return "\n".join(lines) + "\n"
+def main_table_csv(trows) -> list[dict]:
+    return [{"group": g, "system": label, "modality": (r3 or r2)["modality"],
+             "acc2": rnd(r2 and r2["test_2019"]), "sd2": rnd(r2 and r2["sd"]),
+             "acc3": rnd(r3 and r3["test_2019"]), "sd3": rnd(r3 and r3["sd"])} for g, label, r2, r3 in trows]
 
 
-def write_all(root: Path, paper_dir: Path, extra_numbers: dict | None = None) -> dict:
+def paired_csv(prows) -> list[dict]:
+    return [{"model": model, "modality": modality, "access": label,
+             "acc2": rnd(r2 and r2["test_2019"]), "sd2": rnd(r2 and r2["sd"]),
+             "acc3": rnd(r3 and r3["test_2019"]), "sd3": rnd(r3 and r3["sd"])}
+            for model, modality, label, r2, r3 in prows]
+
+
+def write_all(root: Path, extra_numbers: dict | None = None) -> dict:
     rows = C.collect(root)
     comp = C.comparison(root)
-    out = root / "analysis"
-    gen = paper_dir / "results"
+    out, tab = root / "analysis", tables_dir(root)
     out.mkdir(parents=True, exist_ok=True)
-    gen.mkdir(parents=True, exist_ok=True)
     fields = ["family", "system", "model", "condition", "modality", "task", "test_2019", "test_full",
               "macro_f1", "sd", "n", "dev", "note"]
     write_csv(out / "all_results.csv", rows, fields)
     trows = main_table_rows(rows)
     (out / "main_table.md").write_text(main_table_md(trows), encoding="utf-8")
-    (gen / "main_table.tex").write_text(main_table_tex(trows), encoding="utf-8")
-    (gen / "comparison_table.tex").write_text(comparison_table_tex(comp, dev_scores(rows), root), encoding="utf-8")
-    (gen / "paired_table.tex").write_text(paired_table_tex(paired_rows(rows)), encoding="utf-8")
-    (gen / "models_table.tex").write_text(models_tex(), encoding="utf-8")
+    write_csv(tab / "main_table.csv", main_table_csv(trows),
+              ["group", "system", "modality", "acc2", "sd2", "acc3", "sd3"])
+    write_csv(tab / "comparison.csv", comparison_rows(comp, dev_scores(rows), root),
+              ["kind", "system", "modality", "acc2", "acc3", "p_vs_best_text2", "p_vs_best_text3", "ci3_low", "ci3_high"])
+    write_csv(tab / "paired.csv", paired_csv(paired_rows(rows)),
+              ["model", "modality", "access", "acc2", "sd2", "acc3", "sd3"])
+    write_csv(tab / "models.csv", models_rows(), ["group", "model", "hf_id", "params", "revision"])
     nums = numbers(rows, comp, root, extra_numbers)
-    (gen / "numbers.tex").write_text(numbers_tex(nums), encoding="utf-8")
-    figs = figure_data(rows, root, gen)
+    write_csv(out / "numbers.csv", [{"key": k, "value": nums[k]} for k in sorted(nums)], ["key", "value"])
+    figs = figure_data(rows, root, figures_dir(root))
     return {"rows": len(rows), "table_rows": len(trows), "numbers": len(nums), "figure_files": figs}

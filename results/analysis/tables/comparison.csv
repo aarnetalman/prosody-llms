@@ -1,0 +1,11 @@
+kind,system,modality,acc2,acc3,p_vs_best_text2,p_vs_best_text3,ci3_low,ci3_high
+reference,Labelling procedure,audio,95.0,91.5,0,0,91.3,91.7
+speech BiLSTM,"Whisper large-v3 (encoder), BiLSTM classifier",audio,90.87,84.6,0,0,84.32,84.86
+speech linear,"Whisper large-v3 (encoder), linear probe",audio,88.3,78.79,0,0,78.48,79.07
+speech LLM,"Qwen2-Audio 7B (LM), BiLSTM classifier",audio,87.39,76.69,3.58e-314,0,76.37,76.99
+duration,Duration only,audio,83.25,65.05,0.163,3.9e-69,64.72,65.39
+text BiLSTM,"Qwen3.5 0.8B, echo, BiLSTM classifier",text,82.94,68.07,0.0615,,67.73,68.4
+"text BiLSTM, train_100","Muse Glimmer 30B, echo, BiLSTM classifier, train_100",text,82.75,67.55,4.37e-05,1.72e-05,67.2,67.88
+text linear,"Muse Glimmer 30B, echo, linear probe",text,82.61,66.92,1.74e-09,2.05e-20,66.56,67.25
+prompting,"Qwen3.8 27B, prompted",text,78.34,62.03,0,4.12e-321,61.66,62.35
+audio prompting,"Qwen2-Audio 7B Instruct, prompted",audio,50.98,39.24,0,0,38.78,39.71

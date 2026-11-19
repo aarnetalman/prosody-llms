@@ -13,7 +13,7 @@
   several words, picked by a fixed hash (not by hand).
 
 Writes ``results/analysis/error_analysis.md``, ``breakdown.csv``, ``overlap.csv`` and
-``paper/results/breakdown_table.tex``; returns numbers for ``numbers.tex``.
+``tables/data.csv``; returns the numbers quoted in the paper.
 """
 
 from __future__ import annotations
@@ -25,6 +25,7 @@ import hashlib
 import math
 from pathlib import Path
 
+from prosody_llms.analysis.output import tables_dir, write_csv
 from prosody_llms.data.corpus import LABEL_NA, read_split
 from prosody_llms.data.subsets import (
     chapter_position,
@@ -426,31 +427,6 @@ def breakdown(root: Path, data_dir: Path, consensus_tags: dict | None = None) ->
     return rows, ex_rows, nums
 
 
-def breakdown_tex(rows: list[dict]) -> str:
-    keep = [("class", "content"), ("class", "function"), ("position", "initial"), ("position", "medial"),
-            ("position", "final"), ("givenness", "new"), ("givenness", "given"), ("frequency", "unseen"),
-            ("frequency", "1-10"), ("frequency", ">1k"), ("text consensus", "all-wrong"),
-            ("text consensus", "split"), ("text consensus", "all-right"), ("all", "all")]
-    labels = {"content": "content words", "function": "function words", "initial": "first word",
-              "medial": "medial", "final": "last word", "new": "new (content)", "given": "given (content)",
-              "unseen": "unseen in training", "1-10": "seen 1--10 times", ">1k": "seen $>$1,000 times",
-              "all-wrong": "every text model wrong", "split": "text models disagree",
-              "all-right": "every text model right", "all": "all common words"}
-    r3 = {(r["dimension"], r["value"]): r for r in rows if r["task"] == 3}
-    if not r3:
-        return "\\begin{tabular}{p{0.95\\columnwidth}}\\centering\\textit{results pending}\\end{tabular}\n"
-    lines = ["\\begin{tabular}{@{}lrccc@{}}", "\\toprule",
-             "Words & $n$ & Text & Audio & $\\Delta$ \\\\", "\\midrule"]
-    for key in keep:
-        r = r3.get(key)
-        if r:
-            sep = "\\midrule\n" if key == ("all", "all") else ""
-            lines.append(f"{sep}{labels[key[1]]} & {r['words']:,} & {r['text_acc']:.1f} & {r['audio_acc']:.1f} & "
-                         f"{r['diff']:+.1f} \\\\")
-    lines += ["\\bottomrule", "\\end{tabular}"]
-    return "\n".join(lines) + "\n"
-
-
 def corpus_values(data_dir: Path) -> dict:
     """The corpus's real-valued prominence: share of exact zeros and of negative values
     (evidence that it stores max(0, score))."""
@@ -475,8 +451,8 @@ SPLITS = (  # (file, LibriTTS subset, use in the paper)
 )
 
 
-def corpus_table(data_dir: Path) -> tuple[str, dict]:
-    """Size, speakers and 3-way label distribution of each split, as a LaTeX table."""
+def corpus_table(data_dir: Path) -> tuple[list[dict], dict]:
+    """Size, speakers and 3-way label distribution (%) of each split."""
     rows, nums, speakers = [], {}, {}
     for name, subset, use in SPLITS:
         p = data_dir / f"{name}.txt"
@@ -493,22 +469,17 @@ def corpus_table(data_dir: Path) -> tuple[str, dict]:
         tag = name.replace("_", "")
         nums.update({f"data-{tag}-utts": len(utts), f"data-{tag}-words": words,
                      f"data-{tag}-speakers": len(speakers[name])})
-        share = " & ".join(f"{100.0 * counts[k] / words:.1f}" for k in "012")
-        rows.append(f"\\texttt{{{name.replace('_', '\\_')}}} & {subset} & {len(utts):,} & {words:,} & "
-                    f"{len(speakers[name])} & {share} & {use} \\\\")
+        rows.append({"split": name, "libritts_subset": subset, "utterances": len(utts), "words": words,
+                     "speakers": len(speakers[name]),
+                     **{f"label{k}": round(100.0 * counts[k] / words, 1) for k in "012"}, "used_for": use})
     names = list(speakers)
     nums["data-shared-speakers"] = sum(len(speakers[a] & speakers[b]) for i, a in enumerate(names) for b in names[i + 1:])
-    tex = "\n".join(["\\begin{tabular}{@{}llrrrrrrl@{}}", "\\toprule",
-                     " & & & & & \\multicolumn{3}{c}{Labels (\\%)} & \\\\", "\\cmidrule(lr){6-8}",
-                     "Split & LibriTTS subset & Utterances & Words & Speakers & 0 & 1 & 2 & Used for \\\\",
-                     "\\midrule", *rows, "\\bottomrule", "\\end{tabular}"]) + "\n"
-    return tex, nums
+    return rows, nums
 
 
-def write_all(root: Path, data_dir: Path, paper_dir: Path) -> dict:
+def write_all(root: Path, data_dir: Path) -> dict:
     out = root / "analysis"
     out.mkdir(parents=True, exist_ok=True)
-    (paper_dir / "results").mkdir(parents=True, exist_ok=True)
     nums: dict = {}
     agr = agreement(data_dir)
     if "agreement-3" in agr:
@@ -533,9 +504,9 @@ def write_all(root: Path, data_dir: Path, paper_dir: Path) -> dict:
             nums[f"overlap-diff-min-{t}"] = -max(diffs)  # smallest drop
             nums[f"overlap-diff-max-{t}"] = -min(diffs)  # largest drop
     nums.update(corpus_values(data_dir))
-    data_tex, data_nums = corpus_table(data_dir)
+    data_rows, data_nums = corpus_table(data_dir)
     nums.update(data_nums)
-    (paper_dir / "results" / "data_table.tex").write_text(data_tex, encoding="utf-8")
+    write_csv(tables_dir(root) / "data.csv", data_rows)
     sample = root / "audio" / "reconstruction" / "sample" / "result.json"
     if sample.exists():
         import json
@@ -554,11 +525,7 @@ def write_all(root: Path, data_dir: Path, paper_dir: Path) -> dict:
     nums.update(bd_nums)
     for name, rows_ in (("overlap.csv", ov_rows), ("breakdown.csv", bd_rows)):
         if rows_:
-            with open(out / name, "w", newline="", encoding="utf-8") as f:
-                w = csv.DictWriter(f, fieldnames=list(rows_[0]))
-                w.writeheader()
-                w.writerows(rows_)
-    (paper_dir / "results" / "breakdown_table.tex").write_text(breakdown_tex(bd_rows), encoding="utf-8")
+            write_csv(out / name, rows_)
     agr_line = (f"**Agreement between readers of the same text** ({agr['groups']} texts, "
                 f"{agr['agreement-pairs']:,} word pairs): {agr['agreement-2']:.1f} (2-way), "
                 f"{agr['agreement-3']:.1f} (3-way)." if "agreement-3" in agr else

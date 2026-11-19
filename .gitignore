@@ -19,6 +19,3 @@ jobs*.txt
 .DS_Store
 .idea/
 .vscode/
-
-# Written by the analysis (LaTeX tables, numbers and figure data); regenerated, not tracked
-/paper/

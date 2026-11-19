@@ -1,3 +1,4 @@
+import csv
 import gzip
 import json
 
@@ -62,15 +63,16 @@ def test_collect_and_tables(tmp_path, corpus_dir):
     ft = [r for r in rows if r["family"] == "finetune" and r["task"] == 2][0]
     assert ft["test_2019"] == 83.1 and ft["n"] == 2 and round(ft["sd"], 3) == 0.141
     assert {r["modality"] for r in rows if r["family"] == "probe_linear"} == {"text", "audio"}
-    info = tables.write_all(root, tmp_path / "paper", {"agreement-3": "61.1"})
-    gen = tmp_path / "paper" / "results"
-    nums = (gen / "numbers.tex").read_text()
-    assert "res@repro-2\\endcsname{83.10}" in nums and "res@agreement-3\\endcsname{61.1}" in nums
-    assert "res@gap-3\\endcsname{60.0}" in nums  # audio 100 - text 40 on the common words
-    assert "\\resval" in nums and "??" in nums
-    main = (gen / "main_table.tex").read_text()
-    assert "BERT-base (2019 recipe)" in main and "best audio: WavLM-large" in main
-    assert info["figure_files"] and (gen / "layers_wavlm_large.csv").exists()
+    info = tables.write_all(root, {"agreement-3": "61.1"})
+    out = root / "analysis"
+    nums = {r["key"]: r["value"] for r in csv.DictReader(open(out / "numbers.csv"))}
+    assert nums["repro-2"] == "83.10" and nums["agreement-3"] == "61.1"
+    assert nums["gap-3"] == "60.0"  # audio 100 - text 40 on the common words
+    main = list(csv.DictReader(open(out / "tables" / "main_table.csv")))
+    assert {"BERT-base (2019 recipe)", "best audio: WavLM-large"} <= {r["system"] for r in main}
+    comp = list(csv.DictReader(open(out / "tables" / "comparison.csv")))
+    assert {r["modality"] for r in comp} == {"text", "audio"}
+    assert info["figure_files"] and (out / "figures" / "layers_wavlm_large.csv").exists()
 
 
 def test_best_is_chosen_on_dev_not_test(tmp_path, corpus_dir):
@@ -81,14 +83,15 @@ def test_best_is_chosen_on_dev_not_test(tmp_path, corpus_dir):
 
 def test_errors_breakdown_overlap_and_agreement(tmp_path, corpus_dir):
     root = _results(tmp_path, corpus_dir)
-    nums = errors.write_all(root, corpus_dir, tmp_path / "paper")
+    nums = errors.write_all(root, corpus_dir)
     md = (root / "analysis" / "error_analysis.md").read_text()
     assert "Agreement between readers" in md and "word[gold|text|audio]" in md
     bd = (root / "analysis" / "breakdown.csv").read_text()
     assert "content" in bd and "function" in bd
     assert nums["bd-3-content-audio"] == 100.0
     assert nums["corpus-negative"] == 0 and "train-utterances" in nums
-    assert "\\midrule" in (tmp_path / "paper" / "results" / "breakdown_table.tex").read_text()
+    data = list(csv.DictReader(open(root / "analysis" / "tables" / "data.csv")))
+    assert data and {"split", "utterances", "label0", "used_for"} <= set(data[0])
 
 
 def test_word_features_givenness_and_position(corpus_dir):
@@ -129,20 +132,13 @@ def test_finetuning_runs_that_did_not_train_are_left_out(tmp_path):
     assert r["n"] == 2 and round(r["test_2019"], 2) == 83.3 and "1 of 3 seeds did not train" in r["note"]
 
 
-def test_visual_paper_figures():
+def test_agreement_numbers():
     from prosody_llms.analysis import visuals
 
     agr = {"labels": ["Gold labels", "Whisper large-v3", "BERT-base", "BERT_x"], "groups": ["gold", "speech", "text", "text"],
            "matrix": [[100, 80, 60, 61], [80, 100, 70, 71], [60, 70, 100, 90], [61, 71, 90, 100]], "words": 10}
-    tex = visuals.heatmap_tex(agr)
-    assert tex.count("rectangle") == 6 and "BERT\\_x" in tex and "{Gold}" in tex
     nums = visuals.agreement_numbers(agr)
     assert nums["agr-text-text"] == 90 and nums["agr-gold-text"] == 60.5 and nums["agr-text-speech"] == 70.5
-    words = [{"word": w, "punct": p, "gold": g, "text": t, "speech": s} for w, p, g, t, s in
-             [("Oh", False, "2", "1", "1"), (",", True, "NA", "NA", "NA"), ("Paris", False, "0", "1", "0")]]
-    ex = visuals.example_tex([{"utt_id": "a_b", "words": words}])
-    assert "\\textbf{\\large Oh}," in ex and "\\textbf{Paris}" in ex
-    assert "pending" in visuals.example_tex([])
 
 
 def test_readings_tables_and_profile():
@@ -156,23 +152,10 @@ def test_readings_tables_and_profile():
     wrong = {u.utt_id: ["2", "2", "2", "NA"]}
     prof = readings._profile([u], wrong)
     assert prof["last-top"] == 100.0 and prof["function-acc"] == 0.0
-    rows = [{"system": "S", "kind": "speech", "own": 80.0, "other": 60.0, "diff": 20.0}]
-    tex = readings.reader_tex(rows, {"rt-readers": 64.0})
-    assert "+20.0" in tex and "64.0" in tex
-    assert "pending" in readings.reader_tex([], {}) and "pending" in readings.profile_tex([])
-    tex = readings.profile_tex([{"system": "Gold labels", "tag": "gold", "content-top": 42.0, "function-top": 9.0,
-                                 "last-top": 32.0}])
-    assert "--" in tex and "42.0" in tex
-
-
-def test_bold_best_cells():
-    from prosody_llms.analysis.tables import best_cells, bold
-
-    marks = best_cells([(0, "text", 68.79), (1, "text", 68.81), (2, "audio", 84.7), (3, "text", 60.0), (4, "audio", None)])
-    assert marks == {0, 1, 2}  # ties at one decimal are all bold
-    assert bold("68.8 $\\pm$ 0.1", True) == "\\textbf{68.8} $\\pm$ 0.1"
-    assert bold("83.2$^{\\circ}$", True) == "\\textbf{83.2}$^{\\circ}$"
-    assert bold("--", True) == "--" and bold("60.0", False) == "60.0"
+    rows = readings.behaviour_rows([{"system": "Gold labels", "tag": "gold", "content-top": 42.0, "function-top": 9.0,
+                                     "last-top": 32.0}], [])
+    assert rows == [{"system": "Gold labels", "kind": "", "macro_f1": "", "recall0": "", "recall1": "", "recall2": "",
+                     "top_content": 42.0, "top_function": 9.0, "top_last": 32.0, "acc_content": "", "acc_function": ""}]
 
 
 def test_params_label_and_class_tables():
@@ -183,9 +166,8 @@ def test_params_label_and_class_tables():
     conf = {g: {p: (100.0 if g == p else 0.0) for p in "012"} for g in "012"}
     rows = [{"system": "S", "tag": "qwen", "kind": "t", "macro_f1": 60.0, "recall-0": 80.0, "recall-1": 40.0,
              "recall-2": 60.0, "confusion": conf}]
-    assert "60.0" in readings.class_tex(rows) and "pending" in readings.class_tex([])
-    tex = readings.confusion_tex(rows)
-    assert tex.count("rectangle") == 9 and "predicted" in tex
+    out = readings.behaviour_rows([], rows)
+    assert out[0]["system"] == "Gold labels" and out[1]["macro_f1"] == 60.0 and out[1]["recall1"] == 40.0
 
 
 def test_lexical_default_helpers(corpus_dir):
@@ -193,7 +175,3 @@ def test_lexical_default_helpers(corpus_dir):
 
     lookup, share = readings.word_majority(corpus_dir)
     assert lookup("zzz-unseen") == "0" and 0.0 <= share("zzz-unseen") <= 1.0
-    rows = [{"system": "S", "tag": "qwen", "kind": "t", "agree": 70.0, "departs": 30.0, "dep_right": 51.0,
-             "dep_wm_right": 31.0}]
-    tex = readings.lexical_tex(rows)
-    assert "51.0" in tex and "31.0" in tex and "pending" in readings.lexical_tex([])

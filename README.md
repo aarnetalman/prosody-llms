@@ -46,8 +46,10 @@ commands that reproduce them.
 | Section 5.3, Table 8: speech models | `audio-linear`, `audio-strong`, `audio-prompting`, `compare` | `results/audio/`, `audio_prompting/` | `audio/` |
 | Section 6, Tables 9 and 10: word types, error analysis | `analysis` | `results/analysis/` | `analysis/` |
 
-Code paths are under `src/prosody_llms/`. Every number quoted in the paper is written to
-`paper/results/numbers.tex` by `make analysis`.
+Code paths are under `src/prosody_llms/`. `make analysis` writes every table of the paper to
+`results/analysis/tables/`, the data behind every figure to `results/analysis/figures/`, and
+every number quoted in the text, by name, to `results/analysis/numbers.csv`. These outputs
+are committed, so they can be read without running anything.
 
 ## Installation
 
@@ -207,15 +209,18 @@ python -m prosody_llms.analysis      # tables and numbers
 make analysis     # python -m prosody_llms.analysis
 ```
 
-This reads only `results/` and the corpus, and takes a few seconds on a CPU. It writes:
+This reads only `results/` and the corpus, takes a few seconds on a CPU, and writes
+`results/analysis/`:
 
-- `results/analysis/`:
-  - every result as one CSV (`all_results.csv`);
-  - the main table;
-  - the error analysis.
-- `paper/results/`: the paper's tables as LaTeX, every number quoted in the paper
-  (`numbers.tex`) and the figure data. This folder is written on your machine and is not
-  part of the repository.
+- `all_results.csv`: every result as one table (system, task, test and dev scores);
+- `main_table.md`: the main table, readable on GitHub;
+- `tables/`: each table of the paper as CSV (`data`, `models`, `main_table`, `paired`,
+  `behaviour`, `confusion`, `lexical`, `readers`, `two_readers`, `comparison`), and
+  `breakdown.csv` and `overlap.csv` one level up;
+- `figures/`: the data behind each figure (layer curves, learning curves, model size,
+  number of examples, agreement between systems);
+- `numbers.csv`: every number quoted in the text, by name;
+- `error_analysis.md` and `visuals.json`: the error analysis and example sentences.
 
 ## Layout
 

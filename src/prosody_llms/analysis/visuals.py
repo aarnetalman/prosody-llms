@@ -1,4 +1,4 @@
-"""Data for the visual summaries (the results page and paper figures).
+"""Data for the visual summaries and the agreement figure.
 
 * ``agreement``: how often two systems give a word the same 3-way label, on the words
   the text-against-audio comparison uses, for gold labels and a set of text, speech and
@@ -9,9 +9,8 @@
   per word, chosen by a fixed hash among those where the two models differ on several
   words.
 
-Writes ``results/analysis/visuals.json`` and, for the paper, ``paper/results/agreement.csv``,
-``agreement_heatmap.tex`` (the lower triangle as a TikZ picture) and ``example_sentence.tex``
-(the shortest chosen sentence, typeset by its labels).
+Writes ``results/analysis/visuals.json`` and ``results/analysis/figures/agreement.csv`` (the
+agreement between every pair of systems).
 """
 
 from __future__ import annotations
@@ -22,6 +21,7 @@ import json
 from pathlib import Path
 
 from prosody_llms.analysis.errors import common_mask, read_predictions_gz
+from prosody_llms.analysis.output import figures_dir, write_csv
 from prosody_llms.data.corpus import LABEL_NA, read_split
 
 SYSTEMS = [  # (label, group, path under results/)
@@ -136,62 +136,16 @@ def sentences(root: Path, data_dir: Path, k: int = 4) -> list[dict]:
     return out
 
 
-def write_all(root: Path, data_dir: Path, paper_dir: Path) -> dict:
+def write_all(root: Path, data_dir: Path) -> dict:
     agr = agreement(root, data_dir)
     data = {"agreement": agr, "accuracy": accuracy(root), "sentences": sentences(root, data_dir)}
     (root / "analysis" / "visuals.json").write_text(json.dumps(data, indent=1) + "\n", encoding="utf-8")
-    with open(paper_dir / "results" / "agreement.csv", "w", encoding="utf-8") as f:
-        f.write("x,y,agree\n")
-        for a, row in enumerate(agr["matrix"]):
-            for b, v in enumerate(row):
-                f.write(f"{b},{a},{v}\n")
-    (paper_dir / "results" / "agreement_heatmap.tex").write_text(heatmap_tex(agr), encoding="utf-8")
-    (paper_dir / "results" / "example_sentence.tex").write_text(example_tex(data["sentences"]), encoding="utf-8")
+    labels = agr["labels"]
+    write_csv(figures_dir(root) / "agreement.csv",
+              [{"system_a": labels[a], "system_b": labels[b], "agree": v}
+               for a, row in enumerate(agr["matrix"]) for b, v in enumerate(row)], ["system_a", "system_b", "agree"])
     return {"systems": len(agr["labels"]), "accuracy_rows": len(data["accuracy"]),
             "sentences": len(data["sentences"]), "numbers": agreement_numbers(agr)}
-
-
-# ----------------------------------------------------------------------------- paper figures
-
-SHORT = {"Gold labels": "Gold", "Qwen2-Audio encoder": "Qwen2-Audio enc.", "Qwen2-Audio LM": "Qwen2-Audio LM",
-         "DeepSeek-V4-Pro (prompted)": "DeepSeek-V4-Pro", "GPT-4o (prompted)": "GPT-4o",
-         "Mistral Large 3 (prompted)": "Mistral Large 3"}
-RAMP = [(240, 246, 253), (134, 182, 239), (42, 120, 214), (16, 66, 129)]  # light to dark blue
-LO, HI = 55.0, 95.0
-
-
-def _shade(v: float) -> tuple[int, int, int]:
-    t = min(max((v - LO) / (HI - LO), 0.0), 1.0) * (len(RAMP) - 1)
-    i = min(int(t), len(RAMP) - 2)
-    f = t - i
-    return tuple(round(a + (b - a) * f) for a, b in zip(RAMP[i], RAMP[i + 1]))
-
-
-def _tex(s: str) -> str:
-    return s.replace("&", "\\&").replace("_", "\\_").replace("%", "\\%").replace("$", "\\$").replace("#", "\\#")
-
-
-def heatmap_tex(agr: dict, cell: float = 0.42) -> str:
-    """The lower triangle of the agreement matrix as a plain TikZ picture."""
-    labels = [SHORT.get(x, x) for x in agr["labels"]]
-    groups, m, n = agr["groups"], agr["matrix"], len(agr["labels"])
-    out = ["\\begin{tikzpicture}[x=%.2fcm, y=-%.2fcm, font=\\scriptsize]" % (cell, cell)]
-    for a in range(1, n):
-        out.append(f"\\node[anchor=east] at (-0.1, {a - 1 + 0.5}) {{{_tex(labels[a])}}};")
-        for b in range(a):
-            v = m[a][b]
-            r, g, bl = _shade(v)
-            txt = "white" if (r + g + bl) / 3 < 140 else "black"
-            out.append(f"\\fill[fill={{rgb,255:red,{r};green,{g};blue,{bl}}}] ({b},{a - 1}) rectangle ++(1,1);"
-                       f"\\node[text={txt}, font=\\tiny] at ({b + 0.5},{a - 0.5}) {{{v:.0f}}};")
-    for b in range(n - 1):
-        out.append(f"\\node[anchor=north east, rotate=60, inner sep=1pt] at ({b + 0.6}, {n - 1 + 0.1}) {{{_tex(labels[b])}}};")
-    for i in range(1, n):  # lines between gold, speech, text and prompted systems
-        if groups[i] != groups[i - 1]:
-            out.append(f"\\draw[white, line width=1.2pt] ({i},{i - 1}) -- ({i},{n - 1});"
-                       f"\\draw[white, line width=1.2pt] (0,{i - 1}) -- ({i},{i - 1});")
-    out.append("\\end{tikzpicture}")
-    return "\n".join(out) + "\n"
 
 
 def agreement_numbers(agr: dict) -> dict:
@@ -213,27 +167,3 @@ def agreement_numbers(agr: dict) -> dict:
             out[f"agr-{key}"] = v
     return out
 
-
-def example_tex(sents: list[dict]) -> str:
-    """The shortest of the chosen sentences, each row typeset by its labels."""
-    if not sents:
-        return "\\textit{(results pending)}\n"
-    s = min(sents, key=lambda x: (sum(not w["punct"] for w in x["words"]), x["utt_id"]))
-    style = {"0": "\\textcolor{gray}{%s}", "1": "\\textbf{%s}", "2": "\\textbf{\\large %s}"}
-
-    def row(key):
-        parts = []
-        for w in s["words"]:
-            word = _tex(w["word"])
-            if w["punct"]:
-                if parts:
-                    parts[-1] += word
-                continue
-            parts.append(style.get(w[key], "%s") % word)
-        return " ".join(parts)
-
-    rows = [("Reader", "gold"), ("Text", "text"), ("Speech", "speech")]
-    out = ["\\begin{tabular}{@{}ll@{}}"]
-    out += [f"{name} & {row(key)} \\\\" for name, key in rows]
-    out.append("\\end{tabular}")
-    return "\n".join(out) + "\n"

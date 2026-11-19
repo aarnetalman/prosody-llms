@@ -1,0 +1,8 @@
+model,modality,access,acc2,sd2,acc3,sd3
+Qwen3.8 27B,text,linear probe,82.35,,66.73,
+Qwen3.8 27B,text,BiLSTM classifier,82.89,0.1,67.83,0.07
+Qwen3.8 27B,text,"prompted, no examples",78.79,,58.63,
+Qwen3.8 27B,text,"prompted, 500 examples",78.3,,62.01,
+Qwen2-Audio 7B,audio,linear probe (LM),86.45,,74.39,
+Qwen2-Audio 7B,audio,BiLSTM classifier (LM),87.3,0.1,76.48,0.14
+Qwen2-Audio 7B,audio,prompted (Instruct),50.98,,39.23,

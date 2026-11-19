@@ -1,0 +1,17 @@
+position,word,speaker_a,speech_model_hearing_a,speaker_b,text_model
+0,Hilda's,1,1,2,2
+1,face,0,1,1,1
+2,quivered,2,2,1,2
+3,",",NA,NA,NA,NA
+4,but,0,0,1,0
+5,she,1,1,0,0
+6,whispered,2,2,1,1
+7,Yes,1,2,2,2
+8,",",NA,NA,NA,NA
+9,I,2,2,0,0
+10,think,0,0,1,1
+11,it,0,0,0,0
+12,must,1,1,2,1
+13,have,0,0,0,0
+14,been,2,1,0,1
+15,.,NA,NA,NA,NA

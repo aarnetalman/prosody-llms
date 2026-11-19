@@ -1,0 +1,21 @@
+group,model,hf_id,params,revision
+Encoders,BERT-base,google-bert/bert-base-uncased,110M,86b5e0934494bd15c9632b12f734a8a67f723594
+Encoders,BERT-base cased,google-bert/bert-base-cased,109M,cd5ef92a9fb2f889e972770a36d4ed042daf221e
+Encoders,BERT-large,google-bert/bert-large-uncased,336M,6da4b6a26a1877e173fca3225479512db81a5e5b
+Encoders,ModernBERT-base,answerdotai/ModernBERT-base,150M,8949b909ec900327062f0ebf497f51aef5e6f0c8
+Encoders,ModernBERT-large,answerdotai/ModernBERT-large,396M,45bb4654a4d5aaff24dd11d4781fa46d39bf8c13
+Encoders,XLM-R base,FacebookAI/xlm-roberta-base,279M,e73636d4f797dec63c3081bb6ed5c7b0bb3f2089
+Encoders,XLM-R large,FacebookAI/xlm-roberta-large,561M,c23d21b0620b635a76227c604d44e43a9f0ee389
+Decoder LLMs,Qwen3.5 0.8B,Qwen/Qwen3.5-0.8B-Base,873M,dc7cdfe2ee4154fa7e30f5b51ca41bfa40174e68
+Decoder LLMs,Qwen3.5 2B,Qwen/Qwen3.5-2B-Base,2.3B,b1485b2fa6dfa1287294f269f5fb618e03d52d7c
+Decoder LLMs,Qwen3.5 4B,Qwen/Qwen3.5-4B-Base,4.7B,1001bb4d826a52d1f399e183466143f4da7b741b
+Decoder LLMs,Qwen3.5 9B,Qwen/Qwen3.5-9B-Base,9.7B,68c46c4b3498877f3ef123c856ecfde50c39f404
+Decoder LLMs,Qwen3.8 27B,Qwen/Qwen3.8-27B,27.8B,37561816e66b5b9153b1b64c10968c18c1e6f4a0
+Decoder LLMs,OLMo 3 7B,allenai/Olmo-3-1025-7B,7.3B,a81bae42db3975be1671e27b9c9a56da1a9f980f
+Decoder LLMs,OLMo 3 32B,allenai/Olmo-3-1125-32B,32.2B,c2b61dae89a1ad10e4ad5653d0e46b590902607b
+Decoder LLMs,Muse Glimmer 30B,meta-models/Muse-Glimmer-30B,29.8B,cec94fcfd6512f2cfe708138c32533b346ea4f69
+Speech,WavLM-large,microsoft/wavlm-large,315M,c1423ed94bb01d80a3f5ce5bc39f6026a0f4828c
+Speech,HuBERT-large,facebook/hubert-large-ll60k,315M,ff022d095678a2995f3c49bab18a96a9e553f782
+Speech,Whisper large-v3 (encoder),openai/whisper-large-v3,1.5B,06f233fe06e710322aca913c1bc4249a0d71fce1
+Speech,Qwen2-Audio 7B,Qwen/Qwen2-Audio-7B,8.4B,dd84470756e6277a71d4d7188773a43cde92696e
+Speech,Qwen2-Audio 7B Instruct,Qwen/Qwen2-Audio-7B-Instruct,8.4B,0a095220c30b7b31434169c3086508ef3ea5bf0a

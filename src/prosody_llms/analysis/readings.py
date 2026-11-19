@@ -12,8 +12,9 @@
   for the three instruction variants on the development subset shows whether a pattern
   comes from our instructions.
 
-Writes ``paper/results/reader_table.tex`` and ``paper/results/profile_table.tex`` and
-returns numbers for ``numbers.tex``.
+Writes the tables ``readers.csv``, ``behaviour.csv``, ``confusion.csv``, ``lexical.csv`` and
+``two_readers.csv`` and the learning-curve figure data, and returns the numbers quoted in
+the paper.
 """
 
 from __future__ import annotations
@@ -22,6 +23,7 @@ from collections import Counter
 from pathlib import Path
 
 from prosody_llms.analysis.errors import FUNCTION_WORDS, read_predictions_gz, reader_groups
+from prosody_llms.analysis.output import figures_dir, rnd, tables_dir, write_csv
 from prosody_llms.data.corpus import LABEL_NA, read_split
 
 READER_SYSTEMS = [  # (label, kind, tag, path under results/)
@@ -156,34 +158,6 @@ def prompt_profile(root: Path, data_dir: Path) -> tuple[list[dict], dict]:
     return rows, nums
 
 
-def reader_tex(rows: list[dict], nums: dict) -> str:
-    if not rows:
-        return "\\begin{tabular}{l}\\textit{(results pending)}\\end{tabular}\n"
-    kinds = {"speech": "\\textsc{a}", "text": "\\textsc{t}", "prompted": "\\textsc{p}"}
-    out = ["\\begin{tabular}{@{}llrrr@{}}", "\\toprule",
-           " & System & Own reader & Other reader & $\\Delta$ \\\\", "\\midrule"]
-    for r in rows:
-        out.append(f"{kinds[r['kind']]} & {r['system']} & {r['own']:.1f} & {r['other']:.1f} & {r['diff']:+.1f} \\\\")
-    out += ["\\midrule", f" & The two readers & \\multicolumn{{2}}{{c}}{{{nums['rt-readers']:.1f}}} & \\\\",
-            "\\bottomrule", "\\end{tabular}"]
-    return "\n".join(out) + "\n"
-
-
-def profile_tex(rows: list[dict]) -> str:
-    if not rows:
-        return "\\begin{tabular}{l}\\textit{(results pending)}\\end{tabular}\n"
-    out = ["\\begin{tabular}{@{}lrrrrr@{}}", "\\toprule",
-           " & \\multicolumn{3}{c}{Labelled 2 (\\%)} & \\multicolumn{2}{c}{Accuracy (\\%)} \\\\",
-           "\\cmidrule(lr){2-4}\\cmidrule(l){5-6}",
-           "System & content & function & last & content & function \\\\", "\\midrule"]
-    for r in rows:
-        acc = ("--", "--") if r["tag"] == "gold" else (f"{r['content-acc']:.1f}", f"{r['function-acc']:.1f}")
-        out.append(f"{r['system']} & {r['content-top']:.1f} & {r['function-top']:.1f} & {r['last-top']:.1f} & "
-                   f"{acc[0]} & {acc[1]} \\\\")
-    out += ["\\bottomrule", "\\end{tabular}"]
-    return "\n".join(out) + "\n"
-
-
 def compute_summary(root: Path) -> dict:
     """GPU time of the runs reported in the paper, from the run records (``time_s``)."""
     import json
@@ -215,22 +189,52 @@ def compute_summary(root: Path) -> dict:
     return out
 
 
-def write_all(root: Path, data_dir: Path, paper_dir: Path) -> dict:
+def write_all(root: Path, data_dir: Path) -> dict:
+    tab, fig = tables_dir(root), figures_dir(root)
+    fig.mkdir(parents=True, exist_ok=True)
     rt_rows, rt_nums = reader_tracking(root, data_dir)
     pp_rows, pp_nums = prompt_profile(root, data_dir)
-    gen = paper_dir / "results"
-    (gen / "reader_table.tex").write_text(reader_tex(rt_rows, rt_nums), encoding="utf-8")
-    (gen / "profile_table.tex").write_text(profile_tex(pp_rows), encoding="utf-8")
-    ex_tex, _ = two_reader_example(root, data_dir)
-    (gen / "two_readers.tex").write_text(ex_tex, encoding="utf-8")
+    readers = [{"system": r["system"], "kind": r["kind"], "own_reader": rnd(r["own"]), "other_reader": rnd(r["other"]),
+                "difference": rnd(r["diff"])} for r in rt_rows]
+    if "rt-readers" in rt_nums:
+        readers.append({"system": "the two readers (agreement)", "kind": "readers", "own_reader": rnd(rt_nums["rt-readers"])})
+    write_csv(tab / "readers.csv", readers, ["system", "kind", "own_reader", "other_reader", "difference"])
+    ex_rows, _ = two_reader_example(root, data_dir)
+    write_csv(tab / "two_readers.csv", ex_rows, ["position", "word", "speaker_a", "speech_model_hearing_a",
+                                                 "speaker_b", "text_model"])
     lex_rows, lex_nums = lexical_default(root, data_dir)
-    (gen / "lexical_table.tex").write_text(lexical_tex(lex_rows), encoding="utf-8")
-    extra = {**lex_nums, **rethreshold(root, data_dir), **learning_curve(root, gen), **discourse_context(root), **probe_controls(root), **format_check(root), **matched_curve(root, data_dir, gen)}
+    write_csv(tab / "lexical.csv", [{k: (rnd(v) if isinstance(v, float) else v) for k, v in r.items()} for r in lex_rows],
+              ["system", "kind", "agree", "departs", "dep_right", "dep_wm_right"])
+    extra = {**lex_nums, **rethreshold(root, data_dir), **learning_curve(root, fig), **discourse_context(root), **probe_controls(root), **format_check(root), **matched_curve(root, data_dir, fig)}
     cl_rows, cl_nums = class_results(root, data_dir)
-    (gen / "class_table.tex").write_text(class_tex(cl_rows), encoding="utf-8")
-    (gen / "behaviour_table.tex").write_text(behaviour_tex(pp_rows, cl_rows), encoding="utf-8")
-    (gen / "confusion.tex").write_text(confusion_tex(cl_rows), encoding="utf-8")
+    write_csv(tab / "behaviour.csv", behaviour_rows(pp_rows, cl_rows),
+              ["system", "kind", "macro_f1", "recall0", "recall1", "recall2", "top_content", "top_function", "top_last",
+               "acc_content", "acc_function"])
+    write_csv(tab / "confusion.csv", [{"system": title, "gold": g, "predicted": q, "percent": rnd(r["confusion"][g][q])}
+                                      for t, title in CONFUSION_TAGS for r in cl_rows if r["tag"] == t
+                                      for g in "012" for q in "012"], ["system", "gold", "predicted", "percent"])
     return {**rt_nums, **pp_nums, **cl_nums, **extra, **compute_summary(root)}
+
+
+def behaviour_rows(pp_rows: list[dict], cl_rows: list[dict]) -> list[dict]:
+    """How each system labels: macro-F1 and recall per class, the share of content words,
+    function words and last words given the highest level, and the accuracy on content and
+    function words."""
+    cl = {r["tag"]: r for r in cl_rows}
+    pp = {r["tag"]: r for r in pp_rows}
+    order = [("gold", "Gold labels", "")] + [(r["tag"], r["system"], r["kind"]) for r in cl_rows]
+    order += [(r["tag"], r["system"], "") for r in pp_rows if r["tag"] not in cl and r["tag"] != "gold"]
+    out = []
+    for tag, name, kind in order:
+        c, q = cl.get(tag) or {}, pp.get(tag) or {}
+        acc = tag != "gold"
+        out.append({"system": name, "kind": kind, "macro_f1": rnd(c.get("macro_f1")),
+                    **{f"recall{k}": rnd(c.get(f"recall-{k}")) for k in "012"},
+                    "top_content": rnd(q.get("content-top")), "top_function": rnd(q.get("function-top")),
+                    "top_last": rnd(q.get("last-top")),
+                    "acc_content": rnd(q.get("content-acc")) if acc else "",
+                    "acc_function": rnd(q.get("function-acc")) if acc else ""})
+    return out
 
 
 # ----------------------------------------------------------------------------- per-class results
@@ -276,69 +280,18 @@ def class_results(root: Path, data_dir: Path) -> tuple[list[dict], dict]:
     return rows, nums
 
 
-def class_tex(rows: list[dict]) -> str:
-    if not rows:
-        return "\\begin{tabular}{l}\\textit{(results pending)}\\end{tabular}\n"
-    kinds = {"t": "\\textsc{t}", "p": "\\textsc{p}", "a": "\\textsc{a}"}
-    out = ["\\begin{tabular}{@{}llrrrr@{}}", "\\toprule",
-           " & & & \\multicolumn{3}{c}{Recall (\\%)} \\\\", "\\cmidrule(l){4-6}",
-           " & System & Macro-F1 & 0 & 1 & 2 \\\\", "\\midrule"]
-    for r in rows:
-        out.append(f"{kinds[r['kind']]} & {r['system']} & {r['macro_f1']:.1f} & {r['recall-0']:.1f} & "
-                   f"{r['recall-1']:.1f} & {r['recall-2']:.1f} \\\\")
-    out += ["\\bottomrule", "\\end{tabular}"]
-    return "\n".join(out) + "\n"
-
-
-def confusion_tex(rows: list[dict], cell: float = 0.62) -> str:
-    """Row-normalised confusion matrices side by side, as a plain TikZ picture."""
-    by_tag = {r["tag"]: r for r in rows}
-    mats = [(by_tag[t], title) for t, title in CONFUSION_TAGS if t in by_tag]
-    if not mats:
-        return "\\textit{(results pending)}\n"
-    out = ["\\begin{tikzpicture}[x=%.2fcm, y=-%.2fcm, font=\\footnotesize]" % (cell, cell)]
-    for k, (r, title) in enumerate(mats):
-        x0 = k * 4.6
-        out.append(f"\\node[anchor=south] at ({x0 + 1.5},-0.15) {{{title}}};")
-        for i, g in enumerate("012"):
-            if k == 0:
-                out.append(f"\\node[anchor=east] at ({x0 - 0.05},{i + 0.5}) {{{g}}};")
-            for j, p in enumerate("012"):
-                v = r["confusion"][g][p]
-                rr, gg, bb = _shade_pct(v)
-                txt = "white" if (rr + gg + bb) / 3 < 140 else "black"
-                out.append(f"\\fill[fill={{rgb,255:red,{rr};green,{gg};blue,{bb}}}] ({x0 + j},{i}) rectangle ++(1,1);"
-                           f"\\node[text={txt}] at ({x0 + j + 0.5},{i + 0.5}) {{{v:.0f}}};")
-        for j, p in enumerate("012"):
-            out.append(f"\\node at ({x0 + j + 0.5},3.35) {{{p}}};")
-        out.append(f"\\node at ({x0 + 1.5},3.95) {{predicted}};")
-    out.append("\\node[rotate=90] at (-0.75,1.5) {gold};")
-    out.append("\\end{tikzpicture}")
-    return "\n".join(out) + "\n"
-
-
-def _shade_pct(v: float) -> tuple[int, int, int]:
-    ramp = [(240, 246, 253), (134, 182, 239), (42, 120, 214), (16, 66, 129)]
-    t = min(max(v / 100.0, 0.0), 1.0) * (len(ramp) - 1)
-    i = min(int(t), len(ramp) - 2)
-    f = t - i
-    return tuple(round(a + (b - a) * f) for a, b in zip(ramp[i], ramp[i + 1]))
-
-
 # ----------------------------------------------------------------------------- two readers, one text
 
-def two_reader_example(root: Path, data_dir: Path) -> tuple[str, dict]:
+def two_reader_example(root: Path, data_dir: Path) -> tuple[list[dict], dict]:
     """One test sentence that another speaker also reads in the development set, typeset
     by prominence: the test reader, the speech model hearing that reader, the other reader,
     and the text model (whose prediction is the same for both readings). Chosen as the
     sentence of 6-14 words where the speech model's preference for its own reader is
-    largest (ties broken by utterance id)."""
-    from prosody_llms.analysis.visuals import _tex
-
+    largest (ties broken by utterance id). One row per token, with the four 3-way labels."""
     splits = {s: read_split(data_dir / f"{s}.txt") for s in ("train_360", "dev", "test")}
     sp, tp = (root / PATHS["whisper"]), (root / PATHS["modernbert"])
     if not (sp.exists() and tp.exists()):
-        return "\\textit{(results pending)}\n", {}
+        return [], {}
     speech, text = read_predictions_gz(sp), read_predictions_gz(tp)
     best = None
     for g in reader_groups(splits):
@@ -354,27 +307,13 @@ def two_reader_example(root: Path, data_dir: Path) -> tuple[str, dict]:
                 if differ >= 3 and (best is None or key > best[0]):
                     best = (key, u, v)
     if best is None:
-        return "\\textit{(no example)}\n", {}
+        return [], {}
     _, u, v = best
-    style = {"0": "\\textcolor{gray}{%s}", "1": "\\textbf{%s}", "2": "\\textbf{\\large %s}"}
-
-    def row(labels):
-        parts = []
-        for t, lab in zip(u.tokens, labels):
-            w = _tex(t.word)
-            if t.is_punct:
-                if parts:
-                    parts[-1] += w
-                continue
-            parts.append(style.get(lab, "%s") % w)
-        return " ".join(parts)
-
-    rows = [("Speaker A", u.labels(3)), ("Speech model, hearing A", speech[u.utt_id]),
-            ("Speaker B", v.labels(3)), ("Text model", text[u.utt_id])]
-    out = ["\\begin{tabular}{@{}ll@{}}"]
-    out += [f"{name} & {row(labs)} \\\\" for name, labs in rows]
-    out.append("\\end{tabular}")
-    return "\n".join(out) + "\n", {"ex2-utt": u.utt_id.replace("_", "-"), "ex2-other": v.utt_id.replace("_", "-")}
+    rows = [{"position": i, "word": t.word, "speaker_a": a, "speech_model_hearing_a": sm, "speaker_b": b,
+             "text_model": tm}
+            for i, (t, a, sm, b, tm) in enumerate(zip(u.tokens, u.labels(3), speech[u.utt_id], v.labels(3),
+                                                      text[u.utt_id]))]
+    return rows, {"ex2-utt": u.utt_id.replace("_", "-"), "ex2-other": v.utt_id.replace("_", "-")}
 
 
 # ----------------------------------------------------------------------------- the lexical default
@@ -435,20 +374,6 @@ def lexical_default(root: Path, data_dir: Path) -> tuple[list[dict], dict]:
         rows.append(r)
         nums.update({f"lex-{tag}-{k}": r[k] for k in ("agree", "departs", "dep_right", "dep_wm_right")})
     return rows, nums
-
-
-def lexical_tex(rows: list[dict]) -> str:
-    if not rows:
-        return "\\begin{tabular}{l}\\textit{(results pending)}\\end{tabular}\n"
-    kinds = {"t": "\\textsc{t}", "p": "\\textsc{p}"}
-    out = ["\\begin{tabular}{@{}llrrrr@{}}", "\\toprule",
-           " & & & & \\multicolumn{2}{c}{Right where it departs} \\\\", "\\cmidrule(l){5-6}",
-           " & System & Same as lookup & Departs & system & lookup \\\\", "\\midrule"]
-    for r in rows:
-        out.append(f"{kinds[r['kind']]} & {r['system']} & {r['agree']:.1f} & {r['departs']:.1f} & "
-                   f"{r['dep_right']:.1f} & {r['dep_wm_right']:.1f} \\\\")
-    out += ["\\bottomrule", "\\end{tabular}"]
-    return "\n".join(out) + "\n"
 
 
 def rethreshold(root: Path, data_dir: Path) -> dict:
@@ -596,30 +521,6 @@ def discourse_context(root: Path) -> dict:
     if gains:
         nums["ctx-max-gain-3"] = max(max(gains), 0.1)  # reported as "at most": never below the rounding
     return nums
-
-
-def behaviour_tex(pp_rows: list[dict], cl_rows: list[dict]) -> str:
-    """One table for how each system labels: macro-F1 and recall per class, and the share of
-    content words, function words and last words given the highest level."""
-    if not pp_rows or not cl_rows:
-        return "\\begin{tabular}{l}\\textit{(results pending)}\\end{tabular}\n"
-    cl = {r["tag"]: r for r in cl_rows}
-    pp = {r["tag"]: r for r in pp_rows}
-    order = [("gold", "Gold labels", "")] + [(r["tag"], r["system"], r["kind"]) for r in cl_rows]
-    kinds = {"t": "\\textsc{t}", "p": "\\textsc{p}", "a": "\\textsc{a}", "": ""}
-    out = ["\\begin{tabular}{@{}llrrrrrrr@{}}", "\\toprule",
-           " & & & \\multicolumn{3}{c}{Recall (\\%)} & \\multicolumn{3}{c}{Labelled 2 (\\%)} \\\\",
-           "\\cmidrule(lr){4-6}\\cmidrule(l){7-9}",
-           " & System & Macro-F1 & 0 & 1 & 2 & content & function & last \\\\", "\\midrule"]
-    for tag, name, kind in order:
-        c, p = cl.get(tag), pp.get(tag)
-        left = ("-- & -- & -- & --" if c is None else
-                f"{c['macro_f1']:.1f} & {c['recall-0']:.1f} & {c['recall-1']:.1f} & {c['recall-2']:.1f}")
-        right = ("-- & -- & --" if p is None else
-                 f"{p['content-top']:.1f} & {p['function-top']:.1f} & {p['last-top']:.1f}")
-        out.append(f"{kinds[kind]} & {name} & {left} & {right} \\\\")
-    out += ["\\bottomrule", "\\end{tabular}"]
-    return "\n".join(out) + "\n"
 
 
 def probe_controls(root: Path) -> dict:

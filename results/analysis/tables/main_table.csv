@@ -1,0 +1,22 @@
+group,system,modality,acc2,sd2,acc3,sd3
+Baselines,Majority class,text,51.98,,48.02,
+Baselines,Word majority (2019),text,80.69,,61.96,
+Fine-tuned,BERT-base (2019 recipe),text,83.02,0.13,68.49,0.1
+Fine-tuned,BERT-large,text,83.15,0.09,68.54,0.13
+Fine-tuned,ModernBERT-large,text,83.22,0.05,68.8,0.08
+Fine-tuned,XLM-R large,text,83.28,0.11,68.8,0.17
+"Frozen, linear probe",BERT-base,text,81.84,,64.61,
+"Frozen, linear probe","best text: Muse Glimmer 30B, echo",text,82.59,,66.91,
+"Frozen, linear probe",best audio: Whisper large-v3 (encoder),audio,88.22,,78.74,
+"Frozen, BiLSTM classifier","best text (3-way): Qwen3.5 0.8B, echo",text,82.92,0.03,67.98,0.1
+"Frozen, BiLSTM classifier",best text (2-way): ModernBERT-large,text,83.03,0.03,68.0,0.06
+"Frozen, BiLSTM classifier",best audio: Whisper large-v3 (encoder),audio,90.99,0.19,84.66,0.16
+Prompting,GPT-4o,text,79.67,,59.44,
+Prompting,DeepSeek-V4-Pro,text,79.21,,60.52,
+Prompting,Mistral Large 3,text,78.93,,59.74,
+Prompting,GPT-5.5 (200 test utterances),text,78.9,,58.75,
+Prompting,"Qwen3.8 27B, 500 examples",text,78.3,,62.01,
+Prompting,"Qwen2-Audio, with recording",audio,50.98,,39.23,
+Prompting,"Qwen2-Audio, text only",text,51.61,,43.09,
+Audio references,Duration only,audio,83.2,,65.02,
+Audio references,Labelling procedure,audio,94.93,,91.44,

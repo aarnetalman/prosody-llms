@@ -1,0 +1,6 @@
+system,kind,agree,departs,dep_right,dep_wm_right
+"ModernBERT-large, BiLSTM classifier",t,71.68,28.32,51.79,30.67
+"Qwen3.8 27B, BiLSTM classifier",t,72.4,27.6,51.45,30.84
+"Qwen3.8 27B, prompted (500 ex.)",p,69.31,30.69,39.53,39.76
+"DeepSeek-V4-Pro, prompted (5 ex.)",p,68.79,31.21,37.05,42.06
+"GPT-4o, prompted (5 ex.)",p,67.95,32.05,36.0,44.23

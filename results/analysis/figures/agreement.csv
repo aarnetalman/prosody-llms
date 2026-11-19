@@ -1,0 +1,226 @@
+system_a,system_b,agree
+Gold labels,Gold labels,100.0
+Gold labels,Whisper large-v3,84.6
+Gold labels,HuBERT-large,84.19
+Gold labels,WavLM-large,84.04
+Gold labels,Qwen2-Audio encoder,84.12
+Gold labels,Qwen2-Audio LM,76.69
+Gold labels,Duration only,65.05
+Gold labels,ModernBERT-large,68.07
+Gold labels,BERT-base,67.7
+Gold labels,Qwen3.5 0.8B,68.07
+Gold labels,Qwen3.8 27B,67.78
+Gold labels,Muse Glimmer 30B,67.91
+Gold labels,DeepSeek-V4-Pro (prompted),60.54
+Gold labels,GPT-4o (prompted),59.47
+Gold labels,Mistral Large 3 (prompted),59.76
+Whisper large-v3,Gold labels,84.6
+Whisper large-v3,Whisper large-v3,100.0
+Whisper large-v3,HuBERT-large,87.91
+Whisper large-v3,WavLM-large,88.27
+Whisper large-v3,Qwen2-Audio encoder,89.26
+Whisper large-v3,Qwen2-Audio LM,79.56
+Whisper large-v3,Duration only,66.11
+Whisper large-v3,ModernBERT-large,70.07
+Whisper large-v3,BERT-base,69.61
+Whisper large-v3,Qwen3.5 0.8B,70.01
+Whisper large-v3,Qwen3.8 27B,69.89
+Whisper large-v3,Muse Glimmer 30B,69.8
+Whisper large-v3,DeepSeek-V4-Pro (prompted),61.51
+Whisper large-v3,GPT-4o (prompted),60.5
+Whisper large-v3,Mistral Large 3 (prompted),61.07
+HuBERT-large,Gold labels,84.19
+HuBERT-large,Whisper large-v3,87.91
+HuBERT-large,HuBERT-large,100.0
+HuBERT-large,WavLM-large,88.98
+HuBERT-large,Qwen2-Audio encoder,88.0
+HuBERT-large,Qwen2-Audio LM,79.34
+HuBERT-large,Duration only,65.72
+HuBERT-large,ModernBERT-large,69.55
+HuBERT-large,BERT-base,69.01
+HuBERT-large,Qwen3.5 0.8B,69.39
+HuBERT-large,Qwen3.8 27B,69.39
+HuBERT-large,Muse Glimmer 30B,69.28
+HuBERT-large,DeepSeek-V4-Pro (prompted),60.88
+HuBERT-large,GPT-4o (prompted),59.79
+HuBERT-large,Mistral Large 3 (prompted),60.45
+WavLM-large,Gold labels,84.04
+WavLM-large,Whisper large-v3,88.27
+WavLM-large,HuBERT-large,88.98
+WavLM-large,WavLM-large,100.0
+WavLM-large,Qwen2-Audio encoder,88.23
+WavLM-large,Qwen2-Audio LM,79.78
+WavLM-large,Duration only,65.95
+WavLM-large,ModernBERT-large,70.06
+WavLM-large,BERT-base,69.5
+WavLM-large,Qwen3.5 0.8B,69.92
+WavLM-large,Qwen3.8 27B,69.78
+WavLM-large,Muse Glimmer 30B,69.71
+WavLM-large,DeepSeek-V4-Pro (prompted),61.18
+WavLM-large,GPT-4o (prompted),60.08
+WavLM-large,Mistral Large 3 (prompted),60.74
+Qwen2-Audio encoder,Gold labels,84.12
+Qwen2-Audio encoder,Whisper large-v3,89.26
+Qwen2-Audio encoder,HuBERT-large,88.0
+Qwen2-Audio encoder,WavLM-large,88.23
+Qwen2-Audio encoder,Qwen2-Audio encoder,100.0
+Qwen2-Audio encoder,Qwen2-Audio LM,79.89
+Qwen2-Audio encoder,Duration only,65.7
+Qwen2-Audio encoder,ModernBERT-large,70.31
+Qwen2-Audio encoder,BERT-base,69.82
+Qwen2-Audio encoder,Qwen3.5 0.8B,70.36
+Qwen2-Audio encoder,Qwen3.8 27B,70.23
+Qwen2-Audio encoder,Muse Glimmer 30B,70.09
+Qwen2-Audio encoder,DeepSeek-V4-Pro (prompted),61.48
+Qwen2-Audio encoder,GPT-4o (prompted),60.22
+Qwen2-Audio encoder,Mistral Large 3 (prompted),61.19
+Qwen2-Audio LM,Gold labels,76.69
+Qwen2-Audio LM,Whisper large-v3,79.56
+Qwen2-Audio LM,HuBERT-large,79.34
+Qwen2-Audio LM,WavLM-large,79.78
+Qwen2-Audio LM,Qwen2-Audio encoder,79.89
+Qwen2-Audio LM,Qwen2-Audio LM,100.0
+Qwen2-Audio LM,Duration only,69.53
+Qwen2-Audio LM,ModernBERT-large,74.14
+Qwen2-Audio LM,BERT-base,73.29
+Qwen2-Audio LM,Qwen3.5 0.8B,74.0
+Qwen2-Audio LM,Qwen3.8 27B,73.88
+Qwen2-Audio LM,Muse Glimmer 30B,73.92
+Qwen2-Audio LM,DeepSeek-V4-Pro (prompted),64.47
+Qwen2-Audio LM,GPT-4o (prompted),63.19
+Qwen2-Audio LM,Mistral Large 3 (prompted),63.34
+Duration only,Gold labels,65.05
+Duration only,Whisper large-v3,66.11
+Duration only,HuBERT-large,65.72
+Duration only,WavLM-large,65.95
+Duration only,Qwen2-Audio encoder,65.7
+Duration only,Qwen2-Audio LM,69.53
+Duration only,Duration only,100.0
+Duration only,ModernBERT-large,68.66
+Duration only,BERT-base,68.4
+Duration only,Qwen3.5 0.8B,68.62
+Duration only,Qwen3.8 27B,68.88
+Duration only,Muse Glimmer 30B,69.32
+Duration only,DeepSeek-V4-Pro (prompted),65.83
+Duration only,GPT-4o (prompted),65.27
+Duration only,Mistral Large 3 (prompted),66.65
+ModernBERT-large,Gold labels,68.07
+ModernBERT-large,Whisper large-v3,70.07
+ModernBERT-large,HuBERT-large,69.55
+ModernBERT-large,WavLM-large,70.06
+ModernBERT-large,Qwen2-Audio encoder,70.31
+ModernBERT-large,Qwen2-Audio LM,74.14
+ModernBERT-large,Duration only,68.66
+ModernBERT-large,ModernBERT-large,100.0
+ModernBERT-large,BERT-base,83.73
+ModernBERT-large,Qwen3.5 0.8B,85.21
+ModernBERT-large,Qwen3.8 27B,84.24
+ModernBERT-large,Muse Glimmer 30B,84.52
+ModernBERT-large,DeepSeek-V4-Pro (prompted),69.94
+ModernBERT-large,GPT-4o (prompted),68.23
+ModernBERT-large,Mistral Large 3 (prompted),68.64
+BERT-base,Gold labels,67.7
+BERT-base,Whisper large-v3,69.61
+BERT-base,HuBERT-large,69.01
+BERT-base,WavLM-large,69.5
+BERT-base,Qwen2-Audio encoder,69.82
+BERT-base,Qwen2-Audio LM,73.29
+BERT-base,Duration only,68.4
+BERT-base,ModernBERT-large,83.73
+BERT-base,BERT-base,100.0
+BERT-base,Qwen3.5 0.8B,83.84
+BERT-base,Qwen3.8 27B,82.88
+BERT-base,Muse Glimmer 30B,83.27
+BERT-base,DeepSeek-V4-Pro (prompted),69.07
+BERT-base,GPT-4o (prompted),67.25
+BERT-base,Mistral Large 3 (prompted),68.0
+Qwen3.5 0.8B,Gold labels,68.07
+Qwen3.5 0.8B,Whisper large-v3,70.01
+Qwen3.5 0.8B,HuBERT-large,69.39
+Qwen3.5 0.8B,WavLM-large,69.92
+Qwen3.5 0.8B,Qwen2-Audio encoder,70.36
+Qwen3.5 0.8B,Qwen2-Audio LM,74.0
+Qwen3.5 0.8B,Duration only,68.62
+Qwen3.5 0.8B,ModernBERT-large,85.21
+Qwen3.5 0.8B,BERT-base,83.84
+Qwen3.5 0.8B,Qwen3.5 0.8B,100.0
+Qwen3.5 0.8B,Qwen3.8 27B,85.29
+Qwen3.5 0.8B,Muse Glimmer 30B,85.35
+Qwen3.5 0.8B,DeepSeek-V4-Pro (prompted),69.21
+Qwen3.5 0.8B,GPT-4o (prompted),67.85
+Qwen3.5 0.8B,Mistral Large 3 (prompted),69.06
+Qwen3.8 27B,Gold labels,67.78
+Qwen3.8 27B,Whisper large-v3,69.89
+Qwen3.8 27B,HuBERT-large,69.39
+Qwen3.8 27B,WavLM-large,69.78
+Qwen3.8 27B,Qwen2-Audio encoder,70.23
+Qwen3.8 27B,Qwen2-Audio LM,73.88
+Qwen3.8 27B,Duration only,68.88
+Qwen3.8 27B,ModernBERT-large,84.24
+Qwen3.8 27B,BERT-base,82.88
+Qwen3.8 27B,Qwen3.5 0.8B,85.29
+Qwen3.8 27B,Qwen3.8 27B,100.0
+Qwen3.8 27B,Muse Glimmer 30B,85.28
+Qwen3.8 27B,DeepSeek-V4-Pro (prompted),69.3
+Qwen3.8 27B,GPT-4o (prompted),67.77
+Qwen3.8 27B,Mistral Large 3 (prompted),68.96
+Muse Glimmer 30B,Gold labels,67.91
+Muse Glimmer 30B,Whisper large-v3,69.8
+Muse Glimmer 30B,HuBERT-large,69.28
+Muse Glimmer 30B,WavLM-large,69.71
+Muse Glimmer 30B,Qwen2-Audio encoder,70.09
+Muse Glimmer 30B,Qwen2-Audio LM,73.92
+Muse Glimmer 30B,Duration only,69.32
+Muse Glimmer 30B,ModernBERT-large,84.52
+Muse Glimmer 30B,BERT-base,83.27
+Muse Glimmer 30B,Qwen3.5 0.8B,85.35
+Muse Glimmer 30B,Qwen3.8 27B,85.28
+Muse Glimmer 30B,Muse Glimmer 30B,100.0
+Muse Glimmer 30B,DeepSeek-V4-Pro (prompted),70.18
+Muse Glimmer 30B,GPT-4o (prompted),68.66
+Muse Glimmer 30B,Mistral Large 3 (prompted),69.82
+DeepSeek-V4-Pro (prompted),Gold labels,60.54
+DeepSeek-V4-Pro (prompted),Whisper large-v3,61.51
+DeepSeek-V4-Pro (prompted),HuBERT-large,60.88
+DeepSeek-V4-Pro (prompted),WavLM-large,61.18
+DeepSeek-V4-Pro (prompted),Qwen2-Audio encoder,61.48
+DeepSeek-V4-Pro (prompted),Qwen2-Audio LM,64.47
+DeepSeek-V4-Pro (prompted),Duration only,65.83
+DeepSeek-V4-Pro (prompted),ModernBERT-large,69.94
+DeepSeek-V4-Pro (prompted),BERT-base,69.07
+DeepSeek-V4-Pro (prompted),Qwen3.5 0.8B,69.21
+DeepSeek-V4-Pro (prompted),Qwen3.8 27B,69.3
+DeepSeek-V4-Pro (prompted),Muse Glimmer 30B,70.18
+DeepSeek-V4-Pro (prompted),DeepSeek-V4-Pro (prompted),100.0
+DeepSeek-V4-Pro (prompted),GPT-4o (prompted),79.23
+DeepSeek-V4-Pro (prompted),Mistral Large 3 (prompted),76.65
+GPT-4o (prompted),Gold labels,59.47
+GPT-4o (prompted),Whisper large-v3,60.5
+GPT-4o (prompted),HuBERT-large,59.79
+GPT-4o (prompted),WavLM-large,60.08
+GPT-4o (prompted),Qwen2-Audio encoder,60.22
+GPT-4o (prompted),Qwen2-Audio LM,63.19
+GPT-4o (prompted),Duration only,65.27
+GPT-4o (prompted),ModernBERT-large,68.23
+GPT-4o (prompted),BERT-base,67.25
+GPT-4o (prompted),Qwen3.5 0.8B,67.85
+GPT-4o (prompted),Qwen3.8 27B,67.77
+GPT-4o (prompted),Muse Glimmer 30B,68.66
+GPT-4o (prompted),DeepSeek-V4-Pro (prompted),79.23
+GPT-4o (prompted),GPT-4o (prompted),100.0
+GPT-4o (prompted),Mistral Large 3 (prompted),79.16
+Mistral Large 3 (prompted),Gold labels,59.76
+Mistral Large 3 (prompted),Whisper large-v3,61.07
+Mistral Large 3 (prompted),HuBERT-large,60.45
+Mistral Large 3 (prompted),WavLM-large,60.74
+Mistral Large 3 (prompted),Qwen2-Audio encoder,61.19
+Mistral Large 3 (prompted),Qwen2-Audio LM,63.34
+Mistral Large 3 (prompted),Duration only,66.65
+Mistral Large 3 (prompted),ModernBERT-large,68.64
+Mistral Large 3 (prompted),BERT-base,68.0
+Mistral Large 3 (prompted),Qwen3.5 0.8B,69.06
+Mistral Large 3 (prompted),Qwen3.8 27B,68.96
+Mistral Large 3 (prompted),Muse Glimmer 30B,69.82
+Mistral Large 3 (prompted),DeepSeek-V4-Pro (prompted),76.65
+Mistral Large 3 (prompted),GPT-4o (prompted),79.16
+Mistral Large 3 (prompted),Mistral Large 3 (prompted),100.0
