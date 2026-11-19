@@ -1,7 +1,25 @@
 # prosody-llms
 
-Code and results for predicting **prosodic prominence** (which words a reader stresses)
-with language models. The repository covers every experiment in the paper:
+Code and results for the paper
+
+> Aarne Talman and Stergios Chatzikyriakidis. 2026.
+> **Language models represent more about emphasis than they can tell you.** arXiv preprint.
+
+The paper asks how much of **prosodic prominence** (which words a reader stresses) language
+models recover from text, whether they can report it when asked, and what the speech
+signal adds. Everything behind it is here: the code, the results of every run, and the
+commands that reproduce them.
+
+## Quick start
+
+| I want to... | Do this | Needs |
+|---|---|---|
+| regenerate the paper's tables, numbers and figure data from the committed results | `make setup data analysis` | CPU, internet for the corpus; a few minutes |
+| check the installation | `make test` | CPU, about a minute |
+| rerun one experiment | `python scripts/reproduce.py groups`, then `run <group>` ([below](#reproducing-the-experiments)) | depends on the group, mostly a GPU |
+| reuse a part (word-token alignment, probes, prompt parser, 2019 port) | see [Layout](#layout) | |
+
+## What the repository covers
 
 - **Fine-tuning** BERT-style encoders end to end, including a faithful reproduction of
   Talman et al. (2019).
@@ -15,11 +33,21 @@ with language models. The repository covers every experiment in the paper:
   - probes on WavLM, HuBERT, Whisper and Qwen2-Audio;
   - Qwen2-Audio-Instruct prompted with and without the recording;
   - the labels reconstructed from the audio with the labelling tool itself.
-- **Analysis**: every table and number in the paper, from the committed `results/`.
+- **Analysis**: every table, figure and number in the paper, from the committed `results/`.
 
-The results of all runs are included, so the paper's tables can be regenerated in seconds
-on any machine (see [Regenerating the paper's numbers](#regenerating-the-papers-numbers)).
-The rest of this file explains how to rerun the experiments themselves.
+### From the paper to the code
+
+| Paper | Experiment group | Results | Code |
+|---|---|---|---|
+| Section 3, Tables 1 and 11: data, label reconstruction, agreement between readers | `data`, `audio-reference` | `results/audio/` | `data/`, `audio/reconstruct.py` |
+| Tables 2 and 3: models, main results | all groups | `results/*/` | `analysis/` |
+| Section 5.1, Figures 1 to 3: text models, learning curves, agreement between systems, layers | `baselines`, `repro-2019`, `finetune`, `probe-linear`, `probe-strong`, `controls` | `results/repro_2019/`, `finetune/`, `probing*/` | `legacy/`, `probes/`, `probing/` |
+| Section 5.2, Tables 4 to 7, Figures 4 and 5: probing against prompting | `prompting`, `icl`, `probe-strong` | `results/prompting/`, `icl/`, `probing_nonlinear/` | `prompting/`, `probing/` |
+| Section 5.3, Table 8: speech models | `audio-linear`, `audio-strong`, `audio-prompting`, `compare` | `results/audio/`, `audio_prompting/` | `audio/` |
+| Section 6, Tables 9 and 10: word types, error analysis | `analysis` | `results/analysis/` | `analysis/` |
+
+Code paths are under `src/prosody_llms/`. Every number quoted in the paper is written to
+`paper/results/numbers.tex` by `make analysis`.
 
 ## Installation
 
@@ -176,7 +204,7 @@ python -m prosody_llms.analysis      # tables and numbers
 ## Regenerating the paper's numbers
 
 ```bash
-python -m prosody_llms.analysis
+make analysis     # python -m prosody_llms.analysis
 ```
 
 This reads only `results/` and the corpus, and takes a few seconds on a CPU. It writes:
@@ -227,10 +255,17 @@ Python's hash randomisation, and the kernels are deterministic. The reproduction
 
 ## Citation
 
-Please cite the paper (reference to follow) and Talman et al. (2019), whose corpus and
-task this builds on; see `CITATION.cff`.
+If you use the code or the results, please cite the paper, and Talman et al. (2019), whose
+corpus and task this builds on (also in `CITATION.cff`):
 
 ```bibtex
+@misc{talman2026emphasis,
+  author = {Aarne Talman and Stergios Chatzikyriakidis},
+  title  = {Language models represent more about emphasis than they can tell you},
+  year   = {2026},
+  note   = {arXiv preprint}
+}
+
 @inproceedings{talman2019,
   author    = {Aarne Talman and Antti Suni and Hande Celikkanat and Sofoklis Kakouros
                and J{\"o}rg Tiedemann and Martti Vainio},

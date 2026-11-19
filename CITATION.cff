@@ -1,7 +1,7 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it, and the 2019 paper whose corpus and task it builds on."
+message: "If you use this software, please cite the paper below, and the 2019 paper whose corpus and task it builds on."
 title: "prosody-llms"
-version: 1.0.0
+version: 1.1.0
 license: MIT
 repository-code: "https://github.com/aarnetalman/prosody-llms"
 authors:
@@ -11,6 +11,16 @@ authors:
   - family-names: Chatzikyriakidis
     given-names: Stergios
     affiliation: Institute of Language and Speech Processing, Athena Research Centre
+preferred-citation:
+  type: article
+  title: "Language models represent more about emphasis than they can tell you"
+  authors:
+    - family-names: Talman
+      given-names: Aarne
+    - family-names: Chatzikyriakidis
+      given-names: Stergios
+  journal: "arXiv preprint"
+  year: 2026
 references:
   - type: conference-paper
     title: "Predicting Prosodic Prominence from Text with Pre-trained Contextualized Word Representations"
