@@ -3,7 +3,8 @@
 Code and results for the paper
 
 > Aarne Talman and Stergios Chatzikyriakidis. 2026.
-> **Language models represent more about emphasis than they can tell you.** arXiv preprint.
+> **Language models represent more about emphasis than they can tell you.**
+> arXiv:2611.25808. https://arxiv.org/abs/2611.25808
 
 The paper asks how much of **prosodic prominence** (which words a reader stresses) language
 models recover from text, whether they can report it when asked, and what the speech
@@ -265,10 +266,14 @@ and task this builds on (also in `CITATION.cff`):
 
 ```bibtex
 @misc{talman2026emphasis,
-  author = {Aarne Talman and Stergios Chatzikyriakidis},
-  title  = {Language models represent more about emphasis than they can tell you},
-  year   = {2026},
-  note   = {arXiv preprint}
+  author        = {Aarne Talman and Stergios Chatzikyriakidis},
+  title         = {Language models represent more about emphasis than they can tell you},
+  year          = {2026},
+  eprint        = {2611.25808},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  doi           = {10.48550/arXiv.2611.25808},
+  url           = {https://arxiv.org/abs/2611.25808}
 }
 
 @inproceedings{talman2019,
